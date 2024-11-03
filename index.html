@@ -5,28 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product Promo Page</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script> <!-- Library for parsing Excel files -->
+  <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
 </head>
 <body>
-  <div class="container">
-    <div id="brand-selection">
-      <h1>Select a Brand</h1>
-      <div id="brand-buttons" class="button-container"></div>
-    </div>
-
-    <div id="model-selection" class="hidden">
-      <h2>Select a Model</h2>
-      <div id="model-buttons" class="button-container"></div>
-    </div>
-
-    <div id="promo-details" class="hidden">
-      <h2>Promo Details</h2>
-      <p id="description"></p>
-      <p class="price" id="final-price"></p>
-      <div class="promo-info" id="promo-info-box"></div>
-      <p class="small-text" id="code-info"></p>
-    </div>
+  <div id="brand-selection">
+    <h2>Select a Brand</h2>
+    <div id="brand-buttons"></div>
   </div>
+
+  <div id="model-selection" class="hidden">
+    <h2>Select a Model</h2>
+    <div id="model-buttons"></div>
+  </div>
+
+  <div id="promo-details" class="hidden">
+    <h2>Promo Details</h2>
+    <p id="description"></p>
+    <p id="final-price"></p>
+    <div id="promo-info-box"></div>
+    <p id="code-info"></p>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
