@@ -3,10 +3,13 @@ body {
   text-align: center;
   background-color: #f7f7f7;
   padding: 20px;
+  margin: 0;
 }
 
-.hidden {
-  display: none;
+.center-content {
+  max-width: 600px;
+  margin: 50px auto;
+  text-align: center;
 }
 
 h2 {
@@ -43,6 +46,11 @@ button:hover {
   font-weight: bold;
   color: #d9534f;
   margin: 20px 0;
+}
+
+#rcp {
+  font-size: 16px;
+  color: #666;
 }
 
 #promo-info-box {
