@@ -1,80 +1,47 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  text-align: center;
+  background-color: #f7f7f7;
   padding: 20px;
-}
-
-.container {
-  max-width: 800px;
-  width: 100%;
-  background: white;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h1, h2 {
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.button-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-}
-
-button {
-  padding: 10px 20px;
-  font-size: 18px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  color: white;
-}
-
-button.brand-button {
-  background-color: #007BFF;
-}
-
-button.model-button {
-  background-color: #28A745;
-}
-
-.price {
-  font-size: 24px;
-  font-weight: bold;
-  color: #FF5722;
-  text-align: center;
-  margin-top: 20px;
-}
-
-.promo-info {
-  background-color: #E0E0E0;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 20px 0;
-  text-align: center;
-}
-
-.small-text {
-  font-size: 14px;
-  color: #666;
-  text-align: center;
 }
 
 .hidden {
   display: none;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 15px 30px;
+  margin: 10px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#final-price {
+  font-size: 24px;
+  font-weight: bold;
+  color: #d9534f;
+  margin: 20px 0;
+}
+
+#promo-info-box {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+#code-info {
+  font-size: 14px;
+  color: #555;
 }
