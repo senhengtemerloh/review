@@ -22,9 +22,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const worksheet = workbook.Sheets[firstSheetName];
         data = XLSX.utils.sheet_to_json(worksheet);
 
-        populateBrandButtons();
+        if (data.length > 0) {
+          populateBrandButtons();
+        } else {
+          console.error("No data found in the spreadsheet.");
+        }
       })
-      .catch(error => console.error("Error loading the Excel file:", error));
+      .catch(error => {
+        console.error("Error loading the Excel file:", error);
+      });
   }
 
   // Function to populate brand buttons
@@ -33,7 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     brands.forEach(brand => {
       const button = document.createElement("button");
-      button.className = "brand-button";
       button.textContent = brand;
       button.addEventListener("click", () => showModels(brand));
       brandButtonsContainer.appendChild(button);
@@ -50,7 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     models.forEach(model => {
       const button = document.createElement("button");
-      button.className = "model-button";
       button.textContent = model.description;
       button.addEventListener("click", () => showPromoDetails(model));
       modelButtonsContainer.appendChild(button);
