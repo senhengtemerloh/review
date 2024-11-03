@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   const brandButtonsContainer = document.getElementById("brand-buttons");
-  const modelSection = document.getElementById("model-section");
   const modelButtonsContainer = document.getElementById("model-buttons");
-  const promoSection = document.getElementById("promo-section");
+  const brandSelection = document.getElementById("brand-selection");
+  const modelSelection = document.getElementById("model-selection");
+  const promoDetails = document.getElementById("promo-details");
 
   const descriptionEl = document.getElementById("description");
   const finalPriceEl = document.getElementById("final-price");
@@ -39,28 +40,32 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Function to show models for the selected brand
   function showModels(brand) {
     modelButtonsContainer.innerHTML = ""; // Clear previous buttons
-    modelSection.classList.remove("hidden");
-    
+    brandSelection.classList.add("hidden");
+    modelSelection.classList.remove("hidden");
+
     const models = data.filter(item => item.brand === brand);
-    
+
     models.forEach(model => {
       const button = document.createElement("button");
       button.className = "model-button";
-      button.textContent = model.modelCode;
+      button.textContent = model.description;
       button.addEventListener("click", () => showPromoDetails(model));
       modelButtonsContainer.appendChild(button);
     });
   }
 
+  // Function to show promo details for the selected model
   function showPromoDetails(model) {
+    modelSelection.classList.add("hidden");
+    promoDetails.classList.remove("hidden");
+
     descriptionEl.textContent = model.description;
     finalPriceEl.textContent = `RM ${model.finalPrice}`;
     promoInfoBox.textContent = model.promoInfo || "";
     codeInfoEl.textContent = `Code need to be key in: ${model.pacCode} + Instant Save ${model.instantsave}`;
-    
-    promoSection.classList.remove("hidden");
   }
 
   // Load the Excel data on page load
