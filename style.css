@@ -28,6 +28,16 @@ button:hover {
   background-color: #0056b3;
 }
 
+.nav-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #6c757d;
+}
+
+.nav-button:hover {
+  background-color: #5a6268;
+}
+
 #final-price {
   font-size: 24px;
   font-weight: bold;
