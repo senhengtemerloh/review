@@ -10,6 +10,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const promoInfoBox = document.getElementById("promo-info-box");
   const codeInfoEl = document.getElementById("code-info");
 
+  const backToBrandButton = document.getElementById("back-to-brand");
+  const backToModelsButton = document.getElementById("back-to-models");
+  const homeButton = document.getElementById("home-button");
+
   let data = [];
 
   // Function to load and parse the Excel file
@@ -71,6 +75,22 @@ document.addEventListener("DOMContentLoaded", () => {
     promoInfoBox.textContent = model.promoInfo || "";
     codeInfoEl.textContent = `Code need to be key in: ${model.pacCode} + Instant Save ${model.instantsave}`;
   }
+
+  // Back button event listeners
+  backToBrandButton.addEventListener("click", () => {
+    modelSelection.classList.add("hidden");
+    brandSelection.classList.remove("hidden");
+  });
+
+  backToModelsButton.addEventListener("click", () => {
+    promoDetails.classList.add("hidden");
+    modelSelection.classList.remove("hidden");
+  });
+
+  homeButton.addEventListener("click", () => {
+    promoDetails.classList.add("hidden");
+    brandSelection.classList.remove("hidden");
+  });
 
   // Load the Excel data on page load
   loadExcelData();
