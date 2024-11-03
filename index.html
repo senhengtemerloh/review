@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Promo Page</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script> <!-- Library for parsing Excel files -->
+</head>
+<body>
+  <div class="container">
+    <h1>Select a Brand</h1>
+    <div id="brand-buttons" class="button-container"></div>
+    
+    <div id="model-section" class="hidden">
+      <h2>Select a Model</h2>
+      <div id="model-buttons" class="button-container"></div>
+    </div>
+
+    <div id="promo-section" class="hidden">
+      <h2>Promo Details</h2>
+      <p id="description"></p>
+      <p class="price" id="final-price"></p>
+      <div class="promo-info" id="promo-info-box"></div>
+      <p class="small-text" id="code-info"></p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
