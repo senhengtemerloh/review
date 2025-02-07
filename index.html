@@ -1,103 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leave a Google Review</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-        }
-        .btn {
-            padding: 10px 20px;
-            font-size: 18px;
-            margin: 5px;
-            cursor: pointer;
-        }
-        .hashtag-btn {
-            background-color: #4CAF50; 
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-        .copy-btn {
-            background-color: #008CBA;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-        .review-box {
-            font-size: 20px;
-            margin: 10px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-        }
-        #review-section { display: none; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leave a Google Review</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #f2f2f2, #e6e6e6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      color: #333;
+    }
+    h2 {
+      margin-top: 20px;
+    }
+    #hashtag-selection, #review-section {
+      width: 90%;
+      max-width: 600px;
+      margin: 10px auto;
+      text-align: center;
+    }
+    .btn {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin: 5px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .hashtag-btn {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .hashtag-btn:hover {
+      background-color: #45a049;
+    }
+    .copy-btn {
+      background-color: #008CBA;
+      color: white;
+    }
+    .copy-btn:hover {
+      background-color: #007bb5;
+    }
+    .review-box {
+      font-size: 18px;
+      margin: 10px 0;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #google-review-btn {
+      background-color: #f44336; /* Different background color for Google Review link */
+      color: white;
+      padding: 12px 25px;
+      font-size: 20px;
+      border: none;
+      border-radius: 8px;
+      margin: 20px 0;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    #google-review-btn:hover {
+      background-color: #da190b;
+    }
+    #refresh-btn {
+      background-color: #ff9800;
+      color: white;
+    }
+    #refresh-btn:hover {
+      background-color: #e68a00;
+    }
+  </style>
 </head>
 <body>
-    <h2>📢 Choose a Hashtag (Staff Name)</h2>
-    <div id="hashtag-selection">
-        <button class="btn hashtag-btn" onclick="selectHashtag('mus')">#mus</button>
-        <button class="btn hashtag-btn" onclick="selectHashtag('syafiq')">#syafiq</button>
-        <button class="btn hashtag-btn" onclick="selectHashtag('hairie')">#hairie</button>
-        <button class="btn hashtag-btn" onclick="selectHashtag('faris')">#faris</button>
-        <button class="btn hashtag-btn" onclick="selectHashtag('hafizie')">#hafizie</button>
-        <button class="btn hashtag-btn" onclick="selectHashtag('omar')">#omar</button>
-        <button class="btn hashtag-btn" onclick="selectHashtag('maisarah')">#maisarah</button>
-        <button class="btn hashtag-btn" onclick="selectHashtag('suraya')">#suraya</button>
-    </div>
-    
-    <div id="review-section">
-        <h2>✍ Choose a Review</h2>
-        <div id="reviews"></div>
-        <br>
-        <button class="btn copy-btn" onclick="openGoogleReview()">⭐ Go to Google Review</button>
-    </div>
-    
-    <script>
-        let selectedHashtag = "";
-        
-        function selectHashtag(tag) {
-            selectedHashtag = `#${tag}`;
-            document.getElementById("review-section").style.display = "block";
-            generateReviews();
-        }
-        
-        function generateReviews() {
-            const reviews = [
-                "Great service! Got extra warranty for free!", 
-                "Fast & friendly staff, redeemed S-Coin for discount.", 
-                "Easy process, used S-Coin and paid RM0.", 
-                "Highly recommended! Earned cashback & extra warranty.", 
-                "Best experience, got free warranty & S-Coin rewards.",
-                "Servis mantap! Dapat extra warranty free.", 
-                "Best, guna S-Coin terus dapat item free!", 
-                "Cashback dapat, free gift pun ada. Terbaik!", 
-                "Senang je, terus redeem S-Coin & bayar RM0!", 
-                "Dapat extra warranty & cashback, memang berbaloi!"
-            ];
-            
-            let reviewHTML = "";
-            reviews.forEach(review => {
-                reviewHTML += `<div class='review-box'>${review} ${selectedHashtag} <br><button class='btn copy-btn' onclick='copyText("${review} ${selectedHashtag}")'>📋 Copy</button></div>`;
-            });
-            
-            document.getElementById("reviews").innerHTML = reviewHTML;
-        }
-        
-        function copyText(text) {
-            navigator.clipboard.writeText(text);
-            alert("Review copied! Now paste it on Google Review.");
-        }
-        
-        function openGoogleReview() {
-            window.open("https://maps.app.goo.gl/eReqkJwLwp1RxviF6", "_blank");
-        }
-    </script>
+  <h2>📢 Choose a Hashtag (Staff Name)</h2>
+  <div id="hashtag-selection">
+    <button class="btn hashtag-btn" onclick="selectHashtag('mus')">#mus</button>
+    <button class="btn hashtag-btn" onclick="selectHashtag('syafiq')">#syafiq</button>
+    <button class="btn hashtag-btn" onclick="selectHashtag('hairie')">#hairie</button>
+    <button class="btn hashtag-btn" onclick="selectHashtag('faris')">#faris</button>
+    <button class="btn hashtag-btn" onclick="selectHashtag('hafizie')">#hafizie</button>
+    <button class="btn hashtag-btn" onclick="selectHashtag('omar')">#omar</button>
+    <button class="btn hashtag-btn" onclick="selectHashtag('maisarah')">#maisarah</button>
+    <button class="btn hashtag-btn" onclick="selectHashtag('suraya')">#suraya</button>
+  </div>
+
+  <div id="review-section" style="display:none;">
+    <h2>✍ Choose a Review</h2>
+    <div id="reviews"></div>
+    <button id="refresh-btn" class="btn" onclick="generateReviews()">🔄 Refresh Reviews</button>
+    <button id="google-review-btn" class="btn" onclick="openGoogleReview()">⭐ Go to Google Review</button>
+  </div>
+
+  <script>
+    let selectedHashtag = "";
+
+    // 30 review templates that always mention S-Coin (redeem/get) or free extra warranty (or both)
+    const allReviews = [
+      "Great experience with S-Coin redemption and free extra warranty. Friendly service throughout.",
+      "Really pleased with my purchase – got S-Coin cashback and a free extra warranty.",
+      "The staff helped me redeem my S-Coin, plus I received a free extra warranty. Excellent service.",
+      "Smooth process: used S-Coin for discounts and got an extra year of warranty free.",
+      "I enjoyed a hassle-free experience, with S-Coin benefits and an extra warranty at no cost.",
+      "Efficient service! Redeemed S-Coin easily and got an extra warranty for free.",
+      "Amazing offers: free extra warranty and S-Coin cashback made my day.",
+      "Used my S-Coin to save money and received a complimentary extra warranty.",
+      "Excellent staff, very knowledgeable – S-Coin redemption and extra warranty were simple.",
+      "A great mix of benefits: S-Coin discounts and free extra warranty enhanced my purchase.",
+      "Layanannya memang tip-top, guna S-Coin dapat jimat dan extra warranty free pun ada.",
+      "Pengalaman beli yang memuaskan – ada S-Coin cashback dan warranty percuma tambahan.",
+      "Staff mesra dan membantu, mudah redeem S-Coin serta dapat extra warranty free.",
+      "Transaksi lancar, guna S-Coin untuk diskaun dan dapat extra warranty secara free.",
+      "Memang best! Dapat redeem S-Coin dan extra warranty free bila beli barang.",
+      "Serba memuaskan, guna S-Coin untuk potongan dan ada free extra warranty juga.",
+      "Layanannya bagus, staff terangkan dengan jelas, guna S-Coin dan dapat warranty free.",
+      "Beli barang di sini, dapat S-Coin cashback serta extra warranty percuma.",
+      "Transaksi senang, guna S-Coin dapat harga rendah, plus extra warranty free.",
+      "Outlet ini memang terbaik, ada redeem S-Coin dan free extra warranty, puas hati.",
+      "Happy with my purchase – S-Coin redemption and extra warranty gave me great savings.",
+      "Sangat puas hati, guna S-Coin untuk potongan dan extra warranty free, memang berbaloi.",
+      "Worth the visit – got S-Coin benefits and an additional warranty at no extra cost.",
+      "Service smooth and benefits clear; S-Coin and extra warranty made the deal better.",
+      "Puas hati dengan servis mesra, guna S-Coin dan dapat extra warranty secara percuma.",
+      "A wonderful shopping experience with S-Coin rewards and a free extra warranty bonus.",
+      "Barang berkualiti, S-Coin mudah redeem dan extra warranty free. Definitely recommended.",
+      "Pengalaman membeli yang mantap, guna S-Coin dan dapat bonus extra warranty secara free.",
+      "Good value deal – extra warranty free and S-Coin cashback made shopping worthwhile.",
+      "Outlet ni memang tip-top, guna S-Coin untuk jimat dan free extra warranty, terima kasih!"
+    ];
+
+    function selectHashtag(tag) {
+      selectedHashtag = `#${tag}`;
+      document.getElementById("review-section").style.display = "block";
+      generateReviews();
+    }
+
+    function generateReviews() {
+      // Shuffle the array and select 3 random reviews
+      const shuffled = allReviews.sort(() => 0.5 - Math.random());
+      const selectedReviews = shuffled.slice(0, 3);
+      let reviewHTML = "";
+      selectedReviews.forEach(review => {
+        // Append the selected hashtag to each review
+        const fullReview = `${review} ${selectedHashtag}`;
+        reviewHTML += `
+          <div class="review-box">
+            <p>${fullReview}</p>
+            <button class="btn copy-btn" onclick='copyText("${fullReview.replace(/"/g, '&quot;')}")'>📋 Copy</button>
+          </div>
+        `;
+      });
+      document.getElementById("reviews").innerHTML = reviewHTML;
+    }
+
+    function copyText(text) {
+      navigator.clipboard.writeText(text);
+      alert("Review copied! Now paste it on Google Review.");
+    }
+
+    function openGoogleReview() {
+      window.open("https://maps.app.goo.gl/eReqkJwLwp1RxviF6", "_blank");
+    }
+  </script>
 </body>
 </html>
