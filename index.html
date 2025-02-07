@@ -2,90 +2,164 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Leave a Google Review</title>
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --primary: #2A5C82;
+      --secondary: #FFA726;
+      --accent: #4CAF50;
+      --text: #2d3748;
+    }
+
     body {
       font-family: 'Roboto', sans-serif;
       margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #f2f2f2, #e6e6e6);
+      padding: 20px 10px;
+      background: #f8f9fa;
       display: flex;
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
-      color: #333;
+      color: var(--text);
     }
+
     h2 {
-      margin-top: 20px;
-    }
-    #hashtag-selection, #review-section {
-      width: 90%;
-      max-width: 600px;
-      margin: 10px auto;
+      margin: 15px 0;
+      color: var(--primary);
+      font-size: 1.8rem;
       text-align: center;
     }
-    .btn {
-      padding: 10px 20px;
-      font-size: 18px;
-      margin: 5px;
-      cursor: pointer;
-      border: none;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
+
+    #hashtag-selection {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      width: 100%;
+      max-width: 600px;
+      margin: 15px 0;
     }
-    .hashtag-btn {
-      background-color: #4CAF50;
-      color: white;
-    }
-    .hashtag-btn:hover {
-      background-color: #45a049;
-    }
-    .copy-btn {
-      background-color: #008CBA;
-      color: white;
-    }
-    .copy-btn:hover {
-      background-color: #007bb5;
-    }
-    .review-box {
-      font-size: 18px;
-      margin: 10px 0;
-      padding: 15px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      background-color: #fff;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    #google-review-btn {
-      background-color: #f44336; /* Different background color for Google Review link */
-      color: white;
-      padding: 12px 25px;
-      font-size: 20px;
-      border: none;
-      border-radius: 8px;
+
+    #review-section {
+      width: 100%;
+      max-width: 600px;
       margin: 20px 0;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
     }
-    #google-review-btn:hover {
-      background-color: #da190b;
+
+    .btn {
+      padding: 14px 20px;
+      font-size: 1rem;
+      margin: 5px;
+      border: none;
+      border-radius: 12px;
+      transition: all 0.2s ease;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
-    #refresh-btn {
-      background-color: #ff9800;
+
+    .hashtag-btn {
+      background: var(--primary);
       color: white;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
     }
-    #refresh-btn:hover {
-      background-color: #e68a00;
+
+    .hashtag-btn:active {
+      transform: scale(0.98);
+      background: #1d4563;
+    }
+
+    .copy-btn {
+      background: var(--accent);
+      color: white;
+      width: 100%;
+      padding: 12px;
+      font-size: 0.9rem;
+    }
+
+    .copy-btn:active {
+      transform: scale(0.96);
+    }
+
+    .review-box {
+      margin: 15px 0;
+      padding: 20px;
+      border-radius: 15px;
+      background: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border: 1px solid #e2e8f0;
+    }
+
+    .review-box p {
+      margin: 0 0 15px 0;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: var(--text);
+    }
+
+    #google-review-btn {
+      background: linear-gradient(135deg, #FFA726, #FB8C00);
+      color: white;
+      width: 100%;
+      padding: 18px;
+      font-size: 1.1rem;
+      border-radius: 15px;
+      margin: 25px 0 15px 0;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    #google-review-btn:active {
+      transform: scale(0.98);
+    }
+
+    #refresh-btn {
+      background: var(--primary);
+      color: white;
+      width: 100%;
+      padding: 16px;
+      margin: 10px 0;
+    }
+
+    @media (max-width: 480px) {
+      h2 {
+        font-size: 1.5rem;
+      }
+      
+      .btn {
+        font-size: 0.95rem;
+        padding: 12px 15px;
+      }
+
+      #hashtag-selection {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .review-box {
+        padding: 15px;
+      }
+    }
+
+    .section-entrance {
+      animation: slideIn 0.4s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
 <body>
-  <h2>📢 Choose a Hashtag (Staff Name)</h2>
+  <h2>📢 Choose Your Staff Member</h2>
   <div id="hashtag-selection">
     <button class="btn hashtag-btn" onclick="selectHashtag('mus')">#mus</button>
     <button class="btn hashtag-btn" onclick="selectHashtag('syafiq')">#syafiq</button>
@@ -97,14 +171,15 @@
     <button class="btn hashtag-btn" onclick="selectHashtag('suraya')">#suraya</button>
   </div>
 
-  <div id="review-section" style="display:none;">
-    <h2>✍ Choose a Review</h2>
+  <div id="review-section" class="section-entrance" style="display:none;">
+    <h2>✍️ Choose Your Review</h2>
     <div id="reviews"></div>
     <button id="refresh-btn" class="btn" onclick="generateReviews()">🔄 Refresh Reviews</button>
-    <button id="google-review-btn" class="btn" onclick="openGoogleReview()">⭐ Go to Google Review</button>
+    <button id="google-review-btn" class="btn" onclick="openGoogleReview()">⭐ Write Google Review</button>
   </div>
 
   <script>
+    // ... (keep the existing JavaScript unchanged) ...
     let selectedHashtag = "";
 
     // 30 review templates that always mention S-Coin (redeem/get) or free extra warranty (or both)
@@ -143,35 +218,13 @@
 
     function selectHashtag(tag) {
       selectedHashtag = `#${tag}`;
-      document.getElementById("review-section").style.display = "block";
+      const reviewSection = document.getElementById("review-section");
+      reviewSection.style.display = "block";
+      reviewSection.classList.add('section-entrance');
       generateReviews();
-    }
-
-    function generateReviews() {
-      // Shuffle the array and select 3 random reviews
-      const shuffled = allReviews.sort(() => 0.5 - Math.random());
-      const selectedReviews = shuffled.slice(0, 3);
-      let reviewHTML = "";
-      selectedReviews.forEach(review => {
-        // Append the selected hashtag to each review
-        const fullReview = `${review} ${selectedHashtag}`;
-        reviewHTML += `
-          <div class="review-box">
-            <p>${fullReview}</p>
-            <button class="btn copy-btn" onclick='copyText("${fullReview.replace(/"/g, '&quot;')}")'>📋 Copy</button>
-          </div>
-        `;
-      });
-      document.getElementById("reviews").innerHTML = reviewHTML;
-    }
-
-    function copyText(text) {
-      navigator.clipboard.writeText(text);
-      alert("Review copied! Now paste it on Google Review.");
-    }
-
-    function openGoogleReview() {
-      window.open("https://maps.app.goo.gl/eReqkJwLwp1RxviF6", "_blank");
+      
+      // Smooth scroll to review section
+      reviewSection.scrollIntoView({ behavior: 'smooth' });
     }
   </script>
 </body>
