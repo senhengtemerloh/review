@@ -49,6 +49,13 @@
     .copy-btn:hover {
       background-color: #007bb5;
     }
+    #refresh-btn {
+      background-color: #ff9800;
+      color: white;
+    }
+    #refresh-btn:hover {
+      background-color: #e68a00;
+    }
     .review-box {
       font-size: 18px;
       margin: 10px 0;
@@ -60,27 +67,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-    }
-    #google-review-btn {
-      background-color: #f44336; /* Different background color for Google Review link */
-      color: white;
-      padding: 12px 25px;
-      font-size: 20px;
-      border: none;
-      border-radius: 8px;
-      margin: 20px 0;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    #google-review-btn:hover {
-      background-color: #da190b;
-    }
-    #refresh-btn {
-      background-color: #ff9800;
-      color: white;
-    }
-    #refresh-btn:hover {
-      background-color: #e68a00;
     }
   </style>
 </head>
@@ -101,13 +87,12 @@
     <h2>✍ Choose a Review</h2>
     <div id="reviews"></div>
     <button id="refresh-btn" class="btn" onclick="generateReviews()">🔄 Refresh Reviews</button>
-    <button id="google-review-btn" class="btn" onclick="openGoogleReview()">⭐ Go to Google Review</button>
   </div>
 
   <script>
     let selectedHashtag = "";
+    const googleReviewURL = "https://maps.app.goo.gl/eReqkJwLwp1RxviF6";
 
-    // 30 review templates that always mention S-Coin (redeem/get) or free extra warranty (or both)
     const allReviews = [
       "Great experience with S-Coin redemption and free extra warranty. Friendly service throughout.",
       "Really pleased with my purchase – got S-Coin cashback and a free extra warranty.",
@@ -208,7 +193,7 @@
         reviewHTML += `
           <div class="review-box">
             <p>${fullReview}</p>
-            <button class="btn copy-btn" onclick='copyText("${fullReview.replace(/"/g, '&quot;')}")'>📋 Copy</button>
+            <button class="btn copy-btn" onclick='copyText("${fullReview.replace(/"/g, '&quot;')}")'>📋 Copy & Open Google Review</button>
           </div>
         `;
       });
@@ -216,12 +201,12 @@
     }
 
     function copyText(text) {
-      navigator.clipboard.writeText(text);
-      alert("Review copied! Now paste it on Google Review.");
-    }
-
-    function openGoogleReview() {
-      window.open("https://maps.app.goo.gl/eReqkJwLwp1RxviF6", "_blank");
+      navigator.clipboard.writeText(text).then(() => {
+        // Auto-redirect after a short delay
+        setTimeout(() => {
+          window.open(googleReviewURL, "_blank");
+        }, 500);
+      });
     }
   </script>
 </body>
