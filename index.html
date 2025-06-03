@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Leave a Google Review - Grand Senheng Temerloh</title>
-  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap"
+        rel="stylesheet" />
   <style>
     :root {
       --primary: #2A5C82;
@@ -94,6 +96,7 @@
       margin-bottom: 1.5rem;
       line-height: 1.5;
       color: var(--text);
+      word-break: break-word;
     }
 
     .copy-btn {
@@ -126,7 +129,6 @@
         font-size: 1.1rem;
         padding: 1.2rem;
       }
-      
       .review-text {
         font-size: 1.2rem;
       }
@@ -147,7 +149,7 @@
 
     @keyframes slideUp {
       from { bottom: -50px; }
-      to { bottom: 1rem; }
+      to   { bottom: 1rem;  }
     }
   </style>
 </head>
@@ -176,10 +178,26 @@
   <div class="notification" id="notification">Copied to clipboard!</div>
 
   <script>
-    // Original JavaScript functionality with added visual feedback
-    let selectedHashtag = "";
-    const googleReviewURL = "https://maps.app.goo.gl/eReqkJwLwp1RxviF6";
+    /* ------------------------------------------------------------------
+       ADDITIONAL HASHTAGS (from your reference image)
+    ------------------------------------------------------------------ */
+    const additionalHashtags = [
+      '#SCoin', '#Extendedwarranty', '#Replacementwarranty', '#O2O',
+      '#Online2Offline', '#Credit', '#BNPL', '#BuyNowPayLater',
+      '#Instalment', '#Ansuran', '#MudahMilik', '#SenangMilik',
+      '#SenhengApp', '#Point', '#Cashback', '#Redeem',
+      '#Delivery', '#Installation', '#Receipt', '#Invoice'
+    ];
 
+    /* ------------------------------------------------------------------
+       CORE VARIABLES
+    ------------------------------------------------------------------ */
+    let selectedHashtag = '';
+    const googleReviewURL = 'https://maps.app.goo.gl/eReqkJwLwp1RxviF6';
+
+    /* ------------------------------------------------------------------
+       REVIEW POOL (unchanged from your file)
+    ------------------------------------------------------------------ */
     const allReviews = [
       	"Great experience with S-Coin redemption and free extra warranty. Friendly service throughout.",
       "Really pleased with my purchase – got S-Coin cashback and a free extra warranty.",
@@ -346,46 +364,58 @@
       "Bought a smartphone and received a surprise free gift – definitely made my day!"
     ];
 
+    /* ------------------------------------------------------------------
+       UTILITY: pick 1–2 random extra hashtags
+    ------------------------------------------------------------------ */
+    function getRandomHashtags() {
+      const shuffled = additionalHashtags.slice().sort(() => 0.5 - Math.random());
+      const amount = Math.floor(Math.random() * 2) + 1; // 1 or 2
+      return shuffled.slice(0, amount).join(' ');
+    }
+
+    /* ------------------------------------------------------------------
+       EVENT HANDLERS
+    ------------------------------------------------------------------ */
     function selectHashtag(tag) {
       selectedHashtag = `#${tag}`;
-      document.getElementById("review-section").style.display = "block";
-      window.scrollTo({ top: document.getElementById("review-section").offsetTop, behavior: 'smooth' });
+      document.getElementById('review-section').style.display = 'block';
+      window.scrollTo({
+        top: document.getElementById('review-section').offsetTop,
+        behavior: 'smooth'
+      });
       generateReviews();
     }
 
     function generateReviews() {
-      const shuffled = allReviews.sort(() => 0.5 - Math.random());
+      const shuffled = allReviews.slice().sort(() => 0.5 - Math.random());
       const selectedReviews = shuffled.slice(0, 3);
-      let reviewHTML = "";
-      selectedReviews.forEach(review => {
-        const fullReview = `${review} ${selectedHashtag}`;
-        reviewHTML += `
+
+      const html = selectedReviews.map(text => {
+        const full = `${text} ${selectedHashtag} ${getRandomHashtags()}`.trim();
+        return `
           <div class="review-card">
-            <div class="review-text">${fullReview}</div>
-            <button class="btn copy-btn" onclick='copyText("${fullReview.replace(/"/g, '&quot;')}")'>
+            <div class="review-text">${full}</div>
+            <button class="btn copy-btn"
+              onclick='copyText("${full.replace(/"/g, "&quot;")}")'>
               📋 Copy & Leave Review
             </button>
-          </div>
-        `;
-      });
-      document.getElementById("reviews").innerHTML = reviewHTML;
+          </div>`;
+      }).join('');
+
+      document.getElementById('reviews').innerHTML = html;
     }
 
-    function copyText(text) {
-      navigator.clipboard.writeText(text).then(() => {
+    function copyText(str) {
+      navigator.clipboard.writeText(str).then(() => {
         showNotification();
-        setTimeout(() => {
-          window.open(googleReviewURL, "_blank");
-        }, 500);
+        setTimeout(() => window.open(googleReviewURL, '_blank'), 500);
       });
     }
 
     function showNotification() {
-      const notif = document.getElementById("notification");
-      notif.style.display = 'block';
-      setTimeout(() => {
-        notif.style.display = 'none';
-      }, 2000);
+      const n = document.getElementById('notification');
+      n.style.display = 'block';
+      setTimeout(() => { n.style.display = 'none'; }, 2000);
     }
   </script>
 </body>
