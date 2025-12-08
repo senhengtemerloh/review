@@ -2,323 +2,659 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport"
-        content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Leave a Google Review - Grand Senheng Temerloh</title>
-  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Using a lightweight icon library for better visuals -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
-    :root{
-      --primary:#2A5C82; --secondary:#FFA726; --accent:#4CAF50;
-      --text:#2D3748; --background:#F7FAFC; --muted:#4A5568;
+    :root {
+      /* Brand Colors */
+      --primary: #2A5C82; 
+      --primary-dark: #1e4563;
+      --secondary: #FFA726; /* Gold/Orange for Stars & Highlights */
+      --accent: #4CAF50;    /* Success Green */
+      --bg-page: #F0F4F8;
+      --bg-card: #FFFFFF;
+      --text-main: #2D3748;
+      --text-muted: #718096;
+      --border: #E2E8F0;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+      --radius: 16px;
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Poppins',sans-serif;background:var(--background);color:var(--text);line-height:1.6;padding:1rem}
-    .container{max-width:820px;margin:0 auto}
-    h2{text-align:center;font-size:1.8rem;color:var(--primary);margin:1rem 0}
-    .hashtag-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:.75rem;padding:0 1rem}
-    .btn{border:none;border-radius:12px;padding:.9rem;font-size:1rem;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center}
-    .hashtag-btn{background:var(--primary);color:#fff;box-shadow:0 2px 8px rgba(42,92,130,.1)}
-    .hashtag-btn.active{background:#1f4967;box-shadow:0 4px 14px rgba(31,73,103,.15);transform:translateY(-2px)}
-    .controls{background:#fff;border-radius:12px;padding:1rem;border:1px solid #E2E8F0;box-shadow:0 3px 10px rgba(0,0,0,.04);margin:1rem}
-    .label{font-size:.95rem;margin-bottom:.4rem}
-    .custom-input{width:100%;resize:vertical;min-height:90px;padding:.8rem;border-radius:10px;border:1px solid #CBD5E0;font-size:.98rem}
-    .usp-list{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.6rem}
-    .usp-item{display:flex;align-items:center;gap:.4rem;background:#f7fafc;padding:.4rem .6rem;border-radius:8px;border:1px solid #e2e8f0}
-    .preview-card{background:#fff;border-radius:12px;padding:1rem;margin:0.6rem 1rem;border:1px solid #E2E8F0;box-shadow:0 4px 12px rgba(0,0,0,.05)}
-    .preview-text{font-size:1rem;white-space:pre-wrap;color:var(--text);word-break:break-word}
-    .actions{display:flex;gap:.6rem;align-items:center;justify-content:flex-end;margin-top:.6rem}
-    .copy-btn{background:var(--accent);color:#fff;padding:.85rem 1rem;border-radius:12px;border:none;cursor:pointer}
-    .edit-btn{background:#edf2f7;color:var(--text);padding:.6rem .8rem;border-radius:10px;border:1px solid #E2E8F0;cursor:pointer}
-    .muted{color:var(--muted);font-size:.88rem}
-    .small{font-size:.85rem;color:#556;margin-top:.5rem}
-    .hint{font-size:.86rem;color:#666;margin-top:.5rem}
-    .notification{position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);background:var(--primary);color:#fff;padding:.8rem 1.2rem;border-radius:8px;display:none;z-index:9999}
-    @media(min-width:768px){.btn{font-size:1.05rem;padding:1rem}.preview-text{font-size:1.04rem}}
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.5;
+      padding-bottom: 40px;
+    }
+
+    /* --- Header --- */
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 1.5rem 1rem 3rem 1rem; /* Extra bottom padding for overlap effect */
+      text-align: center;
+      border-bottom-left-radius: 24px;
+      border-bottom-right-radius: 24px;
+      margin-bottom: -2rem;
+    }
+    header h1 { font-size: 1.4rem; font-weight: 600; margin-bottom: 0.2rem; }
+    header p { font-size: 0.9rem; opacity: 0.9; font-weight: 300; }
+
+    /* --- Container --- */
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* --- Card Components --- */
+    .card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.2s ease;
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .section-title i { color: var(--secondary); }
+
+    /* --- Staff Grid --- */
+    .staff-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 0.75rem;
+    }
+    .staff-btn {
+      background: white;
+      border: 2px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.75rem 0.5rem;
+      border-radius: 12px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .staff-btn i { font-size: 1.2rem; margin-bottom: 2px; opacity: 0.5; }
+    .staff-btn:hover { border-color: var(--primary); color: var(--primary); }
+    .staff-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(42, 92, 130, 0.3);
+    }
+    .staff-btn.active i { opacity: 1; }
+
+    /* --- Star Animation --- */
+    .star-row { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1rem; }
+    .star-icon { color: #CBD5E0; font-size: 2rem; transition: color 0.3s; }
+    .star-icon.gold { color: var(--secondary); animation: pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+
+    /* --- Input Area --- */
+    .input-wrapper { position: relative; }
+    textarea {
+      width: 100%;
+      min-height: 120px;
+      padding: 1rem;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 1rem;
+      resize: vertical;
+      transition: border-color 0.2s;
+      margin-bottom: 0.5rem;
+    }
+    textarea:focus { outline: none; border-color: var(--primary); }
+    
+    .char-counter {
+      text-align: right;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    /* --- Action Buttons (Templates) --- */
+    .template-scroller {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      scrollbar-width: none; /* Firefox */
+    }
+    .template-scroller::-webkit-scrollbar { display: none; }
+    
+    .pill-btn {
+      white-space: nowrap;
+      background: #EDF2F7;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--text-main);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .pill-btn:hover { background: #E2E8F0; }
+    .pill-btn i { margin-right: 4px; color: var(--primary); }
+
+    /* --- USP Chips --- */
+    .usp-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .usp-chip {
+      position: relative;
+      cursor: pointer;
+      user-select: none;
+    }
+    .usp-chip input { position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0; }
+    .checkmark {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.5rem 0.9rem;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: 0.9rem;
+      color: var(--text-main);
+      transition: all 0.2s ease;
+    }
+    .usp-chip:hover .checkmark { border-color: var(--primary); background: #F7FAFC; }
+    .usp-chip input:checked ~ .checkmark {
+      background: #EBF8FF;
+      border-color: var(--primary);
+      color: var(--primary);
+      font-weight: 500;
+      padding-left: 2rem; /* Make room for check icon */
+    }
+    /* Pseudo-element for check icon */
+    .usp-chip input:checked ~ .checkmark::before {
+      content: '\f00c';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      position: absolute;
+      left: 0.8rem;
+      font-size: 0.8rem;
+    }
+
+    /* --- Preview Box --- */
+    .preview-box {
+      background: #FAFAFA;
+      border-left: 4px solid var(--secondary);
+      padding: 1rem;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      color: #4A5568;
+      margin-top: 1rem;
+      font-style: italic;
+      white-space: pre-wrap;
+    }
+    .preview-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+      display: block;
+    }
+
+    /* --- Main CTA --- */
+    .cta-button {
+      background: var(--primary);
+      color: white;
+      width: 100%;
+      padding: 1.1rem;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(42, 92, 130, 0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.6rem;
+      transition: transform 0.1s, box-shadow 0.2s;
+      margin-top: 1rem;
+    }
+    .cta-button:active { transform: scale(0.98); }
+    .cta-button i { font-size: 1.2rem; }
+
+    /* --- Notification --- */
+    .notification {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #2D3748;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      z-index: 1000;
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      font-weight: 500;
+      width: 90%;
+      max-width: 400px;
+    }
+    .notification.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+    .notification i { color: var(--accent); font-size: 1.2rem; }
+
+    /* --- Helper Classes --- */
+    .hidden { display: none; }
+    .fade-in { animation: fadeIn 0.5s forwards; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pop { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
+
   </style>
 </head>
 <body>
-  <div class="container">
-    <h2>⭐ Choose Staff Member</h2>
 
-    <div class="hashtag-grid" id="staff-grid" aria-label="Staff list">
-      <button type="button" class="btn hashtag-btn" data-tag="mus">#mus</button>
-      <button type="button" class="btn hashtag-btn" data-tag="syafiq">#syafiq</button>
-      <button type="button" class="btn hashtag-btn" data-tag="faris">#faris</button>
-      <button type="button" class="btn hashtag-btn" data-tag="omar">#omar</button>
-      <button type="button" class="btn hashtag-btn" data-tag="maisarah">#maisarah</button>
-      <button type="button" class="btn hashtag-btn" data-tag="norhakimah">#norhakimah</button>
-      <button type="button" class="btn hashtag-btn" data-tag="juan">#juan</button>
+  <header>
+    <h1>Grand Senheng Temerloh</h1>
+    <p>We appreciate your feedback! ⭐</p>
+  </header>
+
+  <div class="container">
+    
+    <!-- Step 1: Staff Selection -->
+    <div class="card" id="step-1">
+      <div class="section-title"><i class="fa-solid fa-user-tag"></i> Who served you today?</div>
+      <div class="staff-grid" id="staff-grid">
+        <!-- Staff buttons generated by JS -->
+      </div>
     </div>
 
-    <!-- Review controls shown after staff chosen -->
-    <div id="review-section" style="display:none" aria-live="polite">
-      <h2>📝 Write Your Review</h2>
-
-      <div class="controls" aria-hidden="false">
-        <div class="label">Write your own comment (required)</div>
-        <textarea id="custom-comment" class="custom-input" maxlength="450" placeholder="Write your review here. Your chosen USP(s) will be appended after your text when you copy."></textarea>
-
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:.45rem">
-          <div class="muted"><span id="char-count">0</span>/450</div>
-          <div style="display:flex;gap:.5rem">
-            <button id="use-custom-clear" class="edit-btn" type="button">Clear</button>
-            <button id="use-custom-paste" class="edit-btn" type="button">Paste sample</button>
-          </div>
+    <!-- Step 2: Review Content (Hidden initially) -->
+    <div id="review-wrapper" class="hidden">
+      
+      <!-- Visual Rating Primer -->
+      <div class="card" style="text-align: center; padding: 1rem;">
+        <div style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">How was your experience?</div>
+        <div class="star-row">
+          <i class="fa-solid fa-star star-icon"></i>
+          <i class="fa-solid fa-star star-icon"></i>
+          <i class="fa-solid fa-star star-icon"></i>
+          <i class="fa-solid fa-star star-icon"></i>
+          <i class="fa-solid fa-star star-icon"></i>
         </div>
-
-        <div style="margin-top:.9rem">
-          <div class="label">Select USP tags to include (these will be appended after your review)</div>
-          <div class="usp-list" id="usp-list" aria-label="USP options"></div>
-          <div class="small">Tip: select one or more USPs to remind reviewers what makes the offer special (S-Coin, warranty, replacement, installments, BNPL, etc.).</div>
-        </div>
-
-        <div class="hint">Live preview (what will be copied):</div>
-        <div class="preview-card" aria-live="polite">
-          <div id="live-preview" class="preview-text"></div>
-        </div>
-
-        <div class="actions">
-          <button id="copy-review" class="copy-btn" type="button">📋 Copy & Leave Review</button>
-        </div>
-
       </div>
+
+      <div class="card">
+        <div class="section-title"><i class="fa-solid fa-pen-to-square"></i> Your Review</div>
+        
+        <!-- Template Quick Picks (Updated logic) -->
+        <div class="template-scroller">
+          <button type="button" class="pill-btn" onclick="applyTemplate('STAFF')"><i class="fa-regular fa-face-smile"></i> Friendly Staff</button>
+          <button type="button" class="pill-btn" onclick="applyTemplate('PROMO')"><i class="fa-solid fa-percent"></i> Great Promotion</button>
+          <button type="button" class="pill-btn" onclick="applyTemplate('CASHBACK')"><i class="fa-solid fa-coins"></i> S-Coin Cashback</button>
+          <button type="button" class="pill-btn" onclick="clearText()"><i class="fa-solid fa-eraser"></i> Clear</button>
+        </div>
+
+        <div class="input-wrapper">
+          <textarea id="custom-comment" maxlength="450" placeholder="Write your review here..."></textarea>
+          <div class="char-counter"><span id="char-count">0</span>/450</div>
+        </div>
+
+        <div class="section-title" style="margin-top: 1.5rem; font-size: 1rem;"><i class="fa-solid fa-tags"></i> Add details (Tap to add)</div>
+        <div class="usp-container" id="usp-list">
+          <!-- USP Chips generated by JS -->
+        </div>
+
+        <div class="preview-box">
+          <span class="preview-label">PREVIEW (WHAT WILL BE COPIED)</span>
+          <div id="live-preview">...</div>
+        </div>
+
+        <button type="button" id="copy-btn" class="cta-button">
+          <i class="fa-regular fa-copy"></i> Copy & Open Google
+        </button>
+        
+        <div style="text-align: center; margin-top: 1rem; font-size: 0.8rem; color: #718096;">
+          Your review helps us improve!
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Notification Toast -->
+  <div class="notification" id="notification">
+    <i class="fa-solid fa-circle-check"></i>
+    <div>
+      <div style="font-weight: 600;">Text Copied!</div>
+      <div style="font-size: 0.85rem; opacity: 0.9;">Redirecting to Google Maps...</div>
     </div>
   </div>
 
-  <div class="notification" id="notification" role="status" aria-live="assertive">Copied to clipboard! Opening Google Reviews…</div>
-
   <script>
-    /* ------------------------------
-       Config & data (with expanded USP options)
-    -------------------------------*/
-    const additionalHashtags = ['#SCoin','#Extendedwarranty','#Replacementwarranty','#O2O','#Online2Offline','#Credit','#BNPL','#BuyNowPayLater','#Instalment','#Ansuran','#MudahMilik','#UntungGila','#SenhengApp','#Point','#Cashback','#Redeem','#Delivery'];
-    const googleReviewURL = 'https://maps.app.goo.gl/eReqkJwLwp1RxviF6';
-    let selectedHashtag = '';
+    /* --- Configuration --- */
+    const CONFIG = {
+      reviewUrl: 'https://maps.app.goo.gl/eReqkJwLwp1RxviF6',
+      staff: ['mus', 'syafiq', 'faris', 'omar', 'maisarah', 'norhakimah', 'juan'],
+      usps: [
+        'S-Coin cashback', 'Extra Warranty', '1-to-1 Replacement',
+        '0% Installment', 'Senheng App', 'Flat Rate Delivery',
+        'Atome BNPL', 'Shopee SPayLater', 'Grab PayLater',
+        'Aeon Credit', 'Chailease'
+      ],
+      hashtags: ['#SCoinCashback', '#UntungGila', '#BNPL', '#SenhengApp', '#AeonCredit', '#ChaileaseCredit', '#S-Coin', '#Redeem']
+    };
 
-    const USP_OPTIONS = [
-      // existing
-      'S-Coin cashback',
-      'free extra warranty',
-      '1-to-1 replacement',
-      '0% installment',
-      'Senheng app warranty tracking',
-      'nationwide flat-rate delivery',
+    // Database of Unique Reviews (20 per category)
+    const REVIEW_TEMPLATES = {
+      STAFF: [
+        "Staff sangat friendly dan membantu penerangan tentang produk.",
+        "Good service! Staff explain details very clearly.",
+        "Layanan terbaik dari staff. Sangat puas hati.",
+        "Staff sangat helpful, tolong angkat barang sampai ke kereta.",
+        "Friendly staff and good product knowledge. Highly recommended!",
+        "Terima kasih staff kerana sabar melayan karenah customer.",
+        "Very professional staff. Smooth buying experience.",
+        "Staff senyum memanjang, rasa dialu-alukan masuk kedai.",
+        "Servis laju dan pantas. Tak perlu tunggu lama.",
+        "Staff helped me compare models so I could choose the best one.",
+        "Terbaik service staff sini. Akan datang lagi.",
+        "Staff was very polite and answered all my questions.",
+        "Suka dengan layanan staff, tak pushy langsung.",
+        "Staff bagi suggestion yang memang ngam dengan bajet saya.",
+        "Excellent customer service from the team. Keep it up!",
+        "Staff sangat informatif tentang warranty dan cara penggunaan.",
+        "Very welcoming atmosphere thanks to the friendly staff.",
+        "Staff cekap buat kerja, sekejap je dah siap process.",
+        "Layanan VIP! Terima kasih staff Grand Senheng Temerloh.",
+        "The staff really went the extra mile to assist me today."
+      ],
+      PROMO: [
+        "Banyak pilihan electrical appliances. Promosi installment pun menarik.",
+        "0% interest installment plan sangat membantu.",
+        "Harga berpatutan dengan free gift yang banyak.",
+        "Suka shopping sini sebab ada easy payment plan.",
+        "Great deals during promotion period! Saved a lot.",
+        "Installment plan approved sangat cepat. Mudah urusan.",
+        "Promosi S-Coin Cashback 100% memang terbaik!",
+        "Bought a fridge with 36 months installment. Very affordable monthly.",
+        "Best promotion in town. Worth the money.",
+        "Senang nak apply installment, dokumen tak rumit.",
+        "Good value for money. Lots of vouchers given.",
+        "Promosi member day memang padu.",
+        "Suka sistem point dia, boleh redeem macam-macam.",
+        "Flexible payment options available here.",
+        "Dapat free extra warranty masa promo. Berbaloi!",
+        "Prices are competitive compared to other shops.",
+        "Senang hati beli sini sebab ada extended warranty promo.",
+        "Promotion 100% S-Coin Cashback memang rare! Grabbed it fast.",
+        "Easy installment with credit card. 0% interest is real.",
+        "Memang tempat terbaik nak cari barang elektrik murah dan berkualiti."
+      ],
+      CASHBACK: [
+        "S-Coin cashback system is awesome! Boleh guna next purchase.",
+        "Dapat banyak S-Coin harini. Next time boleh redeem.",
+        "Suka shopping sini sebab dapat kumpul S-Coin.",
+        "S-Coin cashback up to 100% is crazy good!",
+        "Beli TV dapat S-Coin cashback, memang jimat.",
+        "Redeem S-Coin untuk beli blender, tak payah keluar duit.",
+        "The S-Coin membership benefits are really worth it.",
+        "Cashback S-Coin masuk cepat dalam app.",
+        "Berbaloi jadi member PlusOne, S-Coin cashback masyuk.",
+        "Saved so much using my collected S-Coin.",
+        "S-Coin reward system is the best loyalty program.",
+        "Terkejut tengok S-Coin balance, banyak gila cashback!",
+        "Guna S-Coin untuk tolak harga barang, memang jimat banyak.",
+        "Every purchase gets S-Coin, feels like instant discount.",
+        "S-Coin program makes me want to come back again.",
+        "First time guna S-Coin, senang sangat redeem.",
+        "Cashback S-Coin tinggi, boleh cover beli barang kecil-kecil.",
+        "Plan nak kumpul S-Coin banyak-banyak beli fridge nanti.",
+        "Best thing about Senheng is the S-Coin cashback.",
+        "Rugi kalau tak join member, S-Coin cashback dia padu."
+      ]
+    };
 
-      // BNPL options
-      'Buy Now Pay Later with Atome',
-      'Buy Now Pay Later with Shopee SPayLater',
-      'Buy Now Pay Later with Grab PayLater',
+    let state = {
+      staff: '',
+      text: '',
+      selectedUsps: [],
+      randomHashtags: ''
+    };
 
-      // Hire purchase / monthly installment
-      'Monthly installment with Aeon Credit',
-      'Monthly installment with Chailease'
-    ];
+    /* --- DOM Elements --- */
+    const els = {
+      staffGrid: document.getElementById('staff-grid'),
+      reviewWrapper: document.getElementById('review-wrapper'),
+      comment: document.getElementById('custom-comment'),
+      charCount: document.getElementById('char-count'),
+      uspList: document.getElementById('usp-list'),
+      preview: document.getElementById('live-preview'),
+      copyBtn: document.getElementById('copy-btn'),
+      notification: document.getElementById('notification'),
+      stars: document.querySelectorAll('.star-icon')
+    };
 
-    /* ------------------------------
-       DOM refs
-    -------------------------------*/
-    const staffGrid = document.getElementById('staff-grid');
-    const reviewSection = document.getElementById('review-section');
-    const customCommentEl = document.getElementById('custom-comment');
-    const charCountEl = document.getElementById('char-count');
-    const uspListEl = document.getElementById('usp-list');
-    const livePreviewEl = document.getElementById('live-preview');
-    const copyBtn = document.getElementById('copy-review');
-    const notificationEl = document.getElementById('notification');
-    const useCustomClear = document.getElementById('use-custom-clear');
-    const useCustomPaste = document.getElementById('use-custom-paste');
+    /* --- Initialization --- */
+    function init() {
+      // Build Staff Grid
+      CONFIG.staff.forEach(name => {
+        const btn = document.createElement('div');
+        btn.className = 'staff-btn';
+        btn.innerHTML = `<i class="fa-solid fa-user"></i> #${name}`;
+        btn.onclick = () => selectStaff(name, btn);
+        els.staffGrid.appendChild(btn);
+      });
 
-    /* ------------------------------
-       Build USP checkboxes
-    -------------------------------*/
-    USP_OPTIONS.forEach((usp, idx) => {
-      const id = 'usp-' + idx;
-      const label = document.createElement('label');
-      label.className = 'usp-item';
-      label.innerHTML = `<input type="checkbox" id="${id}" value="${escapeHtml(usp)}"> <span style="font-size:.92rem">${escapeHtml(usp)}</span>`;
-      uspListEl.appendChild(label);
-    });
+      // Build USP Chips
+      CONFIG.usps.forEach((usp, index) => {
+        const label = document.createElement('label');
+        label.className = 'usp-chip';
+        label.innerHTML = `
+          <input type="checkbox" value="${usp}" onchange="updatePreview()">
+          <span class="checkmark">${usp}</span>
+        `;
+        els.uspList.appendChild(label);
+      });
 
-    function getSelectedUSPPhrases() {
-      const checked = Array.from(uspListEl.querySelectorAll('input[type="checkbox"]:checked'));
-      return checked.map(c => c.value);
+      // Randomize extra hashtags on load
+      state.randomHashtags = getRandomHashtags();
+      
+      // Event Listeners
+      els.comment.addEventListener('input', (e) => {
+        state.text = e.target.value;
+        els.charCount.innerText = state.text.length;
+        updatePreview();
+      });
+
+      els.copyBtn.addEventListener('click', handleCopy);
+
+      // Star Animation
+      els.stars.forEach((star, idx) => {
+        setTimeout(() => {
+          star.classList.add('gold');
+        }, idx * 100 + 500); // Staggered animation
+      });
     }
 
-    /* ------------------------------
-       Helpers
-    -------------------------------*/
+    /* --- Logic --- */
+    function selectStaff(name, btnElement) {
+      // UI Update
+      document.querySelectorAll('.staff-btn').forEach(b => b.classList.remove('active'));
+      btnElement.classList.add('active');
+      
+      // State Update
+      state.staff = `#${name}`;
+      
+      // Reveal Review Section if hidden
+      if (els.reviewWrapper.classList.contains('hidden')) {
+        els.reviewWrapper.classList.remove('hidden');
+        els.reviewWrapper.classList.add('fade-in');
+        
+        // Smooth scroll to review section
+        setTimeout(() => {
+          els.reviewWrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+      updatePreview();
+    }
+
+    // UPDATED: Now accepts a category Key and picks a random message
+    function applyTemplate(categoryKey) {
+      const templateList = REVIEW_TEMPLATES[categoryKey];
+      if (!templateList) return;
+
+      // Pick random
+      const randomText = templateList[Math.floor(Math.random() * templateList.length)];
+
+      els.comment.value = randomText;
+      state.text = randomText;
+      els.charCount.innerText = randomText.length;
+      updatePreview();
+      
+      // Flash the textarea to show change
+      els.comment.style.borderColor = varCss('--secondary');
+      setTimeout(() => els.comment.style.borderColor = varCss('--border'), 300);
+    }
+
+    function clearText() {
+      els.comment.value = '';
+      state.text = '';
+      els.charCount.innerText = '0';
+      updatePreview();
+    }
+
+    function getSelectedUSPs() {
+      const checked = Array.from(els.uspList.querySelectorAll('input:checked'));
+      return checked.map(input => input.value);
+    }
+
     function getRandomHashtags() {
-      const shuffled = additionalHashtags.slice().sort(() => 0.5 - Math.random());
-      const amount = Math.floor(Math.random() * 2) + 1;
-      return shuffled.slice(0, amount).join(' ');
+      // Pick 2 random general hashtags
+      const shuffled = [...CONFIG.hashtags].sort(() => 0.5 - Math.random());
+      return shuffled.slice(0, 2).join(' ');
     }
 
-    function escapeHtml(s) {
-      return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    function buildFinalString() {
+      const usps = getSelectedUSPs();
+      let parts = [];
+      
+      // 1. User Comment
+      if (state.text.trim()) parts.push(state.text.trim());
+      
+      // 2. USPs (Bulleted)
+      if (usps.length > 0) {
+        const uspString = usps.join(' • ');
+        // If comment exists, add separator
+        parts.push(state.text.trim() ? `— ${uspString}` : uspString);
+      }
+
+      // 3. Staff Tag
+      if (state.staff) parts.push(state.staff);
+      
+      // 4. Random Hashtags
+      parts.push(state.randomHashtags);
+
+      return parts.join(' ');
     }
 
-    async function writeToClipboard(text) {
-      try {
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          await navigator.clipboard.writeText(text);
-          return true;
+    function updatePreview() {
+      const final = buildFinalString();
+      // If empty, show placeholder
+      if (!final.trim()) {
+        els.preview.style.color = '#CBD5E0';
+        els.preview.innerText = 'Select a staff member and write a review...';
+      } else {
+        els.preview.style.color = '#4A5568';
+        els.preview.innerText = final;
+      }
+    }
+
+    async function handleCopy() {
+      if (!state.staff) {
+        alert("Please select a staff member first!");
+        document.getElementById('step-1').scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
+
+      // Check if text is empty. If so, apply a random template automatically? 
+      // Or just warn. Let's apply a default template if empty to ensure review quality.
+      if (!state.text.trim()) {
+        const confirmDefault = confirm("You haven't written a review yet. Would you like to use a default positive message?");
+        if (confirmDefault) {
+          applyTemplate('STAFF'); // Apply random staff template
         } else {
-          const ta = document.createElement('textarea');
-          ta.value = text;
-          ta.setAttribute('readonly', '');
-          ta.style.position = 'absolute';
-          ta.style.left = '-9999px';
-          document.body.appendChild(ta);
-          ta.select();
-          ta.setSelectionRange(0, ta.value.length);
-          document.execCommand('copy');
-          document.body.removeChild(ta);
-          return true;
+          els.comment.focus();
+          return;
         }
-      } catch (e) {
-        console.error('Clipboard write failed', e);
-        return false;
+      }
+
+      const textToCopy = buildFinalString();
+      
+      try {
+        // Fallback for better mobile compatibility
+        const textArea = document.createElement("textarea");
+        textArea.value = textToCopy;
+        textArea.style.position = "fixed"; // Avoid scrolling to bottom
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        
+        const successful = document.execCommand('copy');
+        document.body.removeChild(textArea);
+        
+        if (successful) {
+          showNotification();
+          setTimeout(() => {
+            window.location.href = CONFIG.reviewUrl;
+          }, 1500); // 1.5s delay before opening link
+        } else {
+          throw new Error('Copy fail');
+        }
+      } catch (err) {
+        alert("Could not auto-copy. Please manually copy the text from the preview box.");
       }
     }
 
     function showNotification() {
-      notificationEl.style.display = 'block';
-      setTimeout(() => { notificationEl.style.display = 'none'; }, 2200);
+      els.notification.classList.add('show');
+      setTimeout(() => els.notification.classList.remove('show'), 3000);
     }
 
-    /* ------------------------------
-       USP detection: ensure user includes USP (permissive)
-    -------------------------------*/
-    const USP_KEYWORDS = USP_OPTIONS.map(u => u.toLowerCase().replace(/[^\w\s]/g,''));
-    function containsUSPKeyword(text) {
-      if (!text) return false;
-      const t = text.toLowerCase();
-      return USP_KEYWORDS.some(k => {
-        if (!k) return false;
-        const first = k.split(' ')[0];
-        return (first && t.includes(first)) || t.includes(k);
-      });
+    function varCss(name) {
+      return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
     }
 
-    /* ------------------------------
-       Staff click handling (delegation)
-    -------------------------------*/
-    staffGrid.addEventListener('click', (ev) => {
-      const btn = ev.target.closest('.hashtag-btn');
-      if (!btn || !staffGrid.contains(btn)) return;
-      // mark active
-      staffGrid.querySelectorAll('.hashtag-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      selectedHashtag = `#${btn.getAttribute('data-tag') || ''}`;
-      reviewSection.style.display = 'block';
-      setTimeout(() => {
-        const top = reviewSection.getBoundingClientRect().top + window.scrollY - 12;
-        window.scrollTo({ top, behavior: 'smooth' });
-      }, 50);
-      updatePreview();
-      customCommentEl.focus();
-    });
-
-    /* ------------------------------
-       Live preview logic
-    -------------------------------*/
-    function buildFinalText() {
-      const user = (customCommentEl.value || '').trim();
-      const usps = getSelectedUSPPhrases();
-      let result = user;
-
-      if (usps.length > 0) {
-        // append USPs separated by bullet
-        result = result ? `${result} — ${usps.join(' • ')}` : usps.join(' • ');
-      }
-
-      // append staff hashtag and random extra hashtags
-      const extras = getRandomHashtags();
-      if (selectedHashtag) result = result ? `${result} ${selectedHashtag} ${extras}` : `${selectedHashtag} ${extras}`;
-      return result.trim();
-    }
-
-    function updatePreview() {
-      const finalText = buildFinalText();
-      livePreviewEl.textContent = finalText || 'Your review preview will appear here.';
-    }
-
-    customCommentEl.addEventListener('input', () => {
-      charCountEl.textContent = customCommentEl.value.length;
-      updatePreview();
-    });
-
-    uspListEl.addEventListener('change', updatePreview);
-
-    useCustomClear.addEventListener('click', () => {
-      customCommentEl.value = '';
-      charCountEl.textContent = '0';
-      updatePreview();
-      customCommentEl.focus();
-    });
-
-    useCustomPaste.addEventListener('click', () => {
-      const sample = "Staff sangat membantu & jelas terangkan cara guna S-Coin. Sangat puas hati dengan servis hari ini.";
-      customCommentEl.value = sample;
-      charCountEl.textContent = sample.length;
-      updatePreview();
-      customCommentEl.focus();
-    });
-
-    /* ------------------------------
-       Copy button behavior
-    -------------------------------*/
-    copyBtn.addEventListener('click', async () => {
-      const userText = (customCommentEl.value || '').trim();
-      if (!userText) {
-        alert('Please write your review in the text area before copying. The custom comment cannot be empty.');
-        customCommentEl.focus();
-        return;
-      }
-
-      // ensure USP presence: if user's text doesn't contain USP keywords and no USP selected, prompt to append default
-      const userHasUSP = containsUSPKeyword(userText);
-      const selectedUSPs = getSelectedUSPPhrases();
-      let finalText = userText;
-
-      if (!userHasUSP) {
-        if (selectedUSPs.length > 0) {
-          finalText = `${finalText} — ${selectedUSPs.join(' • ')}`;
-        } else {
-          const appendDefault = confirm(
-            "Your review doesn't mention key selling points (USP).\n\nWould you like to append a short USP phrase (e.g. 'S-Coin cashback & free extra warranty') so the review includes the store's USP? OK to append, Cancel to edit your comment."
-          );
-          if (appendDefault) {
-            finalText = `${finalText} — S-Coin cashback & free extra warranty`;
-          } else {
-            customCommentEl.focus();
-            return;
-          }
-        }
-      }
-
-      // append staff hashtag and random extras
-      finalText = `${finalText} ${selectedHashtag} ${getRandomHashtags()}`.trim();
-
-      const ok = await writeToClipboard(finalText);
-      if (ok) {
-        showNotification();
-        setTimeout(() => window.open(googleReviewURL, '_blank'), 500);
-      } else {
-        alert('Copy failed — please try manually selecting the preview text and copying (Ctrl/Cmd+C).');
-      }
-    });
-
-    /* ------------------------------
-       Init
-    -------------------------------*/
-    charCountEl.textContent = '0';
-    updatePreview();
-
-    // Optional: pre-select the first staff on load
-    // const first = staffGrid.querySelector('.hashtag-btn');
-    // if (first) first.click();
+    // Run
+    init();
 
   </script>
 </body>
