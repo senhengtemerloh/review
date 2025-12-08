@@ -1,423 +1,325 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
   <title>Leave a Google Review - Grand Senheng Temerloh</title>
-  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap"
-        rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --primary: #2A5C82;
-      --secondary: #FFA726;
-      --accent: #4CAF50;
-      --text: #2D3748;
-      --background: #F7FAFC;
+    :root{
+      --primary:#2A5C82; --secondary:#FFA726; --accent:#4CAF50;
+      --text:#2D3748; --background:#F7FAFC; --muted:#4A5568;
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--background);
-      color: var(--text);
-      line-height: 1.6;
-      padding: 1rem;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .container {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    h2 {
-      text-align: center;
-      font-size: 1.8rem;
-      color: var(--primary);
-      margin: 2rem 0;
-      padding: 0 1rem;
-    }
-
-    .hashtag-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-      gap: 0.8rem;
-      padding: 0 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .btn {
-      border: none;
-      border-radius: 12px;
-      padding: 1rem;
-      font-size: 1rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-    }
-
-    .hashtag-btn {
-      background: var(--primary);
-      color: white;
-      box-shadow: 0 2px 8px rgba(42,92,130,0.1);
-    }
-
-    .hashtag-btn:active {
-      transform: scale(0.98);
-      background: #234a6b;
-    }
-
-    #review-section {
-      display: none;
-      margin-top: 1rem;
-    }
-
-    .review-card {
-      background: white;
-      border-radius: 16px;
-      padding: 1.5rem;
-      margin: 1rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      border: 1px solid #E2E8F0;
-    }
-
-    .review-text {
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
-      line-height: 1.5;
-      color: var(--text);
-      word-break: break-word;
-    }
-
-    .copy-btn {
-      background: var(--accent);
-      color: white;
-      padding: 1.2rem;
-      font-size: 1.1rem;
-      border-radius: 12px;
-      width: 100%;
-      box-shadow: 0 2px 8px rgba(76,175,80,0.2);
-    }
-
-    .copy-btn:active {
-      transform: scale(0.98);
-      background: #45a049;
-    }
-
-    #refresh-btn {
-      background: var(--secondary);
-      color: white;
-      margin: 2rem auto;
-      display: block;
-      width: calc(100% - 2rem);
-      max-width: 300px;
-      box-shadow: 0 2px 8px rgba(255,167,38,0.2);
-    }
-
-    @media (min-width: 768px) {
-      .btn {
-        font-size: 1.1rem;
-        padding: 1.2rem;
-      }
-      .review-text {
-        font-size: 1.2rem;
-      }
-    }
-
-    .notification {
-      position: fixed;
-      bottom: 1rem;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--primary);
-      color: white;
-      padding: 1rem 2rem;
-      border-radius: 8px;
-      animation: slideUp 0.3s ease;
-      display: none;
-    }
-
-    @keyframes slideUp {
-      from { bottom: -50px; }
-      to   { bottom: 1rem;  }
-    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Poppins',sans-serif;background:var(--background);color:var(--text);line-height:1.6;padding:1rem}
+    .container{max-width:820px;margin:0 auto}
+    h2{text-align:center;font-size:1.8rem;color:var(--primary);margin:1rem 0}
+    .hashtag-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:.75rem;padding:0 1rem}
+    .btn{border:none;border-radius:12px;padding:.9rem;font-size:1rem;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center}
+    .hashtag-btn{background:var(--primary);color:#fff;box-shadow:0 2px 8px rgba(42,92,130,.1)}
+    .hashtag-btn.active{background:#1f4967;box-shadow:0 4px 14px rgba(31,73,103,.15);transform:translateY(-2px)}
+    .controls{background:#fff;border-radius:12px;padding:1rem;border:1px solid #E2E8F0;box-shadow:0 3px 10px rgba(0,0,0,.04);margin:1rem}
+    .label{font-size:.95rem;margin-bottom:.4rem}
+    .custom-input{width:100%;resize:vertical;min-height:90px;padding:.8rem;border-radius:10px;border:1px solid #CBD5E0;font-size:.98rem}
+    .usp-list{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.6rem}
+    .usp-item{display:flex;align-items:center;gap:.4rem;background:#f7fafc;padding:.4rem .6rem;border-radius:8px;border:1px solid #e2e8f0}
+    .preview-card{background:#fff;border-radius:12px;padding:1rem;margin:0.6rem 1rem;border:1px solid #E2E8F0;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+    .preview-text{font-size:1rem;white-space:pre-wrap;color:var(--text);word-break:break-word}
+    .actions{display:flex;gap:.6rem;align-items:center;justify-content:flex-end;margin-top:.6rem}
+    .copy-btn{background:var(--accent);color:#fff;padding:.85rem 1rem;border-radius:12px;border:none;cursor:pointer}
+    .edit-btn{background:#edf2f7;color:var(--text);padding:.6rem .8rem;border-radius:10px;border:1px solid #E2E8F0;cursor:pointer}
+    .muted{color:var(--muted);font-size:.88rem}
+    .small{font-size:.85rem;color:#556;margin-top:.5rem}
+    .hint{font-size:.86rem;color:#666;margin-top:.5rem}
+    .notification{position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);background:var(--primary);color:#fff;padding:.8rem 1.2rem;border-radius:8px;display:none;z-index:9999}
+    @media(min-width:768px){.btn{font-size:1.05rem;padding:1rem}.preview-text{font-size:1.04rem}}
   </style>
 </head>
 <body>
   <div class="container">
     <h2>⭐ Choose Staff Member</h2>
-    <div class="hashtag-grid">
-      <button class="btn hashtag-btn" onclick="selectHashtag('mus')">#mus</button>
-      <button class="btn hashtag-btn" onclick="selectHashtag('syafiq')">#syafiq</button>
-      <button class="btn hashtag-btn" onclick="selectHashtag('faris')">#faris</button>
-      <button class="btn hashtag-btn" onclick="selectHashtag('omar')">#omar</button>
-      <button class="btn hashtag-btn" onclick="selectHashtag('maisarah')">#maisarah</button>
-      <button class="btn hashtag-btn" onclick="selectHashtag('norhakimah')">#norhakimah</button>
-      <button class="btn hashtag-btn" onclick="selectHashtag('juan')">#juan</button>
+
+    <div class="hashtag-grid" id="staff-grid" aria-label="Staff list">
+      <button type="button" class="btn hashtag-btn" data-tag="mus">#mus</button>
+      <button type="button" class="btn hashtag-btn" data-tag="syafiq">#syafiq</button>
+      <button type="button" class="btn hashtag-btn" data-tag="faris">#faris</button>
+      <button type="button" class="btn hashtag-btn" data-tag="omar">#omar</button>
+      <button type="button" class="btn hashtag-btn" data-tag="maisarah">#maisarah</button>
+      <button type="button" class="btn hashtag-btn" data-tag="norhakimah">#norhakimah</button>
+      <button type="button" class="btn hashtag-btn" data-tag="juan">#juan</button>
     </div>
 
-    <div id="review-section">
-      <h2>📝 Choose Your Review</h2>
-      <div id="reviews"></div>
-      <button id="refresh-btn" class="btn" onclick="generateReviews()">🔄 Show More Reviews</button>
+    <!-- Review controls shown after staff chosen -->
+    <div id="review-section" style="display:none" aria-live="polite">
+      <h2>📝 Write Your Review</h2>
+
+      <div class="controls" aria-hidden="false">
+        <div class="label">Write your own comment (required)</div>
+        <textarea id="custom-comment" class="custom-input" maxlength="450" placeholder="Write your review here. Your chosen USP(s) will be appended after your text when you copy."></textarea>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:.45rem">
+          <div class="muted"><span id="char-count">0</span>/450</div>
+          <div style="display:flex;gap:.5rem">
+            <button id="use-custom-clear" class="edit-btn" type="button">Clear</button>
+            <button id="use-custom-paste" class="edit-btn" type="button">Paste sample</button>
+          </div>
+        </div>
+
+        <div style="margin-top:.9rem">
+          <div class="label">Select USP tags to include (these will be appended after your review)</div>
+          <div class="usp-list" id="usp-list" aria-label="USP options"></div>
+          <div class="small">Tip: select one or more USPs to remind reviewers what makes the offer special (S-Coin, warranty, replacement, installments, BNPL, etc.).</div>
+        </div>
+
+        <div class="hint">Live preview (what will be copied):</div>
+        <div class="preview-card" aria-live="polite">
+          <div id="live-preview" class="preview-text"></div>
+        </div>
+
+        <div class="actions">
+          <button id="copy-review" class="copy-btn" type="button">📋 Copy & Leave Review</button>
+        </div>
+
+      </div>
     </div>
   </div>
 
-  <div class="notification" id="notification">Copied to clipboard!</div>
+  <div class="notification" id="notification" role="status" aria-live="assertive">Copied to clipboard! Opening Google Reviews…</div>
 
   <script>
-    /* ------------------------------------------------------------------
-       ADDITIONAL HASHTAGS (from your reference image)
-    ------------------------------------------------------------------ */
-    const additionalHashtags = [
-      '#SCoin', '#Extendedwarranty', '#Replacementwarranty', '#O2O',
-      '#Online2Offline', '#Credit', '#BNPL', '#BuyNowPayLater',
-      '#Instalment', '#Ansuran', '#MudahMilik', '#SenangMilik',
-      '#SenhengApp', '#Point', '#Cashback', '#Redeem',
-      '#Delivery', '#Installation', '#Receipt', '#Invoice'
-    ];
-
-    /* ------------------------------------------------------------------
-       CORE VARIABLES
-    ------------------------------------------------------------------ */
-    let selectedHashtag = '';
+    /* ------------------------------
+       Config & data (with expanded USP options)
+    -------------------------------*/
+    const additionalHashtags = ['#SCoin','#Extendedwarranty','#Replacementwarranty','#O2O','#Online2Offline','#Credit','#BNPL','#BuyNowPayLater','#Instalment','#Ansuran','#MudahMilik','#UntungGila','#SenhengApp','#Point','#Cashback','#Redeem','#Delivery'];
     const googleReviewURL = 'https://maps.app.goo.gl/eReqkJwLwp1RxviF6';
+    let selectedHashtag = '';
 
-    /* ------------------------------------------------------------------
-       REVIEW POOL (unchanged from your file)
-    ------------------------------------------------------------------ */
-    const allReviews = [
-      	"Great experience with S-Coin redemption and free extra warranty. Friendly service throughout.",
-      "Really pleased with my purchase – got S-Coin cashback and a free extra warranty.",
-      "The staff helped me redeem my S-Coin, plus I received a free extra warranty. Excellent service.",
-      "Smooth process: used S-Coin for discounts and got an extra year of warranty free.",
-      "I enjoyed a hassle-free experience, with S-Coin benefits and an extra warranty at no cost.",
-      "Efficient service! Redeemed S-Coin easily and got an extra warranty for free.",
-      "Amazing offers: free extra warranty and S-Coin cashback made my day.",
-      "Used my S-Coin to save money and received a complimentary extra warranty.",
-      "Excellent staff, very knowledgeable – S-Coin redemption and extra warranty were simple.",
-      "A great mix of benefits: S-Coin discounts and free extra warranty enhanced my purchase.",
-      "Layanannya memang tip-top, guna S-Coin dapat jimat dan extra warranty free pun ada.",
-      "Pengalaman beli yang memuaskan – ada S-Coin cashback dan warranty percuma tambahan.",
-      "Staff mesra dan membantu, mudah redeem S-Coin serta dapat extra warranty free.",
-      "Transaksi lancar, guna S-Coin untuk diskaun dan dapat extra warranty secara free.",
-      "Memang best! Dapat redeem S-Coin dan extra warranty free bila beli barang.",
-      "Serba memuaskan, guna S-Coin untuk potongan dan ada free extra warranty juga.",
-      "Layanannya bagus, staff terangkan dengan jelas, guna S-Coin dan dapat warranty free.",
-      "Beli barang di sini, dapat S-Coin cashback serta extra warranty percuma.",
-      "Transaksi senang, guna S-Coin dapat harga rendah, plus extra warranty free.",
-      "Outlet ini memang terbaik, ada redeem S-Coin dan free extra warranty, puas hati.",
-      "Happy with my purchase – S-Coin redemption and extra warranty gave me great savings.",
-      "Sangat puas hati, guna S-Coin untuk potongan dan extra warranty free, memang berbaloi.",
-      "Worth the visit – got S-Coin benefits and an additional warranty at no extra cost.",
-      "Service smooth and benefits clear; S-Coin and extra warranty made the deal better.",
-      "Puas hati dengan servis mesra, guna S-Coin dan dapat extra warranty secara percuma.",
-      "A wonderful shopping experience with S-Coin rewards and a free extra warranty bonus.",
-      "Barang berkualiti, S-Coin mudah redeem dan extra warranty free. Definitely recommended.",
-      "Pengalaman membeli yang mantap, guna S-Coin dan dapat bonus extra warranty secara free.",
-      "Good value deal – extra warranty free and S-Coin cashback made shopping worthwhile.",
-      "Great experience! Got extra discount by redeeming S-Coin. Worth it!",
-      "Nice place to buy gadgets. Extra warranty & 1-to-1 replacement really good.",
-      "Friendly staff, helped me use S-Coin to get free items. Super worth it!",
-      "Plenty of payment options, even 0% installment. Makes it easier to buy!",
-      "Clean and tidy showroom. Easy to browse and find what I need.",
-      "Bought a phone & got free gifts + extra discount using S-Coin. Best deal!",
-      "Senheng app is super useful, I can check warranty & download receipts easily.",
-      "Love the cashback system! Earned S-Coin on my last purchase & used it today!",
-      "Customer service is top-notch! Helped me redeem S-Coin for extra discount.",
-      "So many payment methods, even SpayLater & Atome. Super convenient!",
-      "Good service. Staff explained how I can extend my warranty. Very helpful.",
-      "Got my item replaced 1-to-1 under warranty. Hassle-free experience!",
-      "S-Coin is amazing! I redeemed 100% & got a free item. Best loyalty program!",
-      "Fast & smooth transaction. Used Atome for installment, no issue at all.",
-      "Senheng always has the best warranty. Extra coverage at no extra cost!",
-      "Super helpful staff, explained everything well. Even got a free gift!",
-      "Best place to shop for electronics. More benefits than other stores!",
-      "Easy to track my purchase & warranty on the Senheng app. Super useful!",
-      "Good thing about Senheng is their extended warranty. Peace of mind!",
-      "S-Coin is worth collecting. Used mine to get extra discount on a TV!",
-      "Very clean showroom, products well displayed. Easy shopping experience.",
-      "Got 1-to-1 replacement for my faulty item. No hassle, great service!",
-      "Love how I can buy in installments. So many options to choose from!",
-      "Earned S-Coin on my last purchase, used it for extra discount today. Love it!",
-      "Highly recommend Senheng! Extended warranty & S-Coin cashback are the best!",
-      "Terbaik! Tebus S-Coin dpt barang percuma. Memang berbaloi!",
-      "Byk pilihan pembayaran, boleh guna Atome & SpayLater. Senang nak beli!",
-      "Kedai bersih & kemas. Senang nak tengok barang2 yg ada.",
-      "Dapat warranty tambahan & kalau rosak masih dalam warranty boleh tukar 1-to-1.",
-      "Staff friendly, ajar cara guna S-Coin utk dpt diskaun lebih. Terima kasih!",
-      "Pakai app Senheng boleh check resit & warranty. Senang gila!",
-      "Beli phone kat sini dapat free gift + cashback. Puas hati!",
-      "Banyak cara nak bayar, boleh installment 0%, Aeon, Chailease & banyak lagi.",
-      "Tebus 100% S-Coin terus dapat barang free! Memang untung shopping kat sini!",
-      "Dah 3 kali beli kat sini, selalu dpt cashback & redeem S-Coin. Best!",
-      "Beli barang dpt warranty lebih lama dari kedai lain. Puas hati!",
-      "Senheng app mmg memudahkan. Boleh tengok resit & redeem S-Coin cepat.",
-      "Beli TV, redeem S-Coin dapat extra diskaun. Berbaloi sangat!",
-      "Senang nak shopping kat sini, showroom kemas & banyak pilihan barang.",
-      "Barang rosak tukar 1-to-1 dalam warranty, servis terbaik!",
-      "Ada promosi, beli phone dapat free gift & cashback. Terbaik!",
-      "Installment 0% memudahkan beli barang mahal. Tak rasa terbeban sangat.",
-      "Senang nak check warranty pakai app. Tak perlu simpan kertas resit dah.",
-      "Staff sgt membantu, siap ajar cara nak tebus S-Coin. Recommended!",
-      "Warranty panjang & ada banyak cara nak bayar. Senang & puas hati!",
-      "Senheng terbaik, dpt extra diskaun bila redeem S-Coin. Memang berbaloi!",
-      "Pernah claim warranty, senang je dpt replacement 1-to-1. Tak banyak soal!",
-      "Senheng app senang nak guna, semua info pembelian ada dalam tu.",
-      "Staff ramah & banyak membantu. Dah 3 kali beli kat sini, mmg puas hati!",
-      "Mmg best shopping kat sini! Ada cashback, free gift, & banyak pilihan!",
-      "Great service! Got extra warranty for being a member. Worth it!",
-      "Easy shopping experience. Used my S-Coin to get a discount!",
-      "Nice staff, helped me check my warranty status on the app.",
-      "Bought a phone, got free gift + discount. Good deal!",
-      "Love the Senheng app, can see all my past purchases & warranty info.",
-      "Nationwide delivery is so convenient! Bought in Temerloh, sent to KL.",
-      "Friendly staff! Helped me redeem my S-Coin for a free item.",
-      "Smooth transaction, got extra warranty just for being a member!",
-      "Best beli kat sini! Dapat extra warranty sebab member.",
-      "Senang guna S-Coin, dpt diskaun terus masa bayar!",
-      "Staff peramah, tolong ajar cara check warranty dalam app.",
-      "Beli smartphone, dpt free gift + extra diskaun. Berbaloi!",
-      "Senheng app memang membantu, semua rekod pembelian ada situ.",
-      "Boleh beli kat mana² cawangan & hantar ke mana² dgn cas yg sama. Senang!",
-      "Senang je redeem S-Coin, dapat free gift terus kat kedai.",
-      "Service tiptop, dapat extra warranty percuma sebab jadi ahli!",
-      "Banyak promo & diskaun kalau jadi ahli, memang untung beli kat sini.",
-      "Guna Senheng app boleh track history pembelian & check warranty!",
-      "Staff explain elok cara guna S-Coin utk dapat lagi banyak diskaun.",
-      "Beli tablet, dpt hadiah percuma & extra warranty. Puas hati!",
-      "App Senheng ni best, boleh tengok balance S-Coin & promosi terbaru.",
-      "Service laju & mesra! Senang guna S-Coin utk jimat lebih banyak.",
-      "Hantar barang ke rumah dgn flat rate, tak kira negeri mana. Terbaik!",
-      "Really love the extra warranty for members! My fridge broke after 2 years, luckily still covered!",
-      "Staff was super helpful! Showed me how to redeem my S-Coin for free gifts. Didn’t even know I had so many!",
-      "Bought a washing machine using 0% installment with my credit card. No extra charges, very convenient!",
-      "Senheng app is a game-changer! I can check all my purchases, warranty status & promotions in one place.",
-      "Didn’t have a credit card, but got my new TV with Aeon installment. Process was smooth & fast!",
-      "Bought a tablet & got free gifts plus extra discount as a member. Best deal in town!",
-      "My old AC stopped working just after the manufacturer warranty ended, but my extended warranty saved me!",
-      "S-Coin is super useful! Used mine to get a discount on my new headphones. Free savings!",
-      "Nationwide delivery is great! Bought a TV in Temerloh & had it sent to Johor for my parents.",
-      "Staff explained everything clearly. Now I can check my S-Coin balance & warranty details easily on the app.",
-      "Used Atome to buy a laptop, no need to pay all at once. Installment approval was fast!",
-      "Shopee SPayLater is available here! Finally got my dream phone without paying full price upfront.",
-      "Great experience! Staff helped me redeem my credit card points for extra discount. Didn't even know I could!",
-      "Bought a fridge & got an extra 1-year member warranty. Totally worth it!",
-      "Love how Senheng gives free gifts & discounts when buying smartphones. Got extra accessories for free!",
-      "I always check the Senheng app before buying. Got a good promo deal on my new tablet!",
-      "Extended warranty is a lifesaver! My microwave had issues after 2 years, but still covered. No extra cost!",
-      "Didn’t have enough cash, so used Chailease installment. The process was easy & monthly payments are affordable.",
-      "Got a new sound system & used my S-Coin for an instant discount. Love this system!",
-      "Fast and friendly service! Plus, I could track my past purchases on the Senheng app before buying again.",
-      "Nasib baik jadi ahli! Barang rosak lepas 2 tahun, extended warranty masih cover. Jimat banyak!",
-      "Staff sangat membantu! Saya boleh redeem S-Coin & dapat free gift terus. Tak sangka ada banyak baki!",
-      "Beli TV guna installment 0% pakai kad kredit. Senang sangat, takde caj tambahan!",
-      "App Senheng memang power! Boleh check semua pembelian lama & warranty dalam satu tempat.",
-      "Takde kad kredit? Takpe! Saya beli peti sejuk guna ansuran Aeon, proses senang & cepat.",
-      "Beli telefon, dapat free gift & extra diskaun sebab ahli. Memang puas hati!",
-      "AC saya rosak lepas setahun, nasib baik ada extended warranty! Senheng memang terbaik!",
-      "Guna S-Coin untuk diskaun earphone baru. Rasa macam shopping free!",
-      "Beli di Temerloh, hantar ke rumah mak ayah di Kedah guna penghantaran rata. Senang sangat!",
-      "Staff terangkan cara guna app untuk check S-Coin & warranty. Senang nak track pembelian lama.",
-      "Guna Atome untuk beli laptop, tak perlu bayar penuh terus. Senang & cepat approve!",
-      "Shopee SPayLater boleh guna kat sini! Tak payah bayar penuh, bayar ansuran je.",
-      "Nasib baik staff bagitahu, boleh guna mata ganjaran kad kredit untuk dapat diskaun tambahan!",
-      "Beli mesin basuh & dapat extra 1 tahun warranty sebab ahli. Memang berbaloi!",
-      "Setiap kali beli phone kat sini, mesti dapat free gift & promo. Memang suka shopping kat Senheng!",
-      "Saya selalu check app Senheng sebelum beli barang. Kadang ada promo khas yang takde kat kedai!",
-      "Microwave saya rosak lepas 2 tahun, nasib baik extended warranty cover! Tak payah keluar duit lagi.",
-      "Tak cukup cash masa tu, nasib baik boleh guna Chailease untuk installment. Tak rasa terbeban!",
-      "Baru beli speaker system & guna S-Coin untuk jimat harga. Memang senang & berbaloi!",
-      "Servis pantas & mesra! Sebelum beli, saya sempat check pembelian lama dalam app untuk rujukan.",
-      "Outlet ni memang tip-top, guna S-Coin untuk jimat dan free extra warranty, terima kasih!",
-      "Sangat puas hati, guna S-Coin untuk potongan and dapat extra warranty free, memang worth it la.",
-      "Service tiptop! Barang rosak terus tukar baru sebab still under warranty, no hassle langsung.",
-      "Beli kat Temerloh tapi hantar sampai Sabah, flat rate je! Memang senang kalau beli untuk family jauh.",
-      "Staff semua friendly, siap recommend barang promo – dapat discount & free gift sekali.",
-      "Phone lama trade-in, terus dapat harga murah untuk yang baru. Easy process, tak payah pening.",
-      "App Senheng pun senang sangat guna – nak check resit, warranty, semua ada. No more simpan kertas.",
-      "S-Coin tu boleh guna time next purchase, rasa macam dapat cashback – best sangat.",
-      "Beli sini tapi claim warranty kat cawangan lain pun boleh – masa balik kampung senang la.",
-      "Warranty asal 1 tahun je, sebab ada membership terus jadi 2 tahun – save banyak.",
-      "Beli phone baru, dapat free gift macam powerbank – tak sangka tapi memang best!",
-      "Really happy with my purchase – used S-Coin for discount and got free extended warranty too.",
-      "Smooth service! My appliance had a problem and they replaced it 1-to-1 since it was still under warranty.",
-      "Bought it at Temerloh but they delivered to Kelantan with flat rate delivery – super convenient.",
-      "Staff were super friendly and helpful – even got a free gift with my new tablet.",
-      "Traded in my old phone and got a nice deal on the new one. Totally worth it.",
-      "The Senheng app makes everything easy – can check receipts, warranty, and S-Coin balance anytime.",
-      "Love the S-Coin system, used it during my next purchase and saved quite a bit.",
-      "Best thing is you can claim warranty at any Senheng or SenQ nationwide – very convenient.",
-      "Got a total of 2 years warranty with my membership, not just the usual 1 year.",
-      "Bought a smartphone and received a surprise free gift – definitely made my day!"
+    const USP_OPTIONS = [
+      // existing
+      'S-Coin cashback',
+      'free extra warranty',
+      '1-to-1 replacement',
+      '0% installment',
+      'Senheng app warranty tracking',
+      'nationwide flat-rate delivery',
+
+      // BNPL options
+      'Buy Now Pay Later with Atome',
+      'Buy Now Pay Later with Shopee SPayLater',
+      'Buy Now Pay Later with Grab PayLater',
+
+      // Hire purchase / monthly installment
+      'Monthly installment with Aeon Credit',
+      'Monthly installment with Chailease'
     ];
 
-    /* ------------------------------------------------------------------
-       UTILITY: pick 1–2 random extra hashtags
-    ------------------------------------------------------------------ */
+    /* ------------------------------
+       DOM refs
+    -------------------------------*/
+    const staffGrid = document.getElementById('staff-grid');
+    const reviewSection = document.getElementById('review-section');
+    const customCommentEl = document.getElementById('custom-comment');
+    const charCountEl = document.getElementById('char-count');
+    const uspListEl = document.getElementById('usp-list');
+    const livePreviewEl = document.getElementById('live-preview');
+    const copyBtn = document.getElementById('copy-review');
+    const notificationEl = document.getElementById('notification');
+    const useCustomClear = document.getElementById('use-custom-clear');
+    const useCustomPaste = document.getElementById('use-custom-paste');
+
+    /* ------------------------------
+       Build USP checkboxes
+    -------------------------------*/
+    USP_OPTIONS.forEach((usp, idx) => {
+      const id = 'usp-' + idx;
+      const label = document.createElement('label');
+      label.className = 'usp-item';
+      label.innerHTML = `<input type="checkbox" id="${id}" value="${escapeHtml(usp)}"> <span style="font-size:.92rem">${escapeHtml(usp)}</span>`;
+      uspListEl.appendChild(label);
+    });
+
+    function getSelectedUSPPhrases() {
+      const checked = Array.from(uspListEl.querySelectorAll('input[type="checkbox"]:checked'));
+      return checked.map(c => c.value);
+    }
+
+    /* ------------------------------
+       Helpers
+    -------------------------------*/
     function getRandomHashtags() {
       const shuffled = additionalHashtags.slice().sort(() => 0.5 - Math.random());
-      const amount = Math.floor(Math.random() * 2) + 1; // 1 or 2
+      const amount = Math.floor(Math.random() * 2) + 1;
       return shuffled.slice(0, amount).join(' ');
     }
 
-    /* ------------------------------------------------------------------
-       EVENT HANDLERS
-    ------------------------------------------------------------------ */
-    function selectHashtag(tag) {
-      selectedHashtag = `#${tag}`;
-      document.getElementById('review-section').style.display = 'block';
-      window.scrollTo({
-        top: document.getElementById('review-section').offsetTop,
-        behavior: 'smooth'
-      });
-      generateReviews();
+    function escapeHtml(s) {
+      return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     }
 
-    function generateReviews() {
-      const shuffled = allReviews.slice().sort(() => 0.5 - Math.random());
-      const selectedReviews = shuffled.slice(0, 3);
-
-      const html = selectedReviews.map(text => {
-        const full = `${text} ${selectedHashtag} ${getRandomHashtags()}`.trim();
-        return `
-          <div class="review-card">
-            <div class="review-text">${full}</div>
-            <button class="btn copy-btn"
-              onclick='copyText("${full.replace(/"/g, "&quot;")}")'>
-              📋 Copy & Leave Review
-            </button>
-          </div>`;
-      }).join('');
-
-      document.getElementById('reviews').innerHTML = html;
-    }
-
-    function copyText(str) {
-      navigator.clipboard.writeText(str).then(() => {
-        showNotification();
-        setTimeout(() => window.open(googleReviewURL, '_blank'), 500);
-      });
+    async function writeToClipboard(text) {
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(text);
+          return true;
+        } else {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.setAttribute('readonly', '');
+          ta.style.position = 'absolute';
+          ta.style.left = '-9999px';
+          document.body.appendChild(ta);
+          ta.select();
+          ta.setSelectionRange(0, ta.value.length);
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+          return true;
+        }
+      } catch (e) {
+        console.error('Clipboard write failed', e);
+        return false;
+      }
     }
 
     function showNotification() {
-      const n = document.getElementById('notification');
-      n.style.display = 'block';
-      setTimeout(() => { n.style.display = 'none'; }, 2000);
+      notificationEl.style.display = 'block';
+      setTimeout(() => { notificationEl.style.display = 'none'; }, 2200);
     }
+
+    /* ------------------------------
+       USP detection: ensure user includes USP (permissive)
+    -------------------------------*/
+    const USP_KEYWORDS = USP_OPTIONS.map(u => u.toLowerCase().replace(/[^\w\s]/g,''));
+    function containsUSPKeyword(text) {
+      if (!text) return false;
+      const t = text.toLowerCase();
+      return USP_KEYWORDS.some(k => {
+        if (!k) return false;
+        const first = k.split(' ')[0];
+        return (first && t.includes(first)) || t.includes(k);
+      });
+    }
+
+    /* ------------------------------
+       Staff click handling (delegation)
+    -------------------------------*/
+    staffGrid.addEventListener('click', (ev) => {
+      const btn = ev.target.closest('.hashtag-btn');
+      if (!btn || !staffGrid.contains(btn)) return;
+      // mark active
+      staffGrid.querySelectorAll('.hashtag-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      selectedHashtag = `#${btn.getAttribute('data-tag') || ''}`;
+      reviewSection.style.display = 'block';
+      setTimeout(() => {
+        const top = reviewSection.getBoundingClientRect().top + window.scrollY - 12;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }, 50);
+      updatePreview();
+      customCommentEl.focus();
+    });
+
+    /* ------------------------------
+       Live preview logic
+    -------------------------------*/
+    function buildFinalText() {
+      const user = (customCommentEl.value || '').trim();
+      const usps = getSelectedUSPPhrases();
+      let result = user;
+
+      if (usps.length > 0) {
+        // append USPs separated by bullet
+        result = result ? `${result} — ${usps.join(' • ')}` : usps.join(' • ');
+      }
+
+      // append staff hashtag and random extra hashtags
+      const extras = getRandomHashtags();
+      if (selectedHashtag) result = result ? `${result} ${selectedHashtag} ${extras}` : `${selectedHashtag} ${extras}`;
+      return result.trim();
+    }
+
+    function updatePreview() {
+      const finalText = buildFinalText();
+      livePreviewEl.textContent = finalText || 'Your review preview will appear here.';
+    }
+
+    customCommentEl.addEventListener('input', () => {
+      charCountEl.textContent = customCommentEl.value.length;
+      updatePreview();
+    });
+
+    uspListEl.addEventListener('change', updatePreview);
+
+    useCustomClear.addEventListener('click', () => {
+      customCommentEl.value = '';
+      charCountEl.textContent = '0';
+      updatePreview();
+      customCommentEl.focus();
+    });
+
+    useCustomPaste.addEventListener('click', () => {
+      const sample = "Staff sangat membantu & jelas terangkan cara guna S-Coin. Sangat puas hati dengan servis hari ini.";
+      customCommentEl.value = sample;
+      charCountEl.textContent = sample.length;
+      updatePreview();
+      customCommentEl.focus();
+    });
+
+    /* ------------------------------
+       Copy button behavior
+    -------------------------------*/
+    copyBtn.addEventListener('click', async () => {
+      const userText = (customCommentEl.value || '').trim();
+      if (!userText) {
+        alert('Please write your review in the text area before copying. The custom comment cannot be empty.');
+        customCommentEl.focus();
+        return;
+      }
+
+      // ensure USP presence: if user's text doesn't contain USP keywords and no USP selected, prompt to append default
+      const userHasUSP = containsUSPKeyword(userText);
+      const selectedUSPs = getSelectedUSPPhrases();
+      let finalText = userText;
+
+      if (!userHasUSP) {
+        if (selectedUSPs.length > 0) {
+          finalText = `${finalText} — ${selectedUSPs.join(' • ')}`;
+        } else {
+          const appendDefault = confirm(
+            "Your review doesn't mention key selling points (USP).\n\nWould you like to append a short USP phrase (e.g. 'S-Coin cashback & free extra warranty') so the review includes the store's USP? OK to append, Cancel to edit your comment."
+          );
+          if (appendDefault) {
+            finalText = `${finalText} — S-Coin cashback & free extra warranty`;
+          } else {
+            customCommentEl.focus();
+            return;
+          }
+        }
+      }
+
+      // append staff hashtag and random extras
+      finalText = `${finalText} ${selectedHashtag} ${getRandomHashtags()}`.trim();
+
+      const ok = await writeToClipboard(finalText);
+      if (ok) {
+        showNotification();
+        setTimeout(() => window.open(googleReviewURL, '_blank'), 500);
+      } else {
+        alert('Copy failed — please try manually selecting the preview text and copying (Ctrl/Cmd+C).');
+      }
+    });
+
+    /* ------------------------------
+       Init
+    -------------------------------*/
+    charCountEl.textContent = '0';
+    updatePreview();
+
+    // Optional: pre-select the first staff on load
+    // const first = staffGrid.querySelector('.hashtag-btn');
+    // if (first) first.click();
+
   </script>
 </body>
 </html>
-
-
-
