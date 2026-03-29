@@ -2,661 +2,1043 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Leave a Google Review - Grand Senheng Temerloh</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <!-- Using a lightweight icon library for better visuals -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>S·Coin | Smart Comment Builder</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    :root {
-      /* Brand Colors */
-      --primary: #2A5C82; 
-      --primary-dark: #1e4563;
-      --secondary: #FFA726; /* Gold/Orange for Stars & Highlights */
-      --accent: #4CAF50;    /* Success Green */
-      --bg-page: #F0F4F8;
-      --bg-card: #FFFFFF;
-      --text-main: #2D3748;
-      --text-muted: #718096;
-      --border: #E2E8F0;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-      --radius: 16px;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-    
     body {
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--bg-page);
-      color: var(--text-main);
-      line-height: 1.5;
-      padding-bottom: 40px;
+      background: #f4f7fc;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      color: #1a2c3e;
+      line-height: 1.4;
+      padding-bottom: 48px;
     }
 
-    /* --- Header --- */
-    header {
-      background: var(--primary);
-      color: white;
-      padding: 1.5rem 1rem 3rem 1rem; /* Extra bottom padding for overlap effect */
-      text-align: center;
-      border-bottom-left-radius: 24px;
-      border-bottom-right-radius: 24px;
-      margin-bottom: -2rem;
-    }
-    header h1 { font-size: 1.4rem; font-weight: 600; margin-bottom: 0.2rem; }
-    header p { font-size: 0.9rem; opacity: 0.9; font-weight: 300; }
-
-    /* --- Container --- */
-    .container {
-      max-width: 600px;
+    .app-container {
+      max-width: 780px;
       margin: 0 auto;
-      padding: 0 1rem;
+      padding: 0 18px;
     }
 
-    /* --- Card Components --- */
+    .hero {
+      background: linear-gradient(125deg, #1f5e7e, #0f3b52);
+      color: white;
+      border-radius: 0 0 32px 32px;
+      padding: 28px 20px 68px;
+      margin-bottom: -36px;
+      text-align: center;
+      box-shadow: 0 12px 24px -12px rgba(0,0,0,0.2);
+    }
+
+    .hero h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .hero h1 i {
+      font-size: 1.7rem;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+
+    .hero p {
+      font-size: 0.95rem;
+      opacity: 0.88;
+      font-weight: 400;
+      max-width: 85%;
+      margin: 8px auto 0;
+    }
+
     .card {
-      background: var(--bg-card);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      margin-bottom: 1.25rem;
-      box-shadow: var(--shadow-md);
-      transition: transform 0.2s ease;
-      animation: fadeIn 0.5s ease-out;
+      background: #ffffff;
+      border-radius: 28px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0,0,0,0.01);
+      padding: 20px 18px;
+      margin-bottom: 20px;
+      transition: transform 0.1s ease;
     }
 
     .section-title {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--primary);
-      margin-bottom: 1rem;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #1f5e7e;
+      margin-bottom: 14px;
+      border-left: 4px solid #ffae5a;
+      padding-left: 14px;
     }
-    
-    .section-title i { color: var(--secondary); }
 
-    /* --- Staff Grid --- */
-    .staff-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-      gap: 0.75rem;
+    .section-title i {
+      color: #ff9f3d;
+      font-size: 1.2rem;
     }
-    .staff-btn {
+
+    .helper-text {
+      color: #5b6f82;
+      font-size: 0.85rem;
+      margin: -4px 0 16px 12px;
+    }
+
+    .mode-switch {
+      display: flex;
+      flex-direction: row;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .mode-option {
+      flex: 1;
       background: white;
-      border: 2px solid var(--border);
-      color: var(--text-muted);
-      padding: 0.75rem 0.5rem;
-      border-radius: 12px;
-      font-weight: 500;
-      font-size: 0.95rem;
+      border: 2px solid #e2e9f0;
+      border-radius: 24px;
+      padding: 16px 12px;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      text-align: left;
+    }
+
+    .mode-option.active {
+      border-color: #1f5e7e;
+      background: #eff7fc;
+      box-shadow: 0 6px 14px rgba(31,94,126,0.12);
+    }
+
+    .mode-option .mode-icon {
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+      color: #ffae5a;
+    }
+
+    .mode-option h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .mode-option p {
+      font-size: 0.8rem;
+      color: #5f7f9c;
+      line-height: 1.35;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 6px;
+    }
+
+    .form-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 6px;
+    }
+
+    @media (max-width: 700px) {
+      .form-grid,
+      .form-grid-3 {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .app-container {
+        padding: 0 14px;
+      }
+
+      .card {
+        padding: 18px 16px;
+      }
+
+      .mode-option {
+        padding: 14px 10px;
+      }
+    }
+
+    .field {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 0.25rem;
-    }
-    .staff-btn i { font-size: 1.2rem; margin-bottom: 2px; opacity: 0.5; }
-    .staff-btn:hover { border-color: var(--primary); color: var(--primary); }
-    .staff-btn.active {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(42, 92, 130, 0.3);
-    }
-    .staff-btn.active i { opacity: 1; }
-
-    /* --- Star Animation --- */
-    .star-row { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1rem; }
-    .star-icon { color: #CBD5E0; font-size: 2rem; transition: color 0.3s; }
-    .star-icon.gold { color: var(--secondary); animation: pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-
-    /* --- Input Area --- */
-    .input-wrapper { position: relative; }
-    textarea {
-      width: 100%;
-      min-height: 120px;
-      padding: 1rem;
-      border: 2px solid var(--border);
-      border-radius: 12px;
-      font-family: inherit;
-      font-size: 1rem;
-      resize: vertical;
-      transition: border-color 0.2s;
-      margin-bottom: 0.5rem;
-    }
-    textarea:focus { outline: none; border-color: var(--primary); }
-    
-    .char-counter {
-      text-align: right;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
+      gap: 8px;
     }
 
-    /* --- Action Buttons (Templates) --- */
-    .template-scroller {
-      display: flex;
-      gap: 0.5rem;
-      overflow-x: auto;
-      padding-bottom: 0.5rem;
-      margin-bottom: 1rem;
-      scrollbar-width: none; /* Firefox */
-    }
-    .template-scroller::-webkit-scrollbar { display: none; }
-    
-    .pill-btn {
-      white-space: nowrap;
-      background: #EDF2F7;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
+    .field label {
+      font-weight: 600;
       font-size: 0.85rem;
-      color: var(--text-main);
-      cursor: pointer;
-      transition: background 0.2s;
+      letter-spacing: -0.2px;
+      color: #2c4b66;
     }
-    .pill-btn:hover { background: #E2E8F0; }
-    .pill-btn i { margin-right: 4px; color: var(--primary); }
 
-    /* --- USP Chips --- */
-    .usp-container {
+    .field input,
+    .field textarea,
+    .field select {
+      border: 2px solid #e2e9f0;
+      border-radius: 20px;
+      padding: 14px 16px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      background: #fff;
+      transition: 0.2s;
+      width: 100%;
+    }
+
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus {
+      outline: none;
+      border-color: #1f5e7e;
+      box-shadow: 0 0 0 3px rgba(31,94,126,0.2);
+    }
+
+    .field textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .field input[readonly] {
+      background: #f8fbfe;
+      color: #31526a;
+      font-weight: 700;
+    }
+
+    .input-prefix {
+      position: relative;
+    }
+
+    .input-prefix span {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-weight: 600;
+      color: #5f7f9c;
+    }
+
+    .input-prefix input {
+      padding-left: 44px;
+    }
+
+    .calc-panel {
+      background: #fefaf0;
+      border-radius: 24px;
+      padding: 14px 18px;
+      margin-top: 18px;
       display: flex;
       flex-wrap: wrap;
-      gap: 0.6rem;
-    }
-    .usp-chip {
-      position: relative;
-      cursor: pointer;
-      user-select: none;
-    }
-    .usp-chip input { position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0; }
-    .checkmark {
-      display: inline-flex;
-      align-items: center;
-      padding: 0.5rem 0.9rem;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 50px;
-      font-size: 0.9rem;
-      color: var(--text-main);
-      transition: all 0.2s ease;
-    }
-    .usp-chip:hover .checkmark { border-color: var(--primary); background: #F7FAFC; }
-    .usp-chip input:checked ~ .checkmark {
-      background: #EBF8FF;
-      border-color: var(--primary);
-      color: var(--primary);
-      font-weight: 500;
-      padding-left: 2rem; /* Make room for check icon */
-    }
-    /* Pseudo-element for check icon */
-    .usp-chip input:checked ~ .checkmark::before {
-      content: '\f00c';
-      font-family: 'Font Awesome 6 Free';
-      font-weight: 900;
-      position: absolute;
-      left: 0.8rem;
-      font-size: 0.8rem;
+      gap: 16px;
+      justify-content: space-between;
+      border: 1px solid #ffdfb3;
     }
 
-    /* --- Preview Box --- */
-    .preview-box {
-      background: #FAFAFA;
-      border-left: 4px solid var(--secondary);
-      padding: 1rem;
-      border-radius: 4px;
-      font-size: 0.95rem;
-      color: #4A5568;
-      margin-top: 1rem;
-      font-style: italic;
-      white-space: pre-wrap;
+    .calc-chip {
+      flex: 1;
+      min-width: 100px;
     }
+
+    .calc-chip small {
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #aa8b5c;
+    }
+
+    .calc-chip strong {
+      display: block;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #1f5e7e;
+      margin-top: 4px;
+    }
+
+    .comment-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 12px 0 16px;
+    }
+
+    .pill {
+      background: #eef3fa;
+      border: none;
+      border-radius: 60px;
+      padding: 12px 22px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .pill i {
+      font-size: 0.9rem;
+    }
+
+    .pill:active { transform: scale(0.97); }
+    .pill:hover { background: #e2eaf3; }
+
+    .choice-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 12px 0 8px;
+    }
+
+    .choice-card {
+      background: #ffffff;
+      border: 1.5px solid #eef2f7;
+      border-radius: 24px;
+      padding: 16px 18px;
+      text-align: left;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      cursor: pointer;
+      transition: all 0.15s;
+      font-weight: 500;
+      color: #1e2f3c;
+    }
+
+    .choice-card:hover {
+      border-color: #ffae5a;
+      background: #fffaf2;
+      transform: translateY(-1px);
+    }
+
+    .choice-card.selected {
+      border-color: #1f5e7e;
+      background: #eff7fc;
+      box-shadow: 0 6px 14px rgba(31,94,126,0.12);
+    }
+
+    .status-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .status-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: #f3f7fb;
+      color: #31526a;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .status-chip.warn {
+      background: #fff6e8;
+      color: #8a5a12;
+    }
+
+    .preview-area {
+      background: #f8fbfe;
+      border-left: 5px solid #ffae5a;
+      border-radius: 20px;
+      padding: 18px;
+      margin: 12px 0 8px;
+    }
+
     .preview-label {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
-      color: var(--text-muted);
-      margin-bottom: 0.4rem;
+      color: #6f8eaa;
+      margin-bottom: 12px;
       display: block;
     }
 
-    /* --- Main CTA --- */
-    .cta-button {
-      background: var(--primary);
-      color: white;
-      width: 100%;
-      padding: 1.1rem;
-      border: none;
-      border-radius: 12px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(42, 92, 130, 0.4);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.6rem;
-      transition: transform 0.1s, box-shadow 0.2s;
-      margin-top: 1rem;
+    .preview-text {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      color: #1f3e54;
     }
-    .cta-button:active { transform: scale(0.98); }
-    .cta-button i { font-size: 1.2rem; }
 
-    /* --- Notification --- */
-    .notification {
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .btn-primary {
+      background: #1f5e7e;
+      border: none;
+      border-radius: 40px;
+      padding: 14px 24px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: white;
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 6px 12px rgba(31,94,126,0.25);
+    }
+
+    .btn-primary:active { transform: scale(0.97); background: #0f445f; }
+
+    .btn-secondary {
+      background: #eef3fa;
+      border: none;
+      border-radius: 40px;
+      padding: 14px 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      font-family: inherit;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-secondary:active { background: #e2eaf3; }
+
+    .info-note {
+      font-size: 0.75rem;
+      color: #7089a3;
+      margin-top: 16px;
+      background: #f3f7fb;
+      padding: 12px 16px;
+      border-radius: 20px;
+      line-height: 1.45;
+    }
+
+    .test-log {
+      margin-top: 18px;
+      padding: 12px;
+      border-radius: 18px;
+      font-size: 0.75rem;
+      font-family: monospace;
+      background: #f1f5f9;
+      border: 1px solid #dfe8ef;
+      white-space: pre-wrap;
+    }
+
+    .test-log.pass { background: #e6f6ec; border-color: #b6dfc0; color: #176b34; }
+    .test-log.fail { background: #ffeaea; border-color: #fbc5c5; color: #b91c1c; }
+
+    .modal-overlay {
       position: fixed;
-      bottom: 2rem;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 20px;
+    }
+
+    .modal-card {
+      max-width: 400px;
+      width: 100%;
+      background: white;
+      border-radius: 36px;
+      padding: 28px 24px;
+      text-align: center;
+      animation: fadeUp 0.2s ease;
+      box-shadow: 0 30px 40px rgba(0,0,0,0.25);
+    }
+
+    .modal-icon {
+      background: #eef4fc;
+      width: 64px;
+      height: 64px;
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 1.8rem;
+      color: #1f5e7e;
+    }
+
+    .modal-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .modal-text {
+      color: #4b6a82;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .modal-btn {
+      flex: 1;
+      border: none;
+      border-radius: 60px;
+      padding: 12px;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .modal-btn.primary {
+      background: #1f5e7e;
+      color: white;
+    }
+
+    .modal-btn.secondary {
+      background: #eef3fa;
+      color: #2c4b66;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .toast-msg {
+      position: fixed;
+      bottom: 20px;
       left: 50%;
       transform: translateX(-50%) translateY(100px);
-      background: #2D3748;
+      background: #1e2f3c;
       color: white;
-      padding: 0.8rem 1.5rem;
-      border-radius: 50px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      z-index: 1000;
+      padding: 12px 22px;
+      border-radius: 60px;
+      font-size: 0.85rem;
+      z-index: 999;
+      transition: transform 0.25s ease, opacity 0.2s;
       opacity: 0;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      font-weight: 500;
-      width: 90%;
-      max-width: 400px;
+      pointer-events: none;
+      white-space: nowrap;
     }
-    .notification.show { transform: translateX(-50%) translateY(0); opacity: 1; }
-    .notification i { color: var(--accent); font-size: 1.2rem; }
 
-    /* --- Helper Classes --- */
-    .hidden { display: none; }
-    .fade-in { animation: fadeIn 0.5s forwards; }
+    .toast-msg.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
 
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes pop { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
-
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
+<div class="hero">
+  <h1><i class="fa-solid fa-coins"></i> S·Coin Comment Studio</h1>
+  <p>Smart positive comments • Auto cashback calc • Staff code ready</p>
+</div>
 
-  <header>
-    <h1>Grand Senheng Temerloh</h1>
-    <p>We appreciate your feedback! ⭐</p>
-  </header>
-
-  <div class="container">
-    
-    <!-- Step 1: Staff Selection -->
-    <div class="card" id="step-1">
-      <div class="section-title"><i class="fa-solid fa-user-tag"></i> Who served you today?</div>
-      <div class="staff-grid" id="staff-grid">
-        <!-- Staff buttons generated by JS -->
+<div class="app-container">
+  <div class="card">
+    <div class="section-title"><i class="fa-regular fa-compass"></i> 1. Transaction type</div>
+    <div class="mode-switch">
+      <div class="mode-option active" data-mode="earn" id="modeEarnTrigger">
+        <div class="mode-icon"><i class="fa-solid fa-chart-line"></i></div>
+        <h3>💰 Buy &amp; Earn S-Coin</h3>
+        <p>Customer bought item and received cashback as S-Coin</p>
       </div>
-    </div>
-
-    <!-- Step 2: Review Content (Hidden initially) -->
-    <div id="review-wrapper" class="hidden">
-      
-      <!-- Visual Rating Primer -->
-      <div class="card" style="text-align: center; padding: 1rem;">
-        <div style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">How was your experience?</div>
-        <div class="star-row">
-          <i class="fa-solid fa-star star-icon"></i>
-          <i class="fa-solid fa-star star-icon"></i>
-          <i class="fa-solid fa-star star-icon"></i>
-          <i class="fa-solid fa-star star-icon"></i>
-          <i class="fa-solid fa-star star-icon"></i>
-        </div>
+      <div class="mode-option" data-mode="redeem" id="modeRedeemTrigger">
+        <div class="mode-icon"><i class="fa-solid fa-ticket-alt"></i></div>
+        <h3>🎁 Redeem with S-Coin</h3>
+        <p>Customer used existing S-Coin to redeem item</p>
       </div>
-
-      <div class="card">
-        <div class="section-title"><i class="fa-solid fa-pen-to-square"></i> Your Review</div>
-        
-        <!-- Template Quick Picks (Updated logic) -->
-        <div class="template-scroller">
-          <button type="button" class="pill-btn" onclick="applyTemplate('STAFF')"><i class="fa-regular fa-face-smile"></i> Friendly Staff</button>
-          <button type="button" class="pill-btn" onclick="applyTemplate('PROMO')"><i class="fa-solid fa-percent"></i> Great Promotion</button>
-          <button type="button" class="pill-btn" onclick="applyTemplate('CASHBACK')"><i class="fa-solid fa-coins"></i> S-Coin Cashback</button>
-          <button type="button" class="pill-btn" onclick="clearText()"><i class="fa-solid fa-eraser"></i> Clear</button>
-        </div>
-
-        <div class="input-wrapper">
-          <textarea id="custom-comment" maxlength="450" placeholder="Write your review here..."></textarea>
-          <div class="char-counter"><span id="char-count">0</span>/450</div>
-        </div>
-
-        <div class="section-title" style="margin-top: 1.5rem; font-size: 1rem;"><i class="fa-solid fa-tags"></i> Add details (Tap to add)</div>
-        <div class="usp-container" id="usp-list">
-          <!-- USP Chips generated by JS -->
-        </div>
-
-        <div class="preview-box">
-          <span class="preview-label">PREVIEW (WHAT WILL BE COPIED)</span>
-          <div id="live-preview">...</div>
-        </div>
-
-        <button type="button" id="copy-btn" class="cta-button">
-          <i class="fa-regular fa-copy"></i> Copy & Open Google
-        </button>
-        
-        <div style="text-align: center; margin-top: 1rem; font-size: 0.8rem; color: #718096;">
-          Your review helps us improve!
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Notification Toast -->
-  <div class="notification" id="notification">
-    <i class="fa-solid fa-circle-check"></i>
-    <div>
-      <div style="font-weight: 600;">Text Copied!</div>
-      <div style="font-size: 0.85rem; opacity: 0.9;">Redirecting to Google Maps...</div>
     </div>
   </div>
 
-  <script>
-    /* --- Configuration --- */
-    const CONFIG = {
-      reviewUrl: 'https://maps.app.goo.gl/eReqkJwLwp1RxviF6',
-      staff: ['mus', 'anisa', 'faris', 'omar', 'maisarah', 'norhakimah', 'juan', 'eesya'],
-      usps: [
-        'S-Coin cashback', 'Extra Warranty', '1-to-1 Replacement',
-        '0% Installment', 'Senheng App', 'Flat Rate Delivery',
-        'Atome BNPL', 'Shopee SPayLater', 'Grab PayLater',
-        'Aeon Credit', 'Chailease'
-      ],
-      hashtags: ['#SCoinCashback', '#UntungGila', '#BNPL', '#SenhengApp', '#AeonCredit', '#ChaileaseCredit', '#S-Coin', '#Redeem']
+  <div class="card">
+    <div class="section-title"><i class="fa-solid fa-user"></i> 2. Staff served</div>
+    <div class="helper-text">Staff selection is mandatory before copying comment.</div>
+    <div class="form-grid">
+      <div class="field">
+        <label for="staffSelect">👤 Choose staff</label>
+        <select id="staffSelect">
+          <option value="">Please choose staff</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="staffCodePreview">#️⃣ Auto staff hashtag</label>
+        <input type="text" id="staffCodePreview" value="#StaffCode" readonly />
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="dynamicCard">
+    <div class="section-title"><i class="fa-regular fa-pen-to-square"></i> 3. Transaction details</div>
+    <div id="earnPanel">
+      <div class="form-grid-3">
+        <div class="field"><label>🛍️ Item bought</label><input type="text" id="earnItem" placeholder="e.g., Air fryer, TV, washing machine" autocomplete="off"></div>
+        <div class="field"><label>💰 Item price (RM)</label><div class="input-prefix"><span>RM</span><input type="number" id="earnPrice" step="0.01" min="0" placeholder="0.00"></div></div>
+        <div class="field"><label>⚡ S-Coin cashback %</label><input type="number" id="earnPercent" step="0.1" min="0" placeholder="e.g., 50"></div>
+      </div>
+      <div class="calc-panel" id="earnCalcBox">
+        <div class="calc-chip"><small>Gross cashback</small><strong id="grossCashback">RM0.00</strong></div>
+        <div class="calc-chip"><small>Est. S-Coin value (after 5%)</small><strong id="netCashback">RM0.00</strong></div>
+        <div class="calc-chip"><small>S-Coin points</small><strong id="netPoints">0</strong></div>
+      </div>
+    </div>
+    <div id="redeemPanel" class="hidden">
+      <div class="form-grid">
+        <div class="field"><label>🎁 Item redeemed</label><input type="text" id="redeemItem" placeholder="e.g., Kettle, Blender, Iron"></div>
+        <div class="field"><label>⭐ S-Coin used</label><input type="number" id="redeemPoints" step="1" min="0" placeholder="e.g., 10000"></div>
+      </div>
+      <div class="calc-panel">
+        <div class="calc-chip"><small>S-Coin spent</small><strong id="redeemPointsOut">0</strong></div>
+        <div class="calc-chip"><small>Redemption value (RM)</small><strong id="redeemValueOut">RM0.00</strong></div>
+        <div class="calc-chip"><small>Item redeemed</small><strong id="redeemItemOut">-</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="section-title"><i class="fa-regular fa-message"></i> 4. Positive comment library</div>
+    <div class="helper-text">✨ Comments loaded from scoin_comments.json and automatically filled with your details</div>
+    <div class="status-row">
+      <div class="status-chip" id="jsonStatusChip"><i class="fa-regular fa-hourglass-half"></i> Loading comment templates...</div>
+      <div class="status-chip warn" id="jsonFileHint"><i class="fa-regular fa-folder-open"></i> If browser blocks local JSON, tap Load JSON file</div>
+    </div>
+    <div class="comment-actions">
+      <button class="pill" id="loadJsonBtn"><i class="fa-regular fa-file-lines"></i> Load JSON file</button>
+      <input type="file" id="jsonFileInput" accept=".json,application/json" class="hidden" />
+      <button class="pill" id="showRandomFiveBtn"><i class="fa-solid fa-shuffle"></i> Show 5 fresh comments</button>
+      <button class="pill" id="useRandomSingleBtn"><i class="fa-solid fa-dice-d6"></i> Surprise me (1 comment)</button>
+    </div>
+    <div id="choiceList" class="choice-list"></div>
+    <div class="field" style="margin-top: 6px;">
+      <label><i class="fa-regular fa-keyboard"></i> Custom comment (overrides selection)</label>
+      <textarea id="customComment" rows="2" placeholder="Write your own positive comment if needed ..."></textarea>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="section-title"><i class="fa-regular fa-copy"></i> 5. Final preview &amp; copy</div>
+    <div class="preview-area">
+      <span class="preview-label"><i class="fa-regular fa-eye"></i> READY TO PASTE</span>
+      <div class="preview-text" id="previewText">Fill in details &amp; pick a comment ✨</div>
+    </div>
+    <div class="button-group">
+      <button class="btn-primary" id="copyFinalBtn"><i class="fa-regular fa-copy"></i> Copy comment + hashtags</button>
+      <button class="btn-secondary" id="clearCustomBtn"><i class="fa-solid fa-eraser"></i> Clear custom</button>
+    </div>
+    <div class="info-note">
+      <i class="fa-solid fa-hashtag"></i> Fixed hashtags: #SCoinRedemption #SCoin #SCoinCashback #Cashback + staff tag.<br>
+      Staff code is auto selected from staff dropdown.
+    </div>
+    <div id="testLog" class="test-log">🔍 Self-check: running validation...</div>
+  </div>
+</div>
+
+<div id="copyModal" class="modal-overlay hidden">
+  <div class="modal-card">
+    <div class="modal-icon"><i class="fa-regular fa-clipboard"></i></div>
+    <div class="modal-title">Comment ready</div>
+    <div class="modal-text">Paste into Google Review, then tap Proceed to open Grand Senheng Temerloh map location.</div>
+    <div class="modal-actions">
+      <button class="modal-btn primary" id="modalProceedBtn">Proceed to Maps</button>
+      <button class="modal-btn secondary" id="modalCloseBtn">Close</button>
+    </div>
+  </div>
+</div>
+<div id="globalToast" class="toast-msg">📋 Copied to clipboard</div>
+
+<script>
+  const STAFF_LIST = [
+    { nickname: 'Mus', code: 'SH9861' },
+    { nickname: 'Faris', code: 'SH19800' },
+    { nickname: 'Omar', code: 'SH18556' },
+    { nickname: 'Wan', code: 'SH20201' },
+    { nickname: 'Kim', code: 'SH20420' },
+    { nickname: 'Anisa', code: 'SH20581' },
+    { nickname: 'Eesya', code: 'SH20580' },
+    { nickname: 'Maisarah', code: 'SH16611' }
+  ];
+
+  let commentLibrary = { earn: [], redeem: [] };
+  let currentMode = 'earn';
+  let selectedCommentRaw = '';
+  const googleMapsLink = 'https://maps.app.goo.gl/9WqzfnDskqHWywkC8';
+
+  function safeNum(v, fallback = 0) {
+    if (v === null || v === undefined || v === '') return fallback;
+    const n = Number(v);
+    return Number.isFinite(n) ? n : fallback;
+  }
+
+  function sanitizeText(v, fallback = '') {
+    const text = typeof v === 'string' ? v.trim() : '';
+    return text || fallback;
+  }
+
+  function formatRM(val) {
+    return `RM${safeNum(val, 0).toFixed(2)}`;
+  }
+
+  function formatPoints(p) {
+    return Math.round(safeNum(p, 0)).toLocaleString('en-US');
+  }
+
+  function escapeHtml(str) {
+    return String(str)
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;')
+      .replaceAll("'", '&#039;');
+  }
+
+  function populateStaffOptions() {
+    const select = document.getElementById('staffSelect');
+    select.innerHTML = '<option value="">Please choose staff</option>';
+    STAFF_LIST.forEach((staff) => {
+      const option = document.createElement('option');
+      option.value = staff.code;
+      option.textContent = `${staff.nickname} (${staff.code})`;
+      select.appendChild(option);
+    });
+  }
+
+  function getSelectedStaff() {
+    const code = sanitizeText(document.getElementById('staffSelect').value);
+    return STAFF_LIST.find((staff) => staff.code === code) || null;
+  }
+
+  function updateStaffPreview() {
+    const staff = getSelectedStaff();
+    document.getElementById('staffCodePreview').value = staff ? `#${staff.code}` : '#StaffCode';
+  }
+
+  function getEarn() {
+    const item = sanitizeText(document.getElementById('earnItem').value, 'item ini');
+    const price = safeNum(document.getElementById('earnPrice').value);
+    const percent = safeNum(document.getElementById('earnPercent').value);
+    const gross = price * (percent / 100);
+    const net = gross * 0.95;
+    const points = Math.round(net * 100);
+    return { item, price, percent, gross, net, points };
+  }
+
+  function getRedeem() {
+    const item = sanitizeText(document.getElementById('redeemItem').value, 'item ini');
+    const points = safeNum(document.getElementById('redeemPoints').value, 0);
+    const value = points / 100;
+    return { item, points, value };
+  }
+
+  function fillTemplate(template, modeOverride) {
+    const mode = modeOverride || currentMode;
+    if (mode === 'earn') {
+      const d = getEarn();
+      return template
+        .replaceAll('{item}', d.item)
+        .replaceAll('{price}', formatRM(d.price))
+        .replaceAll('{percent}', d.percent + '%')
+        .replaceAll('{netValue}', formatRM(d.net))
+        .replaceAll('{points}', formatPoints(d.points));
+    }
+    const d = getRedeem();
+    return template
+      .replaceAll('{item}', d.item)
+      .replaceAll('{points}', formatPoints(d.points))
+      .replaceAll('{value}', formatRM(d.value));
+  }
+
+  function getActiveTemplates() {
+    return currentMode === 'earn' ? commentLibrary.earn : commentLibrary.redeem;
+  }
+
+  function setJsonStatus(message, tone = 'normal', icon = 'fa-regular fa-file-lines') {
+    const chip = document.getElementById('jsonStatusChip');
+    chip.className = tone === 'warn' ? 'status-chip warn' : 'status-chip';
+    chip.innerHTML = `<i class="${icon}"></i> ${escapeHtml(message)}`;
+  }
+
+  function validateLibrary(data) {
+    if (!data || typeof data !== 'object') {
+      throw new Error('JSON format is invalid.');
+    }
+    if (!Array.isArray(data.earn) || !Array.isArray(data.redeem)) {
+      throw new Error('JSON must contain earn[] and redeem[] arrays.');
+    }
+    if (!data.earn.length || !data.redeem.length) {
+      throw new Error('Earn and redeem templates cannot be empty.');
+    }
+    return {
+      earn: data.earn.map((x) => String(x || '').trim()).filter(Boolean),
+      redeem: data.redeem.map((x) => String(x || '').trim()).filter(Boolean)
     };
+  }
 
-    // Database of Unique Reviews (20 per category)
-    const REVIEW_TEMPLATES = {
-      STAFF: [
-        "Staff sangat friendly dan membantu penerangan tentang produk.",
-        "Good service! Staff explain details very clearly.",
-        "Layanan terbaik dari staff. Sangat puas hati.",
-        "Staff sangat helpful, tolong angkat barang sampai ke kereta.",
-        "Friendly staff and good product knowledge. Highly recommended!",
-        "Terima kasih staff kerana sabar melayan karenah customer.",
-        "Very professional staff. Smooth buying experience.",
-        "Staff senyum memanjang, rasa dialu-alukan masuk kedai.",
-        "Servis laju dan pantas. Tak perlu tunggu lama.",
-        "Staff helped me compare models so I could choose the best one.",
-        "Terbaik service staff sini. Akan datang lagi.",
-        "Staff was very polite and answered all my questions.",
-        "Suka dengan layanan staff, tak pushy langsung.",
-        "Staff bagi suggestion yang memang ngam dengan bajet saya.",
-        "Excellent customer service from the team. Keep it up!",
-        "Staff sangat informatif tentang warranty dan cara penggunaan.",
-        "Very welcoming atmosphere thanks to the friendly staff.",
-        "Staff cekap buat kerja, sekejap je dah siap process.",
-        "Layanan VIP! Terima kasih staff Grand Senheng Temerloh.",
-        "The staff really went the extra mile to assist me today."
-      ],
-      PROMO: [
-        "Banyak pilihan electrical appliances. Promosi installment pun menarik.",
-        "0% interest installment plan sangat membantu.",
-        "Harga berpatutan dengan free gift yang banyak.",
-        "Suka shopping sini sebab ada easy payment plan.",
-        "Great deals during promotion period! Saved a lot.",
-        "Installment plan approved sangat cepat. Mudah urusan.",
-        "Promosi S-Coin Cashback 100% memang terbaik!",
-        "Bought a fridge with 36 months installment. Very affordable monthly.",
-        "Best promotion in town. Worth the money.",
-        "Senang nak apply installment, dokumen tak rumit.",
-        "Good value for money. Lots of vouchers given.",
-        "Promosi member day memang padu.",
-        "Suka sistem point dia, boleh redeem macam-macam.",
-        "Flexible payment options available here.",
-        "Dapat free extra warranty masa promo. Berbaloi!",
-        "Prices are competitive compared to other shops.",
-        "Senang hati beli sini sebab ada extended warranty promo.",
-        "Promotion 100% S-Coin Cashback memang rare! Grabbed it fast.",
-        "Easy installment with credit card. 0% interest is real.",
-        "Memang tempat terbaik nak cari barang elektrik murah dan berkualiti."
-      ],
-      CASHBACK: [
-        "S-Coin cashback system is awesome! Boleh guna next purchase.",
-        "Dapat banyak S-Coin harini. Next time boleh redeem.",
-        "Suka shopping sini sebab dapat kumpul S-Coin.",
-        "S-Coin cashback up to 100% is crazy good!",
-        "Beli TV dapat S-Coin cashback, memang jimat.",
-        "Redeem S-Coin untuk beli blender, tak payah keluar duit.",
-        "The S-Coin membership benefits are really worth it.",
-        "Cashback S-Coin masuk cepat dalam app.",
-        "Berbaloi jadi member PlusOne, S-Coin cashback masyuk.",
-        "Saved so much using my collected S-Coin.",
-        "S-Coin reward system is the best loyalty program.",
-        "Terkejut tengok S-Coin balance, banyak gila cashback!",
-        "Guna S-Coin untuk tolak harga barang, memang jimat banyak.",
-        "Every purchase gets S-Coin, feels like instant discount.",
-        "S-Coin program makes me want to come back again.",
-        "First time guna S-Coin, senang sangat redeem.",
-        "Cashback S-Coin tinggi, boleh cover beli barang kecil-kecil.",
-        "Plan nak kumpul S-Coin banyak-banyak beli fridge nanti.",
-        "Best thing about Senheng is the S-Coin cashback.",
-        "Rugi kalau tak join member, S-Coin cashback dia padu."
-      ]
-    };
-
-    let state = {
-      staff: '',
-      text: '',
-      selectedUsps: [],
-      randomHashtags: ''
-    };
-
-    /* --- DOM Elements --- */
-    const els = {
-      staffGrid: document.getElementById('staff-grid'),
-      reviewWrapper: document.getElementById('review-wrapper'),
-      comment: document.getElementById('custom-comment'),
-      charCount: document.getElementById('char-count'),
-      uspList: document.getElementById('usp-list'),
-      preview: document.getElementById('live-preview'),
-      copyBtn: document.getElementById('copy-btn'),
-      notification: document.getElementById('notification'),
-      stars: document.querySelectorAll('.star-icon')
-    };
-
-    /* --- Initialization --- */
-    function init() {
-      // Build Staff Grid
-      CONFIG.staff.forEach(name => {
-        const btn = document.createElement('div');
-        btn.className = 'staff-btn';
-        btn.innerHTML = `<i class="fa-solid fa-user"></i> #${name}`;
-        btn.onclick = () => selectStaff(name, btn);
-        els.staffGrid.appendChild(btn);
-      });
-
-      // Build USP Chips
-      CONFIG.usps.forEach((usp, index) => {
-        const label = document.createElement('label');
-        label.className = 'usp-chip';
-        label.innerHTML = `
-          <input type="checkbox" value="${usp}" onchange="updatePreview()">
-          <span class="checkmark">${usp}</span>
-        `;
-        els.uspList.appendChild(label);
-      });
-
-      // Randomize extra hashtags on load
-      state.randomHashtags = getRandomHashtags();
-      
-      // Event Listeners
-      els.comment.addEventListener('input', (e) => {
-        state.text = e.target.value;
-        els.charCount.innerText = state.text.length;
-        updatePreview();
-      });
-
-      els.copyBtn.addEventListener('click', handleCopy);
-
-      // Star Animation
-      els.stars.forEach((star, idx) => {
-        setTimeout(() => {
-          star.classList.add('gold');
-        }, idx * 100 + 500); // Staggered animation
-      });
+  async function loadTemplatesFromFetch() {
+    const response = await fetch(`./scoin_comments.json?v=${Date.now()}`, { cache: 'no-store' });
+    if (!response.ok) {
+      throw new Error(`Unable to load scoin_comments.json (${response.status})`);
     }
+    const data = await response.json();
+    commentLibrary = validateLibrary(data);
+    setJsonStatus(`Loaded ${commentLibrary.earn.length + commentLibrary.redeem.length} templates from scoin_comments.json`, 'normal', 'fa-solid fa-circle-check');
+    generateChoices();
+    refreshPreview();
+    runSoftTests();
+  }
 
-    /* --- Logic --- */
-    function selectStaff(name, btnElement) {
-      // UI Update
-      document.querySelectorAll('.staff-btn').forEach(b => b.classList.remove('active'));
-      btnElement.classList.add('active');
-      
-      // State Update
-      state.staff = `#${name}`;
-      
-      // Reveal Review Section if hidden
-      if (els.reviewWrapper.classList.contains('hidden')) {
-        els.reviewWrapper.classList.remove('hidden');
-        els.reviewWrapper.classList.add('fade-in');
-        
-        // Smooth scroll to review section
-        setTimeout(() => {
-          els.reviewWrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 100);
-      }
-      updatePreview();
-    }
-
-    // UPDATED: Now accepts a category Key and picks a random message
-    function applyTemplate(categoryKey) {
-      const templateList = REVIEW_TEMPLATES[categoryKey];
-      if (!templateList) return;
-
-      // Pick random
-      const randomText = templateList[Math.floor(Math.random() * templateList.length)];
-
-      els.comment.value = randomText;
-      state.text = randomText;
-      els.charCount.innerText = randomText.length;
-      updatePreview();
-      
-      // Flash the textarea to show change
-      els.comment.style.borderColor = varCss('--secondary');
-      setTimeout(() => els.comment.style.borderColor = varCss('--border'), 300);
-    }
-
-    function clearText() {
-      els.comment.value = '';
-      state.text = '';
-      els.charCount.innerText = '0';
-      updatePreview();
-    }
-
-    function getSelectedUSPs() {
-      const checked = Array.from(els.uspList.querySelectorAll('input:checked'));
-      return checked.map(input => input.value);
-    }
-
-    function getRandomHashtags() {
-      // Pick 2 random general hashtags
-      const shuffled = [...CONFIG.hashtags].sort(() => 0.5 - Math.random());
-      return shuffled.slice(0, 2).join(' ');
-    }
-
-    function buildFinalString() {
-      const usps = getSelectedUSPs();
-      let parts = [];
-      
-      // 1. User Comment
-      if (state.text.trim()) parts.push(state.text.trim());
-      
-      // 2. USPs (Bulleted)
-      if (usps.length > 0) {
-        const uspString = usps.join(' • ');
-        // If comment exists, add separator
-        parts.push(state.text.trim() ? `— ${uspString}` : uspString);
-      }
-
-      // 3. Staff Tag
-      if (state.staff) parts.push(state.staff);
-      
-      // 4. Random Hashtags
-      parts.push(state.randomHashtags);
-
-      return parts.join(' ');
-    }
-
-    function updatePreview() {
-      const final = buildFinalString();
-      // If empty, show placeholder
-      if (!final.trim()) {
-        els.preview.style.color = '#CBD5E0';
-        els.preview.innerText = 'Select a staff member and write a review...';
-      } else {
-        els.preview.style.color = '#4A5568';
-        els.preview.innerText = final;
-      }
-    }
-
-    async function handleCopy() {
-      if (!state.staff) {
-        alert("Please select a staff member first!");
-        document.getElementById('step-1').scrollIntoView({ behavior: 'smooth' });
-        return;
-      }
-
-      // Check if text is empty. If so, apply a random template automatically? 
-      // Or just warn. Let's apply a default template if empty to ensure review quality.
-      if (!state.text.trim()) {
-        const confirmDefault = confirm("You haven't written a review yet. Would you like to use a default positive message?");
-        if (confirmDefault) {
-          applyTemplate('STAFF'); // Apply random staff template
-        } else {
-          els.comment.focus();
-          return;
-        }
-      }
-
-      const textToCopy = buildFinalString();
-      
+  function handleJsonFile(file) {
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
       try {
-        // Fallback for better mobile compatibility
-        const textArea = document.createElement("textarea");
-        textArea.value = textToCopy;
-        textArea.style.position = "fixed"; // Avoid scrolling to bottom
-        document.body.appendChild(textArea);
-        textArea.focus();
-        textArea.select();
-        
-        const successful = document.execCommand('copy');
-        document.body.removeChild(textArea);
-        
-        if (successful) {
-          showNotification();
-          setTimeout(() => {
-            window.location.href = CONFIG.reviewUrl;
-          }, 1500); // 1.5s delay before opening link
-        } else {
-          throw new Error('Copy fail');
-        }
-      } catch (err) {
-        alert("Could not auto-copy. Please manually copy the text from the preview box.");
+        const data = JSON.parse(reader.result);
+        commentLibrary = validateLibrary(data);
+        setJsonStatus(`Loaded ${commentLibrary.earn.length + commentLibrary.redeem.length} templates from selected JSON file`, 'normal', 'fa-solid fa-circle-check');
+        generateChoices();
+        refreshPreview();
+        runSoftTests();
+        showToast('✅ JSON templates loaded');
+      } catch (error) {
+        setJsonStatus(error.message || 'Failed to read JSON file.', 'warn', 'fa-solid fa-triangle-exclamation');
+        document.getElementById('testLog').innerHTML = '⚠️ JSON load failed. Please check the file format.';
+        document.getElementById('testLog').className = 'test-log fail';
       }
+    };
+    reader.readAsText(file, 'utf-8');
+  }
+
+  function generateChoices() {
+    const source = [...getActiveTemplates()];
+    const container = document.getElementById('choiceList');
+
+    if (!source.length) {
+      container.innerHTML = '<div class="choice-card">Comment templates not loaded yet.</div>';
+      return;
     }
 
-    function showNotification() {
-      els.notification.classList.add('show');
-      setTimeout(() => els.notification.classList.remove('show'), 3000);
+    const picked = [];
+    while (picked.length < 5 && source.length) {
+      const idx = Math.floor(Math.random() * source.length);
+      picked.push(fillTemplate(source.splice(idx, 1)[0], currentMode));
     }
 
-    function varCss(name) {
-      return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+    container.innerHTML = picked.map((text) => {
+      const selectedClass = selectedCommentRaw === sanitizeText(text) ? ' selected' : '';
+      return `<div class="choice-card${selectedClass}">${escapeHtml(text)}</div>`;
+    }).join('');
+
+    document.querySelectorAll('.choice-card').forEach((el, idx) => {
+      el.addEventListener('click', () => selectComment(picked[idx]));
+    });
+  }
+
+  function selectComment(text) {
+    selectedCommentRaw = sanitizeText(text);
+    refreshPreview();
+    generateChoices();
+  }
+
+  function useRandomSingle() {
+    const arr = getActiveTemplates();
+    if (!arr.length) {
+      alert('Comment templates are not loaded yet.');
+      return;
     }
+    const randomRaw = fillTemplate(arr[Math.floor(Math.random() * arr.length)], currentMode);
+    selectComment(randomRaw);
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  }
 
-    // Run
-    init();
+  function buildFinalText() {
+    const custom = sanitizeText(document.getElementById('customComment').value);
+    const mainText = custom || selectedCommentRaw;
+    if (!mainText) return '⚠️ Please select a comment or write a custom one.';
+    const staff = getSelectedStaff();
+    if (!staff) return '⚠️ Please choose staff first.';
+    return `${mainText}\n\n#SCoinRedemption #SCoin #SCoinCashback #Cashback #${staff.code}`;
+  }
 
-  </script>
+  function updateCalcBoxes() {
+    const earn = getEarn();
+    document.getElementById('grossCashback').innerText = formatRM(earn.gross);
+    document.getElementById('netCashback').innerText = formatRM(earn.net);
+    document.getElementById('netPoints').innerText = formatPoints(earn.points);
+
+    const redeem = getRedeem();
+    document.getElementById('redeemPointsOut').innerText = formatPoints(redeem.points);
+    document.getElementById('redeemValueOut').innerText = formatRM(redeem.value);
+    document.getElementById('redeemItemOut').innerText = redeem.item;
+  }
+
+  function refreshPreview() {
+    updateStaffPreview();
+    document.getElementById('previewText').innerText = buildFinalText();
+    updateCalcBoxes();
+  }
+
+  function setMode(mode) {
+    currentMode = mode === 'redeem' ? 'redeem' : 'earn';
+    const earnBtnDiv = document.getElementById('modeEarnTrigger');
+    const redeemDiv = document.getElementById('modeRedeemTrigger');
+    if (currentMode === 'earn') {
+      earnBtnDiv.classList.add('active');
+      redeemDiv.classList.remove('active');
+      document.getElementById('earnPanel').classList.remove('hidden');
+      document.getElementById('redeemPanel').classList.add('hidden');
+    } else {
+      redeemDiv.classList.add('active');
+      earnBtnDiv.classList.remove('active');
+      document.getElementById('earnPanel').classList.add('hidden');
+      document.getElementById('redeemPanel').classList.remove('hidden');
+    }
+    selectedCommentRaw = '';
+    generateChoices();
+    refreshPreview();
+  }
+
+  function clearCustom() {
+    document.getElementById('customComment').value = '';
+    refreshPreview();
+  }
+
+  async function copyFinal() {
+    const text = buildFinalText();
+    if (text.startsWith('⚠️ Please choose staff')) {
+      alert('Please choose staff first.');
+      document.getElementById('staffSelect').focus();
+      return;
+    }
+    if (text.startsWith('⚠️ Please select a comment')) {
+      alert('Please choose a comment or write something first.');
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(text);
+      showToast('📋 Copied to clipboard');
+      showCopyModal();
+    } catch (e) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      ta.remove();
+      showToast('📋 Copied to clipboard');
+      showCopyModal();
+    }
+  }
+
+  function showToast(message = '📋 Copied to clipboard') {
+    const t = document.getElementById('globalToast');
+    t.textContent = message;
+    t.classList.add('show');
+    clearTimeout(window.__toastTimer);
+    window.__toastTimer = setTimeout(() => t.classList.remove('show'), 2000);
+  }
+
+  function showCopyModal() {
+    document.getElementById('copyModal').classList.remove('hidden');
+  }
+
+  function closeModal() {
+    document.getElementById('copyModal').classList.add('hidden');
+  }
+
+  function proceedMap() {
+    closeModal();
+    window.open(googleMapsLink, '_blank');
+  }
+
+  function runSoftTests() {
+    try {
+      const logDiv = document.getElementById('testLog');
+      let testsPassed = true;
+      if (formatRM(99.9) !== 'RM99.90') testsPassed = false;
+      if (formatPoints(5000) !== '5,000') testsPassed = false;
+      if (!Array.isArray(commentLibrary.earn) || !commentLibrary.earn.length) testsPassed = false;
+      if (!Array.isArray(commentLibrary.redeem) || !commentLibrary.redeem.length) testsPassed = false;
+
+      const oldStaff = document.getElementById('staffSelect').value;
+      document.getElementById('staffSelect').value = 'SH9861';
+      const previewCheck = buildFinalText();
+      if (!previewCheck.includes('#SH9861') && !previewCheck.startsWith('⚠️')) testsPassed = false;
+      document.getElementById('staffSelect').value = oldStaff;
+
+      if (testsPassed) {
+        logDiv.innerHTML = `✅ All systems ready • ${commentLibrary.earn.length + commentLibrary.redeem.length} JSON comments • Cashback calculator active • Staff selection enabled`;
+        logDiv.className = 'test-log pass';
+      } else {
+        logDiv.innerHTML = '⚠️ Minor check inconsistency, please verify inputs';
+        logDiv.className = 'test-log fail';
+      }
+    } catch (e) {
+      document.getElementById('testLog').innerHTML = '⚡ Ready';
+    }
+  }
+
+  async function initTemplates() {
+    setJsonStatus('Loading comment templates...', 'normal', 'fa-regular fa-hourglass-half');
+    try {
+      await loadTemplatesFromFetch();
+    } catch (error) {
+      const isLocalFile = window.location.protocol === 'file:';
+      if (isLocalFile) {
+        setJsonStatus('Browser blocked local fetch. Tap "Load JSON file" or open this HTML through a local server.', 'warn', 'fa-solid fa-triangle-exclamation');
+      } else {
+        setJsonStatus(error.message || 'Failed to load scoin_comments.json', 'warn', 'fa-solid fa-triangle-exclamation');
+      }
+      document.getElementById('testLog').innerHTML = '⚠️ JSON not auto-loaded yet. The page still works after manual JSON import.';
+      document.getElementById('testLog').className = 'test-log fail';
+      generateChoices();
+      refreshPreview();
+    }
+  }
+
+  document.getElementById('modeEarnTrigger').addEventListener('click', () => setMode('earn'));
+  document.getElementById('modeRedeemTrigger').addEventListener('click', () => setMode('redeem'));
+  document.getElementById('showRandomFiveBtn').addEventListener('click', generateChoices);
+  document.getElementById('useRandomSingleBtn').addEventListener('click', useRandomSingle);
+  document.getElementById('copyFinalBtn').addEventListener('click', copyFinal);
+  document.getElementById('clearCustomBtn').addEventListener('click', clearCustom);
+  document.getElementById('modalProceedBtn').addEventListener('click', proceedMap);
+  document.getElementById('modalCloseBtn').addEventListener('click', closeModal);
+  document.getElementById('staffSelect').addEventListener('change', refreshPreview);
+  document.getElementById('earnItem').addEventListener('input', refreshPreview);
+  document.getElementById('earnPrice').addEventListener('input', refreshPreview);
+  document.getElementById('earnPercent').addEventListener('input', refreshPreview);
+  document.getElementById('redeemItem').addEventListener('input', refreshPreview);
+  document.getElementById('redeemPoints').addEventListener('input', refreshPreview);
+  document.getElementById('customComment').addEventListener('input', refreshPreview);
+  document.getElementById('loadJsonBtn').addEventListener('click', () => document.getElementById('jsonFileInput').click());
+  document.getElementById('jsonFileInput').addEventListener('change', (event) => handleJsonFile(event.target.files[0]));
+
+  populateStaffOptions();
+  setMode('earn');
+  refreshPreview();
+  initTemplates();
+</script>
 </body>
 </html>
-
