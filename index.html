@@ -1,207 +1,155 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ms">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>S·Coin | Smart Comment Builder</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Grand Senheng Temerloh Review Comment Helper</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
-
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html, body { margin: 0; padding: 0; }
     body {
-      background: #f4f7fc;
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-      color: #1a2c3e;
-      line-height: 1.4;
-      padding-bottom: 48px;
-    }
-
-    .app-container {
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 0 18px;
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #f4f7fb;
+      color: #183247;
+      line-height: 1.45;
+      padding-bottom: 40px;
     }
 
     .hero {
-      background: linear-gradient(125deg, #1f5e7e, #0f3b52);
-      color: white;
-      border-radius: 0 0 32px 32px;
-      padding: 28px 20px 68px;
-      margin-bottom: -36px;
-      text-align: center;
-      box-shadow: 0 12px 24px -12px rgba(0,0,0,0.2);
+      background: linear-gradient(135deg, #0d4663, #1f6d8f);
+      color: #fff;
+      padding: 24px 18px 72px;
+      border-radius: 0 0 28px 28px;
+      box-shadow: 0 10px 24px rgba(13, 70, 99, 0.22);
+    }
+
+    .hero-inner {
+      max-width: 760px;
+      margin: 0 auto;
     }
 
     .hero h1 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      letter-spacing: -0.3px;
+      margin: 0 0 10px;
+      font-size: 1.5rem;
+      font-weight: 800;
+      line-height: 1.2;
       display: flex;
       align-items: center;
-      justify-content: center;
       gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .hero h1 i {
-      font-size: 1.7rem;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
     }
 
     .hero p {
+      margin: 0;
       font-size: 0.95rem;
-      opacity: 0.88;
-      font-weight: 400;
-      max-width: 85%;
-      margin: 8px auto 0;
+      opacity: 0.95;
+    }
+
+    .hero-note {
+      margin-top: 14px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 18px;
+      padding: 12px 14px;
+      font-size: 0.84rem;
+      line-height: 1.5;
+    }
+
+    .wrap {
+      max-width: 760px;
+      margin: -40px auto 0;
+      padding: 0 14px;
     }
 
     .card {
-      background: #ffffff;
-      border-radius: 28px;
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0,0,0,0.01);
-      padding: 20px 18px;
-      margin-bottom: 20px;
-      transition: transform 0.1s ease;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 12px 28px rgba(19, 50, 71, 0.07);
+      padding: 18px;
+      margin-bottom: 16px;
     }
 
-    .section-title {
+    .title {
       display: flex;
       align-items: center;
       gap: 10px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: #1f5e7e;
-      margin-bottom: 14px;
-      border-left: 4px solid #ffae5a;
-      padding-left: 14px;
-    }
-
-    .section-title i {
-      color: #ff9f3d;
-      font-size: 1.2rem;
-    }
-
-    .helper-text {
-      color: #5b6f82;
-      font-size: 0.85rem;
-      margin: -4px 0 16px 12px;
-    }
-
-    .mode-switch {
-      display: flex;
-      flex-direction: row;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .mode-option {
-      flex: 1;
-      background: white;
-      border: 2px solid #e2e9f0;
-      border-radius: 24px;
-      padding: 16px 12px;
-      cursor: pointer;
-      transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-      text-align: left;
-    }
-
-    .mode-option.active {
-      border-color: #1f5e7e;
-      background: #eff7fc;
-      box-shadow: 0 6px 14px rgba(31,94,126,0.12);
-    }
-
-    .mode-option .mode-icon {
-      font-size: 1.6rem;
-      margin-bottom: 8px;
-      color: #ffae5a;
-    }
-
-    .mode-option h3 {
       font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 6px;
+      font-weight: 800;
+      color: #15506f;
+      margin-bottom: 14px;
     }
 
-    .mode-option p {
-      font-size: 0.8rem;
-      color: #5f7f9c;
-      line-height: 1.35;
+    .subtitle {
+      font-size: 0.84rem;
+      color: #5e7789;
+      margin: -4px 0 14px;
     }
 
-    .form-grid {
+    .mode-grid,
+    .comments-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      margin-bottom: 6px;
+      gap: 12px;
     }
 
-    .form-grid-3 {
+    .mode-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .mode-btn {
+      border: 2px solid #dfeaf1;
+      background: #fff;
+      border-radius: 20px;
+      padding: 16px;
+      text-align: left;
+      cursor: pointer;
+      transition: .18s ease;
+    }
+
+    .mode-btn.active {
+      border-color: #1f6d8f;
+      background: #eff8fc;
+      box-shadow: 0 8px 20px rgba(31,109,143,0.12);
+    }
+
+    .mode-btn strong {
+      display: block;
+      font-size: 0.98rem;
+      margin-bottom: 6px;
+      color: #183247;
+    }
+
+    .mode-btn span {
+      display: block;
+      font-size: 0.82rem;
+      color: #678095;
+    }
+
+    .grid-2,
+    .grid-3 {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-bottom: 6px;
+      gap: 12px;
     }
 
-    @media (max-width: 700px) {
-      .form-grid,
-      .form-grid-3 {
-        grid-template-columns: 1fr;
-        gap: 14px;
-      }
-
-      .app-container {
-        padding: 0 14px;
-      }
-
-      .card {
-        padding: 18px 16px;
-      }
-
-      .mode-option {
-        padding: 14px 10px;
-      }
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
 
     .field label {
-      font-weight: 600;
-      font-size: 0.85rem;
-      letter-spacing: -0.2px;
-      color: #2c4b66;
+      display: block;
+      font-size: 0.84rem;
+      font-weight: 700;
+      margin-bottom: 7px;
+      color: #234860;
     }
 
     .field input,
-    .field textarea,
-    .field select {
-      border: 2px solid #e2e9f0;
-      border-radius: 20px;
-      padding: 14px 16px;
-      font-family: inherit;
-      font-size: 0.95rem;
-      background: #fff;
-      transition: 0.2s;
+    .field select,
+    .field textarea {
       width: 100%;
-    }
-
-    .field input:focus,
-    .field textarea:focus,
-    .field select:focus {
-      outline: none;
-      border-color: #1f5e7e;
-      box-shadow: 0 0 0 3px rgba(31,94,126,0.2);
+      border: 2px solid #e3ebf1;
+      border-radius: 18px;
+      padding: 14px 14px;
+      font: inherit;
+      background: #fff;
+      color: #183247;
     }
 
     .field textarea {
@@ -209,836 +157,704 @@
       resize: vertical;
     }
 
-    .field input[readonly] {
-      background: #f8fbfe;
-      color: #31526a;
-      font-weight: 700;
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      outline: none;
+      border-color: #1f6d8f;
+      box-shadow: 0 0 0 3px rgba(31,109,143,0.14);
     }
 
-    .input-prefix {
+    .prefix {
       position: relative;
     }
 
-    .input-prefix span {
+    .prefix span {
       position: absolute;
-      left: 18px;
+      left: 14px;
       top: 50%;
       transform: translateY(-50%);
-      font-weight: 600;
-      color: #5f7f9c;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #617d91;
     }
 
-    .input-prefix input {
-      padding-left: 44px;
+    .prefix input { padding-left: 40px; }
+
+    .chips {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 14px;
     }
 
-    .calc-panel {
-      background: #fefaf0;
-      border-radius: 24px;
-      padding: 14px 18px;
-      margin-top: 18px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      justify-content: space-between;
-      border: 1px solid #ffdfb3;
+    .chip {
+      background: #fff8eb;
+      border: 1px solid #ffe0aa;
+      border-radius: 18px;
+      padding: 12px 14px;
     }
 
-    .calc-chip {
-      flex: 1;
-      min-width: 100px;
-    }
-
-    .calc-chip small {
-      font-size: 0.7rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: #aa8b5c;
-    }
-
-    .calc-chip strong {
+    .chip small {
       display: block;
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: #1f5e7e;
-      margin-top: 4px;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      color: #a6761f;
+      margin-bottom: 6px;
     }
 
-    .comment-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin: 12px 0 16px;
+    .chip strong {
+      display: block;
+      font-size: 1rem;
+      color: #15506f;
     }
 
-    .pill {
-      background: #eef3fa;
-      border: none;
-      border-radius: 60px;
-      padding: 12px 22px;
-      font-weight: 600;
-      font-size: 0.85rem;
-      font-family: inherit;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .pill i {
-      font-size: 0.9rem;
-    }
-
-    .pill:active { transform: scale(0.97); }
-    .pill:hover { background: #e2eaf3; }
-
-    .choice-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin: 12px 0 8px;
-    }
-
-    .choice-card {
-      background: #ffffff;
-      border: 1.5px solid #eef2f7;
-      border-radius: 24px;
-      padding: 16px 18px;
-      text-align: left;
-      font-size: 0.9rem;
-      line-height: 1.5;
-      cursor: pointer;
-      transition: all 0.15s;
-      font-weight: 500;
-      color: #1e2f3c;
-    }
-
-    .choice-card:hover {
-      border-color: #ffae5a;
-      background: #fffaf2;
-      transform: translateY(-1px);
-    }
-
-    .choice-card.selected {
-      border-color: #1f5e7e;
-      background: #eff7fc;
-      box-shadow: 0 6px 14px rgba(31,94,126,0.12);
-    }
-
-    .status-row {
+    .action-row {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 10px;
-    }
-
-    .status-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: #f3f7fb;
-      color: #31526a;
-      font-size: 0.82rem;
-      font-weight: 600;
-    }
-
-    .status-chip.warn {
-      background: #fff6e8;
-      color: #8a5a12;
-    }
-
-    .preview-area {
-      background: #f8fbfe;
-      border-left: 5px solid #ffae5a;
-      border-radius: 20px;
-      padding: 18px;
-      margin: 12px 0 8px;
-    }
-
-    .preview-label {
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #6f8eaa;
       margin-bottom: 12px;
-      display: block;
     }
 
-    .preview-text {
+    .soft-btn,
+    .primary-btn,
+    .secondary-btn {
+      border: none;
+      border-radius: 999px;
+      font: inherit;
+      cursor: pointer;
+      transition: .18s ease;
+    }
+
+    .soft-btn {
+      background: #eef5fa;
+      color: #234860;
+      padding: 12px 16px;
+      font-weight: 700;
+    }
+
+    .soft-btn:hover { background: #e2edf5; }
+
+    .comment-card {
+      border: 1.5px solid #e8eff4;
+      background: #fff;
+      border-radius: 20px;
+      padding: 14px 15px;
+      font-size: 0.92rem;
+      line-height: 1.55;
+      cursor: pointer;
+      transition: .16s ease;
+    }
+
+    .comment-card:hover {
+      border-color: #ffc66d;
+      background: #fffaf2;
+    }
+
+    .comment-card.selected {
+      border-color: #1f6d8f;
+      background: #eff8fc;
+      box-shadow: 0 8px 20px rgba(31,109,143,0.10);
+    }
+
+    .preview {
+      background: #f8fbfd;
+      border-left: 5px solid #ffb64d;
+      border-radius: 18px;
+      padding: 16px;
+      white-space: pre-wrap;
       font-size: 0.95rem;
       line-height: 1.6;
-      white-space: pre-wrap;
-      color: #1f3e54;
+      color: #1c3c52;
+      min-height: 120px;
     }
 
-    .button-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 20px;
+    .btn-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
     }
 
-    .btn-primary {
-      background: #1f5e7e;
-      border: none;
-      border-radius: 40px;
-      padding: 14px 24px;
+    .primary-btn {
+      background: #155c7d;
+      color: #fff;
+      padding: 14px 16px;
+      font-weight: 800;
+      box-shadow: 0 8px 18px rgba(21,92,125,0.22);
+    }
+
+    .secondary-btn {
+      background: #eef5fa;
+      color: #234860;
+      padding: 14px 16px;
       font-weight: 700;
-      font-size: 0.95rem;
-      font-family: inherit;
-      color: white;
-      flex: 1;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      cursor: pointer;
-      transition: 0.2s;
-      box-shadow: 0 6px 12px rgba(31,94,126,0.25);
     }
 
-    .btn-primary:active { transform: scale(0.97); background: #0f445f; }
-
-    .btn-secondary {
-      background: #eef3fa;
-      border: none;
-      border-radius: 40px;
-      padding: 14px 20px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      font-family: inherit;
-      cursor: pointer;
-      transition: 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .btn-secondary:active { background: #e2eaf3; }
-
-    .info-note {
-      font-size: 0.75rem;
-      color: #7089a3;
-      margin-top: 16px;
-      background: #f3f7fb;
-      padding: 12px 16px;
-      border-radius: 20px;
-      line-height: 1.45;
-    }
-
-    .test-log {
-      margin-top: 18px;
-      padding: 12px;
-      border-radius: 18px;
-      font-size: 0.75rem;
-      font-family: monospace;
-      background: #f1f5f9;
-      border: 1px solid #dfe8ef;
-      white-space: pre-wrap;
-    }
-
-    .test-log.pass { background: #e6f6ec; border-color: #b6dfc0; color: #176b34; }
-    .test-log.fail { background: #ffeaea; border-color: #fbc5c5; color: #b91c1c; }
-
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(4px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 2000;
-      padding: 20px;
-    }
-
-    .modal-card {
-      max-width: 400px;
-      width: 100%;
-      background: white;
-      border-radius: 36px;
-      padding: 28px 24px;
-      text-align: center;
-      animation: fadeUp 0.2s ease;
-      box-shadow: 0 30px 40px rgba(0,0,0,0.25);
-    }
-
-    .modal-icon {
-      background: #eef4fc;
-      width: 64px;
-      height: 64px;
-      border-radius: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 16px;
-      font-size: 1.8rem;
-      color: #1f5e7e;
-    }
-
-    .modal-title {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .modal-text {
-      color: #4b6a82;
-      margin-bottom: 24px;
+    .hint {
+      margin-top: 12px;
+      font-size: 0.8rem;
+      color: #6a8294;
       line-height: 1.5;
     }
 
-    .modal-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .modal-btn {
-      flex: 1;
-      border: none;
-      border-radius: 60px;
-      padding: 12px;
-      font-weight: 700;
-      font-family: inherit;
-      cursor: pointer;
-    }
-
-    .modal-btn.primary {
-      background: #1f5e7e;
-      color: white;
-    }
-
-    .modal-btn.secondary {
-      background: #eef3fa;
-      color: #2c4b66;
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    .toast-msg {
+    .toast {
       position: fixed;
-      bottom: 20px;
       left: 50%;
+      bottom: 18px;
       transform: translateX(-50%) translateY(100px);
-      background: #1e2f3c;
-      color: white;
-      padding: 12px 22px;
-      border-radius: 60px;
-      font-size: 0.85rem;
-      z-index: 999;
-      transition: transform 0.25s ease, opacity 0.2s;
+      background: #173246;
+      color: #fff;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-size: 0.86rem;
       opacity: 0;
       pointer-events: none;
+      transition: .22s ease;
+      z-index: 9999;
       white-space: nowrap;
     }
 
-    .toast-msg.show {
-      transform: translateX(-50%) translateY(0);
+    .toast.show {
       opacity: 1;
+      transform: translateX(-50%) translateY(0);
     }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; transform: translateY(0); }
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.46);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      z-index: 9998;
+    }
+
+    .modal.show { display: flex; }
+
+    .modal-box {
+      width: 100%;
+      max-width: 390px;
+      background: #fff;
+      border-radius: 28px;
+      padding: 24px 20px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.22);
+    }
+
+    .modal-box .icon {
+      width: 62px;
+      height: 62px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #eef7fb;
+      color: #155c7d;
+      font-size: 1.6rem;
+    }
+
+    .modal-box h3 {
+      margin: 0 0 8px;
+      font-size: 1.25rem;
+      color: #183247;
+    }
+
+    .modal-box p {
+      margin: 0 0 18px;
+      color: #5f788c;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    .modal-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .hidden { display: none !important; }
+
+    @media (max-width: 640px) {
+      .hero { padding: 22px 15px 68px; }
+      .hero h1 { font-size: 1.3rem; }
+      .wrap { padding: 0 12px; }
+      .card { padding: 16px; border-radius: 22px; }
+      .mode-grid,
+      .grid-2,
+      .grid-3,
+      .chips,
+      .btn-row,
+      .modal-actions {
+        grid-template-columns: 1fr;
+      }
+      .soft-btn,
+      .primary-btn,
+      .secondary-btn { width: 100%; }
+      .toast {
+        width: calc(100% - 24px);
+        text-align: center;
+        white-space: normal;
+      }
     }
   </style>
 </head>
 <body>
-<div class="hero">
-  <h1><i class="fa-solid fa-coins"></i> S·Coin Comment Studio</h1>
-  <p>Smart positive comments • Auto cashback calc • Staff code ready</p>
-</div>
-
-<div class="app-container">
-  <div class="card">
-    <div class="section-title"><i class="fa-regular fa-compass"></i> 1. Transaction type</div>
-    <div class="mode-switch">
-      <div class="mode-option active" data-mode="earn" id="modeEarnTrigger">
-        <div class="mode-icon"><i class="fa-solid fa-chart-line"></i></div>
-        <h3>💰 Buy &amp; Earn S-Coin</h3>
-        <p>Customer bought item and received cashback as S-Coin</p>
-      </div>
-      <div class="mode-option" data-mode="redeem" id="modeRedeemTrigger">
-        <div class="mode-icon"><i class="fa-solid fa-ticket-alt"></i></div>
-        <h3>🎁 Redeem with S-Coin</h3>
-        <p>Customer used existing S-Coin to redeem item</p>
+  <div class="hero">
+    <div class="hero-inner">
+      <h1><i class="fa-solid fa-star"></i> Grand Senheng Temerloh Review Helper</h1>
+      <p>Pilih komen terbaik, copy, then tampal ke Google Review.</p>
+      <div class="hero-note">
+        Komentar yang paling impactful berpeluang menang <strong>RM1,000 cash from Senheng</strong>. <strong>T&amp;C apply</strong>. Pemenang bulanan akan dipilih di peringkat <strong>nationwide</strong>.
       </div>
     </div>
   </div>
 
-  <div class="card">
-    <div class="section-title"><i class="fa-solid fa-user"></i> 2. Staff served</div>
-    <div class="helper-text">Staff selection is mandatory before copying comment.</div>
-    <div class="form-grid">
-      <div class="field">
-        <label for="staffSelect">👤 Choose staff</label>
-        <select id="staffSelect">
-          <option value="">Please choose staff</option>
-        </select>
+  <div class="wrap">
+    <div class="card">
+      <div class="title"><i class="fa-solid fa-layer-group"></i> Jenis transaksi</div>
+      <div class="mode-grid">
+        <button class="mode-btn active" id="earnModeBtn" type="button">
+          <strong>💰 Beli & dapat S-Coin</strong>
+          <span>Beli barang dan terima S-Coin cashback</span>
+        </button>
+        <button class="mode-btn" id="redeemModeBtn" type="button">
+          <strong>🎁 Redeem guna S-Coin</strong>
+          <span>Guna S-Coin sedia ada untuk tebus barang</span>
+        </button>
       </div>
-      <div class="field">
-        <label for="staffCodePreview">#️⃣ Auto staff hashtag</label>
-        <input type="text" id="staffCodePreview" value="#StaffCode" readonly />
+    </div>
+
+    <div class="card">
+      <div class="title"><i class="fa-solid fa-user"></i> Pilih staf yang serve</div>
+      <div class="grid-2">
+        <div class="field">
+          <label for="staffSelect">Nama staf</label>
+          <select id="staffSelect">
+            <option value="">Sila pilih staf</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="staffCodePreview">Hashtag staf</label>
+          <input id="staffCodePreview" type="text" value="#StaffCode" readonly />
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="earnPanel">
+      <div class="title"><i class="fa-solid fa-cart-shopping"></i> Maklumat pembelian</div>
+      <div class="grid-3">
+        <div class="field">
+          <label for="earnItem">Barang dibeli</label>
+          <input id="earnItem" type="text" placeholder="Contoh: TV, air fryer, washing machine" />
+        </div>
+        <div class="field">
+          <label for="earnPrice">Harga barang</label>
+          <div class="prefix">
+            <span>RM</span>
+            <input id="earnPrice" type="number" min="0" step="0.01" placeholder="0.00" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="earnPercent">S-Coin cashback %</label>
+          <input id="earnPercent" type="number" min="0" step="0.1" placeholder="Contoh: 50" />
+        </div>
+      </div>
+      <div class="chips">
+        <div class="chip">
+          <small>Cashback kasar</small>
+          <strong id="grossCashback">RM0.00</strong>
+        </div>
+        <div class="chip">
+          <small>Nilai S-Coin</small>
+          <strong id="netCashback">RM0.00</strong>
+        </div>
+        <div class="chip">
+          <small>S-Coin points</small>
+          <strong id="netPoints">0</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="card hidden" id="redeemPanel">
+      <div class="title"><i class="fa-solid fa-gift"></i> Maklumat redeem</div>
+      <div class="grid-2">
+        <div class="field">
+          <label for="redeemItem">Barang ditebus</label>
+          <input id="redeemItem" type="text" placeholder="Contoh: Kettle, blender, iron" />
+        </div>
+        <div class="field">
+          <label for="redeemPoints">S-Coin digunakan</label>
+          <input id="redeemPoints" type="number" min="0" step="1" placeholder="Contoh: 10000" />
+        </div>
+      </div>
+      <div class="chips">
+        <div class="chip">
+          <small>S-Coin spent</small>
+          <strong id="redeemPointsOut">0</strong>
+        </div>
+        <div class="chip">
+          <small>Nilai redeem</small>
+          <strong id="redeemValueOut">RM0.00</strong>
+        </div>
+        <div class="chip">
+          <small>Item</small>
+          <strong id="redeemItemOut">-</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="title"><i class="fa-regular fa-message"></i> Pilih komen</div>
+      <div class="subtitle">Tap mana-mana komen yang nampak paling natural dan paling kuat.</div>
+      <div class="action-row">
+        <button class="soft-btn" id="refreshCommentsBtn" type="button"><i class="fa-solid fa-shuffle"></i> Tukar 5 komen baru</button>
+        <button class="soft-btn" id="randomCommentBtn" type="button"><i class="fa-solid fa-dice"></i> Pilih 1 random</button>
+      </div>
+      <div class="comments-grid" id="choiceList"></div>
+      <div class="field" style="margin-top:14px;">
+        <label for="customComment">Atau tulis komen sendiri</label>
+        <textarea id="customComment" placeholder="Kalau nak ubah ayat sendiri, tulis dekat sini..."></textarea>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="title"><i class="fa-regular fa-eye"></i> Preview akhir</div>
+      <div class="preview" id="previewText">Sila isi maklumat dan pilih komen.</div>
+      <div class="btn-row">
+        <button class="primary-btn" id="copyBtn" type="button"><i class="fa-regular fa-copy"></i> Copy komen</button>
+        <button class="secondary-btn" id="clearCustomBtn" type="button"><i class="fa-solid fa-eraser"></i> Clear custom</button>
+      </div>
+      <div class="hint">
+        Hashtag tetap: #SCoinRedemption #SCoin #SCoinCashback #Cashback + hashtag staff.
       </div>
     </div>
   </div>
 
-  <div class="card" id="dynamicCard">
-    <div class="section-title"><i class="fa-regular fa-pen-to-square"></i> 3. Transaction details</div>
-    <div id="earnPanel">
-      <div class="form-grid-3">
-        <div class="field"><label>🛍️ Item bought</label><input type="text" id="earnItem" placeholder="e.g., Air fryer, TV, washing machine" autocomplete="off"></div>
-        <div class="field"><label>💰 Item price (RM)</label><div class="input-prefix"><span>RM</span><input type="number" id="earnPrice" step="0.01" min="0" placeholder="0.00"></div></div>
-        <div class="field"><label>⚡ S-Coin cashback %</label><input type="number" id="earnPercent" step="0.1" min="0" placeholder="e.g., 50"></div>
-      </div>
-      <div class="calc-panel" id="earnCalcBox">
-        <div class="calc-chip"><small>Gross cashback</small><strong id="grossCashback">RM0.00</strong></div>
-        <div class="calc-chip"><small>Est. S-Coin value (after 5%)</small><strong id="netCashback">RM0.00</strong></div>
-        <div class="calc-chip"><small>S-Coin points</small><strong id="netPoints">0</strong></div>
-      </div>
-    </div>
-    <div id="redeemPanel" class="hidden">
-      <div class="form-grid">
-        <div class="field"><label>🎁 Item redeemed</label><input type="text" id="redeemItem" placeholder="e.g., Kettle, Blender, Iron"></div>
-        <div class="field"><label>⭐ S-Coin used</label><input type="number" id="redeemPoints" step="1" min="0" placeholder="e.g., 10000"></div>
-      </div>
-      <div class="calc-panel">
-        <div class="calc-chip"><small>S-Coin spent</small><strong id="redeemPointsOut">0</strong></div>
-        <div class="calc-chip"><small>Redemption value (RM)</small><strong id="redeemValueOut">RM0.00</strong></div>
-        <div class="calc-chip"><small>Item redeemed</small><strong id="redeemItemOut">-</strong></div>
+  <div class="modal" id="copyModal">
+    <div class="modal-box">
+      <div class="icon"><i class="fa-regular fa-clipboard"></i></div>
+      <h3>Komen dah siap copy</h3>
+      <p>Tampal komen ke Google Review, lepas tu tekan Proceed untuk buka lokasi Grand Senheng Temerloh.</p>
+      <div class="modal-actions">
+        <button class="primary-btn" id="proceedBtn" type="button">Proceed</button>
+        <button class="secondary-btn" id="closeModalBtn" type="button">Tutup</button>
       </div>
     </div>
   </div>
 
-  <div class="card">
-    <div class="section-title"><i class="fa-regular fa-message"></i> 4. Positive comment library</div>
-    <div class="helper-text">✨ Comments loaded from scoin_comments.json and automatically filled with your details</div>
-    <div class="status-row">
-      <div class="status-chip" id="jsonStatusChip"><i class="fa-regular fa-hourglass-half"></i> Loading comment templates...</div>
-      <div class="status-chip warn" id="jsonFileHint"><i class="fa-regular fa-folder-open"></i> If browser blocks local JSON, tap Load JSON file</div>
-    </div>
-    <div class="comment-actions">
-      <button class="pill" id="loadJsonBtn"><i class="fa-regular fa-file-lines"></i> Load JSON file</button>
-      <input type="file" id="jsonFileInput" accept=".json,application/json" class="hidden" />
-      <button class="pill" id="showRandomFiveBtn"><i class="fa-solid fa-shuffle"></i> Show 5 fresh comments</button>
-      <button class="pill" id="useRandomSingleBtn"><i class="fa-solid fa-dice-d6"></i> Surprise me (1 comment)</button>
-    </div>
-    <div id="choiceList" class="choice-list"></div>
-    <div class="field" style="margin-top: 6px;">
-      <label><i class="fa-regular fa-keyboard"></i> Custom comment (overrides selection)</label>
-      <textarea id="customComment" rows="2" placeholder="Write your own positive comment if needed ..."></textarea>
-    </div>
-  </div>
+  <div class="toast" id="toast">Copied to clipboard</div>
 
-  <div class="card">
-    <div class="section-title"><i class="fa-regular fa-copy"></i> 5. Final preview &amp; copy</div>
-    <div class="preview-area">
-      <span class="preview-label"><i class="fa-regular fa-eye"></i> READY TO PASTE</span>
-      <div class="preview-text" id="previewText">Fill in details &amp; pick a comment ✨</div>
-    </div>
-    <div class="button-group">
-      <button class="btn-primary" id="copyFinalBtn"><i class="fa-regular fa-copy"></i> Copy comment + hashtags</button>
-      <button class="btn-secondary" id="clearCustomBtn"><i class="fa-solid fa-eraser"></i> Clear custom</button>
-    </div>
-    <div class="info-note">
-      <i class="fa-solid fa-hashtag"></i> Fixed hashtags: #SCoinRedemption #SCoin #SCoinCashback #Cashback + staff tag.<br>
-      Staff code is auto selected from staff dropdown.
-    </div>
-    <div id="testLog" class="test-log">🔍 Self-check: running validation...</div>
-  </div>
-</div>
+  <script>
+    const STAFF_LIST = [
+      { nickname: 'Mus', code: 'SH9861' },
+      { nickname: 'Faris', code: 'SH19800' },
+      { nickname: 'Omar', code: 'SH18556' },
+      { nickname: 'Wan', code: 'SH20201' },
+      { nickname: 'Kim', code: 'SH20420' },
+      { nickname: 'Anisa', code: 'SH20581' },
+      { nickname: 'Eesya', code: 'SH20580' },
+      { nickname: 'Maisarah', code: 'SH16611' }
+    ];
 
-<div id="copyModal" class="modal-overlay hidden">
-  <div class="modal-card">
-    <div class="modal-icon"><i class="fa-regular fa-clipboard"></i></div>
-    <div class="modal-title">Comment ready</div>
-    <div class="modal-text">Paste into Google Review, then tap Proceed to open Grand Senheng Temerloh map location.</div>
-    <div class="modal-actions">
-      <button class="modal-btn primary" id="modalProceedBtn">Proceed to Maps</button>
-      <button class="modal-btn secondary" id="modalCloseBtn">Close</button>
-    </div>
-  </div>
-</div>
-<div id="globalToast" class="toast-msg">📋 Copied to clipboard</div>
+    const MAP_URL = 'https://maps.app.goo.gl/9WqzfnDskqHWywkC8';
 
-<script>
-  const STAFF_LIST = [
-    { nickname: 'Mus', code: 'SH9861' },
-    { nickname: 'Faris', code: 'SH19800' },
-    { nickname: 'Omar', code: 'SH18556' },
-    { nickname: 'Wan', code: 'SH20201' },
-    { nickname: 'Kim', code: 'SH20420' },
-    { nickname: 'Anisa', code: 'SH20581' },
-    { nickname: 'Eesya', code: 'SH20580' },
-    { nickname: 'Maisarah', code: 'SH16611' }
-  ];
+    let currentMode = 'earn';
+    let selectedComment = '';
+    let commentLibrary = { earn: [], redeem: [] };
 
-  let commentLibrary = { earn: [], redeem: [] };
-  let currentMode = 'earn';
-  let selectedCommentRaw = '';
-  const googleMapsLink = 'https://maps.app.goo.gl/9WqzfnDskqHWywkC8';
+    const el = {
+      earnModeBtn: document.getElementById('earnModeBtn'),
+      redeemModeBtn: document.getElementById('redeemModeBtn'),
+      earnPanel: document.getElementById('earnPanel'),
+      redeemPanel: document.getElementById('redeemPanel'),
+      staffSelect: document.getElementById('staffSelect'),
+      staffCodePreview: document.getElementById('staffCodePreview'),
+      earnItem: document.getElementById('earnItem'),
+      earnPrice: document.getElementById('earnPrice'),
+      earnPercent: document.getElementById('earnPercent'),
+      grossCashback: document.getElementById('grossCashback'),
+      netCashback: document.getElementById('netCashback'),
+      netPoints: document.getElementById('netPoints'),
+      redeemItem: document.getElementById('redeemItem'),
+      redeemPoints: document.getElementById('redeemPoints'),
+      redeemPointsOut: document.getElementById('redeemPointsOut'),
+      redeemValueOut: document.getElementById('redeemValueOut'),
+      redeemItemOut: document.getElementById('redeemItemOut'),
+      refreshCommentsBtn: document.getElementById('refreshCommentsBtn'),
+      randomCommentBtn: document.getElementById('randomCommentBtn'),
+      choiceList: document.getElementById('choiceList'),
+      customComment: document.getElementById('customComment'),
+      previewText: document.getElementById('previewText'),
+      copyBtn: document.getElementById('copyBtn'),
+      clearCustomBtn: document.getElementById('clearCustomBtn'),
+      copyModal: document.getElementById('copyModal'),
+      proceedBtn: document.getElementById('proceedBtn'),
+      closeModalBtn: document.getElementById('closeModalBtn'),
+      toast: document.getElementById('toast')
+    };
 
-  function safeNum(v, fallback = 0) {
-    if (v === null || v === undefined || v === '') return fallback;
-    const n = Number(v);
-    return Number.isFinite(n) ? n : fallback;
-  }
+    function safeNum(value, fallback = 0) {
+      if (value === '' || value === null || value === undefined) return fallback;
+      const num = Number(value);
+      return Number.isFinite(num) ? num : fallback;
+    }
 
-  function sanitizeText(v, fallback = '') {
-    const text = typeof v === 'string' ? v.trim() : '';
-    return text || fallback;
-  }
+    function cleanText(value, fallback = '') {
+      const text = typeof value === 'string' ? value.trim() : '';
+      return text || fallback;
+    }
 
-  function formatRM(val) {
-    return `RM${safeNum(val, 0).toFixed(2)}`;
-  }
+    function formatRM(value) {
+      return `RM${safeNum(value, 0).toFixed(2)}`;
+    }
 
-  function formatPoints(p) {
-    return Math.round(safeNum(p, 0)).toLocaleString('en-US');
-  }
+    function formatPoints(value) {
+      return Math.round(safeNum(value, 0)).toLocaleString('en-US');
+    }
 
-  function escapeHtml(str) {
-    return String(str)
-      .replaceAll('&', '&amp;')
-      .replaceAll('<', '&lt;')
-      .replaceAll('>', '&gt;')
-      .replaceAll('"', '&quot;')
-      .replaceAll("'", '&#039;');
-  }
+    function escapeHtml(text) {
+      return String(text)
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
+    }
 
-  function populateStaffOptions() {
-    const select = document.getElementById('staffSelect');
-    select.innerHTML = '<option value="">Please choose staff</option>';
-    STAFF_LIST.forEach((staff) => {
-      const option = document.createElement('option');
-      option.value = staff.code;
-      option.textContent = `${staff.nickname} (${staff.code})`;
-      select.appendChild(option);
-    });
-  }
+    function populateStaff() {
+      STAFF_LIST.forEach((staff) => {
+        const option = document.createElement('option');
+        option.value = staff.code;
+        option.textContent = `${staff.nickname} (${staff.code})`;
+        el.staffSelect.appendChild(option);
+      });
+    }
 
-  function getSelectedStaff() {
-    const code = sanitizeText(document.getElementById('staffSelect').value);
-    return STAFF_LIST.find((staff) => staff.code === code) || null;
-  }
+    function getStaff() {
+      const code = cleanText(el.staffSelect.value);
+      return STAFF_LIST.find((staff) => staff.code === code) || null;
+    }
 
-  function updateStaffPreview() {
-    const staff = getSelectedStaff();
-    document.getElementById('staffCodePreview').value = staff ? `#${staff.code}` : '#StaffCode';
-  }
+    function updateStaffPreview() {
+      const staff = getStaff();
+      el.staffCodePreview.value = staff ? `#${staff.code}` : '#StaffCode';
+    }
 
-  function getEarn() {
-    const item = sanitizeText(document.getElementById('earnItem').value, 'item ini');
-    const price = safeNum(document.getElementById('earnPrice').value);
-    const percent = safeNum(document.getElementById('earnPercent').value);
-    const gross = price * (percent / 100);
-    const net = gross * 0.95;
-    const points = Math.round(net * 100);
-    return { item, price, percent, gross, net, points };
-  }
+    function getEarnData() {
+      const item = cleanText(el.earnItem.value, 'item ini');
+      const price = safeNum(el.earnPrice.value);
+      const percent = safeNum(el.earnPercent.value);
+      const gross = price * (percent / 100);
+      const net = gross * 0.95;
+      const points = Math.round(net * 100);
+      return { item, price, percent, gross, net, points };
+    }
 
-  function getRedeem() {
-    const item = sanitizeText(document.getElementById('redeemItem').value, 'item ini');
-    const points = safeNum(document.getElementById('redeemPoints').value, 0);
-    const value = points / 100;
-    return { item, points, value };
-  }
+    function getRedeemData() {
+      const item = cleanText(el.redeemItem.value, 'item ini');
+      const points = safeNum(el.redeemPoints.value);
+      const value = points / 100;
+      return { item, points, value };
+    }
 
-  function fillTemplate(template, modeOverride) {
-    const mode = modeOverride || currentMode;
-    if (mode === 'earn') {
-      const d = getEarn();
+    function updateCalculation() {
+      const earn = getEarnData();
+      el.grossCashback.textContent = formatRM(earn.gross);
+      el.netCashback.textContent = formatRM(earn.net);
+      el.netPoints.textContent = formatPoints(earn.points);
+
+      const redeem = getRedeemData();
+      el.redeemPointsOut.textContent = formatPoints(redeem.points);
+      el.redeemValueOut.textContent = formatRM(redeem.value);
+      el.redeemItemOut.textContent = redeem.item;
+    }
+
+    function applyTemplate(template) {
+      if (currentMode === 'earn') {
+        const d = getEarnData();
+        return template
+          .replaceAll('{item}', d.item)
+          .replaceAll('{price}', formatRM(d.price))
+          .replaceAll('{percent}', `${d.percent}%`)
+          .replaceAll('{netValue}', formatRM(d.net))
+          .replaceAll('{points}', formatPoints(d.points));
+      }
+
+      const d = getRedeemData();
       return template
         .replaceAll('{item}', d.item)
-        .replaceAll('{price}', formatRM(d.price))
-        .replaceAll('{percent}', d.percent + '%')
-        .replaceAll('{netValue}', formatRM(d.net))
-        .replaceAll('{points}', formatPoints(d.points));
+        .replaceAll('{points}', formatPoints(d.points))
+        .replaceAll('{value}', formatRM(d.value));
     }
-    const d = getRedeem();
-    return template
-      .replaceAll('{item}', d.item)
-      .replaceAll('{points}', formatPoints(d.points))
-      .replaceAll('{value}', formatRM(d.value));
-  }
 
-  function getActiveTemplates() {
-    return currentMode === 'earn' ? commentLibrary.earn : commentLibrary.redeem;
-  }
-
-  function setJsonStatus(message, tone = 'normal', icon = 'fa-regular fa-file-lines') {
-    const chip = document.getElementById('jsonStatusChip');
-    chip.className = tone === 'warn' ? 'status-chip warn' : 'status-chip';
-    chip.innerHTML = `<i class="${icon}"></i> ${escapeHtml(message)}`;
-  }
-
-  function validateLibrary(data) {
-    if (!data || typeof data !== 'object') {
-      throw new Error('JSON format is invalid.');
+    function activeTemplates() {
+      return currentMode === 'earn' ? commentLibrary.earn : commentLibrary.redeem;
     }
-    if (!Array.isArray(data.earn) || !Array.isArray(data.redeem)) {
-      throw new Error('JSON must contain earn[] and redeem[] arrays.');
-    }
-    if (!data.earn.length || !data.redeem.length) {
-      throw new Error('Earn and redeem templates cannot be empty.');
-    }
-    return {
-      earn: data.earn.map((x) => String(x || '').trim()).filter(Boolean),
-      redeem: data.redeem.map((x) => String(x || '').trim()).filter(Boolean)
-    };
-  }
 
-  async function loadTemplatesFromFetch() {
-    const response = await fetch(`./scoin_comments.json?v=${Date.now()}`, { cache: 'no-store' });
-    if (!response.ok) {
-      throw new Error(`Unable to load scoin_comments.json (${response.status})`);
-    }
-    const data = await response.json();
-    commentLibrary = validateLibrary(data);
-    setJsonStatus(`Loaded ${commentLibrary.earn.length + commentLibrary.redeem.length} templates from scoin_comments.json`, 'normal', 'fa-solid fa-circle-check');
-    generateChoices();
-    refreshPreview();
-    runSoftTests();
-  }
+    function renderComments() {
+      const source = [...activeTemplates()];
 
-  function handleJsonFile(file) {
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => {
+      if (!source.length) {
+        el.choiceList.innerHTML = '<div class="comment-card">Loading comments...</div>';
+        return;
+      }
+
+      const picked = [];
+      while (picked.length < 5 && source.length) {
+        const index = Math.floor(Math.random() * source.length);
+        picked.push(applyTemplate(source.splice(index, 1)[0]));
+      }
+
+      el.choiceList.innerHTML = picked.map((comment) => {
+        const selectedClass = selectedComment === comment ? ' selected' : '';
+        return `<div class="comment-card${selectedClass}">${escapeHtml(comment)}</div>`;
+      }).join('');
+
+      [...el.choiceList.querySelectorAll('.comment-card')].forEach((card, index) => {
+        card.addEventListener('click', () => {
+          selectedComment = picked[index];
+          renderComments();
+          updatePreview();
+        });
+      });
+    }
+
+    function randomOne() {
+      const arr = activeTemplates();
+      if (!arr.length) return;
+      selectedComment = applyTemplate(arr[Math.floor(Math.random() * arr.length)]);
+      renderComments();
+      updatePreview();
+    }
+
+    function setMode(mode) {
+      currentMode = mode === 'redeem' ? 'redeem' : 'earn';
+      selectedComment = '';
+
+      const earnActive = currentMode === 'earn';
+      el.earnModeBtn.classList.toggle('active', earnActive);
+      el.redeemModeBtn.classList.toggle('active', !earnActive);
+      el.earnPanel.classList.toggle('hidden', !earnActive);
+      el.redeemPanel.classList.toggle('hidden', earnActive);
+
+      renderComments();
+      updatePreview();
+    }
+
+    function finalCommentText() {
+      const custom = cleanText(el.customComment.value);
+      const main = custom || selectedComment;
+      if (!main) return 'Sila pilih komen atau tulis komen sendiri.';
+
+      const staff = getStaff();
+      if (!staff) return 'Sila pilih staf terlebih dahulu.';
+
+      return `${main}\n\n#SCoinRedemption #SCoin #SCoinCashback #Cashback #${staff.code}`;
+    }
+
+    function updatePreview() {
+      updateStaffPreview();
+      updateCalculation();
+      el.previewText.textContent = finalCommentText();
+    }
+
+    function showToast(message) {
+      el.toast.textContent = message;
+      el.toast.classList.add('show');
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => {
+        el.toast.classList.remove('show');
+      }, 2200);
+    }
+
+    async function copyComment() {
+      const staff = getStaff();
+      const text = finalCommentText();
+
+      if (!staff) {
+        alert('Sila pilih staf terlebih dahulu.');
+        el.staffSelect.focus();
+        return;
+      }
+
+      if (!cleanText(el.customComment.value) && !selectedComment) {
+        alert('Sila pilih komen dulu atau tulis komen sendiri.');
+        return;
+      }
+
       try {
-        const data = JSON.parse(reader.result);
-        commentLibrary = validateLibrary(data);
-        setJsonStatus(`Loaded ${commentLibrary.earn.length + commentLibrary.redeem.length} templates from selected JSON file`, 'normal', 'fa-solid fa-circle-check');
-        generateChoices();
-        refreshPreview();
-        runSoftTests();
-        showToast('✅ JSON templates loaded');
+        await navigator.clipboard.writeText(text);
       } catch (error) {
-        setJsonStatus(error.message || 'Failed to read JSON file.', 'warn', 'fa-solid fa-triangle-exclamation');
-        document.getElementById('testLog').innerHTML = '⚠️ JSON load failed. Please check the file format.';
-        document.getElementById('testLog').className = 'test-log fail';
+        const temp = document.createElement('textarea');
+        temp.value = text;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        temp.remove();
       }
-    };
-    reader.readAsText(file, 'utf-8');
-  }
 
-  function generateChoices() {
-    const source = [...getActiveTemplates()];
-    const container = document.getElementById('choiceList');
-
-    if (!source.length) {
-      container.innerHTML = '<div class="choice-card">Comment templates not loaded yet.</div>';
-      return;
+      showToast('Komen berjaya di-copy');
+      el.copyModal.classList.add('show');
     }
 
-    const picked = [];
-    while (picked.length < 5 && source.length) {
-      const idx = Math.floor(Math.random() * source.length);
-      picked.push(fillTemplate(source.splice(idx, 1)[0], currentMode));
+    function closeModal() {
+      el.copyModal.classList.remove('show');
     }
 
-    container.innerHTML = picked.map((text) => {
-      const selectedClass = selectedCommentRaw === sanitizeText(text) ? ' selected' : '';
-      return `<div class="choice-card${selectedClass}">${escapeHtml(text)}</div>`;
-    }).join('');
+    async function loadComments() {
+      const response = await fetch('./scoin_comments.json?v=' + Date.now(), { cache: 'no-store' });
+      if (!response.ok) throw new Error('Failed to load scoin_comments.json');
+      const data = await response.json();
 
-    document.querySelectorAll('.choice-card').forEach((el, idx) => {
-      el.addEventListener('click', () => selectComment(picked[idx]));
+      if (!data || !Array.isArray(data.earn) || !Array.isArray(data.redeem)) {
+        throw new Error('Invalid JSON structure');
+      }
+
+      commentLibrary.earn = data.earn.map((item) => String(item || '').trim()).filter(Boolean);
+      commentLibrary.redeem = data.redeem.map((item) => String(item || '').trim()).filter(Boolean);
+
+      renderComments();
+      updatePreview();
+    }
+
+    el.earnModeBtn.addEventListener('click', () => setMode('earn'));
+    el.redeemModeBtn.addEventListener('click', () => setMode('redeem'));
+    el.staffSelect.addEventListener('change', updatePreview);
+    el.earnItem.addEventListener('input', () => { renderComments(); updatePreview(); });
+    el.earnPrice.addEventListener('input', () => { renderComments(); updatePreview(); });
+    el.earnPercent.addEventListener('input', () => { renderComments(); updatePreview(); });
+    el.redeemItem.addEventListener('input', () => { renderComments(); updatePreview(); });
+    el.redeemPoints.addEventListener('input', () => { renderComments(); updatePreview(); });
+    el.customComment.addEventListener('input', updatePreview);
+    el.refreshCommentsBtn.addEventListener('click', renderComments);
+    el.randomCommentBtn.addEventListener('click', randomOne);
+    el.copyBtn.addEventListener('click', copyComment);
+    el.clearCustomBtn.addEventListener('click', () => {
+      el.customComment.value = '';
+      updatePreview();
     });
-  }
+    el.proceedBtn.addEventListener('click', () => {
+      closeModal();
+      window.open(MAP_URL, '_blank');
+    });
+    el.closeModalBtn.addEventListener('click', closeModal);
+    el.copyModal.addEventListener('click', (event) => {
+      if (event.target === el.copyModal) closeModal();
+    });
 
-  function selectComment(text) {
-    selectedCommentRaw = sanitizeText(text);
-    refreshPreview();
-    generateChoices();
-  }
+    populateStaff();
+    setMode('earn');
+    updatePreview();
 
-  function useRandomSingle() {
-    const arr = getActiveTemplates();
-    if (!arr.length) {
-      alert('Comment templates are not loaded yet.');
-      return;
-    }
-    const randomRaw = fillTemplate(arr[Math.floor(Math.random() * arr.length)], currentMode);
-    selectComment(randomRaw);
-    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-  }
-
-  function buildFinalText() {
-    const custom = sanitizeText(document.getElementById('customComment').value);
-    const mainText = custom || selectedCommentRaw;
-    if (!mainText) return '⚠️ Please select a comment or write a custom one.';
-    const staff = getSelectedStaff();
-    if (!staff) return '⚠️ Please choose staff first.';
-    return `${mainText}\n\n#SCoinRedemption #SCoin #SCoinCashback #Cashback #${staff.code}`;
-  }
-
-  function updateCalcBoxes() {
-    const earn = getEarn();
-    document.getElementById('grossCashback').innerText = formatRM(earn.gross);
-    document.getElementById('netCashback').innerText = formatRM(earn.net);
-    document.getElementById('netPoints').innerText = formatPoints(earn.points);
-
-    const redeem = getRedeem();
-    document.getElementById('redeemPointsOut').innerText = formatPoints(redeem.points);
-    document.getElementById('redeemValueOut').innerText = formatRM(redeem.value);
-    document.getElementById('redeemItemOut').innerText = redeem.item;
-  }
-
-  function refreshPreview() {
-    updateStaffPreview();
-    document.getElementById('previewText').innerText = buildFinalText();
-    updateCalcBoxes();
-  }
-
-  function setMode(mode) {
-    currentMode = mode === 'redeem' ? 'redeem' : 'earn';
-    const earnBtnDiv = document.getElementById('modeEarnTrigger');
-    const redeemDiv = document.getElementById('modeRedeemTrigger');
-    if (currentMode === 'earn') {
-      earnBtnDiv.classList.add('active');
-      redeemDiv.classList.remove('active');
-      document.getElementById('earnPanel').classList.remove('hidden');
-      document.getElementById('redeemPanel').classList.add('hidden');
-    } else {
-      redeemDiv.classList.add('active');
-      earnBtnDiv.classList.remove('active');
-      document.getElementById('earnPanel').classList.add('hidden');
-      document.getElementById('redeemPanel').classList.remove('hidden');
-    }
-    selectedCommentRaw = '';
-    generateChoices();
-    refreshPreview();
-  }
-
-  function clearCustom() {
-    document.getElementById('customComment').value = '';
-    refreshPreview();
-  }
-
-  async function copyFinal() {
-    const text = buildFinalText();
-    if (text.startsWith('⚠️ Please choose staff')) {
-      alert('Please choose staff first.');
-      document.getElementById('staffSelect').focus();
-      return;
-    }
-    if (text.startsWith('⚠️ Please select a comment')) {
-      alert('Please choose a comment or write something first.');
-      return;
-    }
-    try {
-      await navigator.clipboard.writeText(text);
-      showToast('📋 Copied to clipboard');
-      showCopyModal();
-    } catch (e) {
-      const ta = document.createElement('textarea');
-      ta.value = text;
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand('copy');
-      ta.remove();
-      showToast('📋 Copied to clipboard');
-      showCopyModal();
-    }
-  }
-
-  function showToast(message = '📋 Copied to clipboard') {
-    const t = document.getElementById('globalToast');
-    t.textContent = message;
-    t.classList.add('show');
-    clearTimeout(window.__toastTimer);
-    window.__toastTimer = setTimeout(() => t.classList.remove('show'), 2000);
-  }
-
-  function showCopyModal() {
-    document.getElementById('copyModal').classList.remove('hidden');
-  }
-
-  function closeModal() {
-    document.getElementById('copyModal').classList.add('hidden');
-  }
-
-  function proceedMap() {
-    closeModal();
-    window.open(googleMapsLink, '_blank');
-  }
-
-  function runSoftTests() {
-    try {
-      const logDiv = document.getElementById('testLog');
-      let testsPassed = true;
-      if (formatRM(99.9) !== 'RM99.90') testsPassed = false;
-      if (formatPoints(5000) !== '5,000') testsPassed = false;
-      if (!Array.isArray(commentLibrary.earn) || !commentLibrary.earn.length) testsPassed = false;
-      if (!Array.isArray(commentLibrary.redeem) || !commentLibrary.redeem.length) testsPassed = false;
-
-      const oldStaff = document.getElementById('staffSelect').value;
-      document.getElementById('staffSelect').value = 'SH9861';
-      const previewCheck = buildFinalText();
-      if (!previewCheck.includes('#SH9861') && !previewCheck.startsWith('⚠️')) testsPassed = false;
-      document.getElementById('staffSelect').value = oldStaff;
-
-      if (testsPassed) {
-        logDiv.innerHTML = `✅ All systems ready • ${commentLibrary.earn.length + commentLibrary.redeem.length} JSON comments • Cashback calculator active • Staff selection enabled`;
-        logDiv.className = 'test-log pass';
-      } else {
-        logDiv.innerHTML = '⚠️ Minor check inconsistency, please verify inputs';
-        logDiv.className = 'test-log fail';
-      }
-    } catch (e) {
-      document.getElementById('testLog').innerHTML = '⚡ Ready';
-    }
-  }
-
-  async function initTemplates() {
-    setJsonStatus('Loading comment templates...', 'normal', 'fa-regular fa-hourglass-half');
-    try {
-      await loadTemplatesFromFetch();
-    } catch (error) {
-      const isLocalFile = window.location.protocol === 'file:';
-      if (isLocalFile) {
-        setJsonStatus('Browser blocked local fetch. Tap "Load JSON file" or open this HTML through a local server.', 'warn', 'fa-solid fa-triangle-exclamation');
-      } else {
-        setJsonStatus(error.message || 'Failed to load scoin_comments.json', 'warn', 'fa-solid fa-triangle-exclamation');
-      }
-      document.getElementById('testLog').innerHTML = '⚠️ JSON not auto-loaded yet. The page still works after manual JSON import.';
-      document.getElementById('testLog').className = 'test-log fail';
-      generateChoices();
-      refreshPreview();
-    }
-  }
-
-  document.getElementById('modeEarnTrigger').addEventListener('click', () => setMode('earn'));
-  document.getElementById('modeRedeemTrigger').addEventListener('click', () => setMode('redeem'));
-  document.getElementById('showRandomFiveBtn').addEventListener('click', generateChoices);
-  document.getElementById('useRandomSingleBtn').addEventListener('click', useRandomSingle);
-  document.getElementById('copyFinalBtn').addEventListener('click', copyFinal);
-  document.getElementById('clearCustomBtn').addEventListener('click', clearCustom);
-  document.getElementById('modalProceedBtn').addEventListener('click', proceedMap);
-  document.getElementById('modalCloseBtn').addEventListener('click', closeModal);
-  document.getElementById('staffSelect').addEventListener('change', refreshPreview);
-  document.getElementById('earnItem').addEventListener('input', refreshPreview);
-  document.getElementById('earnPrice').addEventListener('input', refreshPreview);
-  document.getElementById('earnPercent').addEventListener('input', refreshPreview);
-  document.getElementById('redeemItem').addEventListener('input', refreshPreview);
-  document.getElementById('redeemPoints').addEventListener('input', refreshPreview);
-  document.getElementById('customComment').addEventListener('input', refreshPreview);
-  document.getElementById('loadJsonBtn').addEventListener('click', () => document.getElementById('jsonFileInput').click());
-  document.getElementById('jsonFileInput').addEventListener('change', (event) => handleJsonFile(event.target.files[0]));
-
-  populateStaffOptions();
-  setMode('earn');
-  refreshPreview();
-  initTemplates();
-</script>
+    loadComments().catch(() => {
+      el.choiceList.innerHTML = '<div class="comment-card">Tak dapat load komen. Pastikan fail <strong>scoin_comments.json</strong> berada dalam folder yang sama dengan fail HTML ini.</div>';
+      el.previewText.textContent = 'Tak dapat load komen. Pastikan fail scoin_comments.json ada dalam folder yang sama.';
+    });
+  </script>
 </body>
 </html>
