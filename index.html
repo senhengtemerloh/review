@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Grand Senheng Temerloh Review Comment Helper</title>
+  <title>Grand Senheng Temerloh Review Helper</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
@@ -14,25 +14,25 @@
       background: #f4f7fb;
       color: #183247;
       line-height: 1.45;
-      padding-bottom: 40px;
+      padding-bottom: 36px;
     }
 
     .hero {
       background: linear-gradient(135deg, #0d4663, #1f6d8f);
       color: #fff;
-      padding: 24px 18px 72px;
-      border-radius: 0 0 28px 28px;
+      padding: 22px 16px 66px;
+      border-radius: 0 0 26px 26px;
       box-shadow: 0 10px 24px rgba(13, 70, 99, 0.22);
     }
 
     .hero-inner {
-      max-width: 760px;
+      max-width: 700px;
       margin: 0 auto;
     }
 
     .hero h1 {
-      margin: 0 0 10px;
-      font-size: 1.5rem;
+      margin: 0 0 8px;
+      font-size: 1.35rem;
       font-weight: 800;
       line-height: 1.2;
       display: flex;
@@ -42,57 +42,126 @@
 
     .hero p {
       margin: 0;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       opacity: 0.95;
     }
 
     .hero-note {
-      margin-top: 14px;
+      margin-top: 12px;
       background: rgba(255,255,255,0.14);
       border: 1px solid rgba(255,255,255,0.18);
-      border-radius: 18px;
-      padding: 12px 14px;
-      font-size: 0.84rem;
+      border-radius: 16px;
+      padding: 11px 12px;
+      font-size: 0.8rem;
       line-height: 1.5;
     }
 
     .wrap {
-      max-width: 760px;
-      margin: -40px auto 0;
-      padding: 0 14px;
+      max-width: 700px;
+      margin: -36px auto 0;
+      padding: 0 12px;
     }
 
-    .card {
+    .wizard-card {
       background: #fff;
       border-radius: 24px;
       box-shadow: 0 12px 28px rgba(19, 50, 71, 0.07);
-      padding: 18px;
-      margin-bottom: 16px;
+      overflow: hidden;
     }
 
-    .title {
+    .progress-wrap {
+      padding: 16px 16px 0;
+    }
+
+    .progress-top {
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-size: 1rem;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .progress-label {
+      font-size: 0.82rem;
       font-weight: 800;
       color: #15506f;
+    }
+
+    .progress-step-text {
+      font-size: 0.78rem;
+      color: #6a8294;
+      font-weight: 700;
+    }
+
+    .progress-bar {
+      height: 10px;
+      background: #e8f0f5;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 20%;
+      background: linear-gradient(90deg, #1f6d8f, #35a2d3);
+      border-radius: 999px;
+      transition: width .25s ease;
+    }
+
+    .step {
+      display: none;
+      padding: 18px 16px 16px;
+      min-height: 420px;
+    }
+
+    .step.active {
+      display: block;
+    }
+
+    .step-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      background: #eef7fb;
+      color: #15506f;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 800;
       margin-bottom: 14px;
     }
 
-    .subtitle {
-      font-size: 0.84rem;
-      color: #5e7789;
-      margin: -4px 0 14px;
+    .step-title {
+      font-size: 1.16rem;
+      font-weight: 800;
+      color: #183247;
+      margin-bottom: 8px;
+    }
+
+    .step-subtitle {
+      font-size: 0.9rem;
+      color: #617b8f;
+      margin-bottom: 18px;
+      line-height: 1.55;
     }
 
     .mode-grid,
-    .comments-grid {
+    .comments-grid,
+    .grid-2,
+    .grid-3,
+    .chips,
+    .modal-actions,
+    .nav-row {
       display: grid;
       gap: 12px;
     }
 
     .mode-grid { grid-template-columns: repeat(2, 1fr); }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .chips { grid-template-columns: repeat(2, 1fr); }
+    .modal-actions,
+    .nav-row { grid-template-columns: 1fr 1fr; }
 
     .mode-btn {
       border: 2px solid #dfeaf1;
@@ -122,15 +191,6 @@
       font-size: 0.82rem;
       color: #678095;
     }
-
-    .grid-2,
-    .grid-3 {
-      display: grid;
-      gap: 12px;
-    }
-
-    .grid-2 { grid-template-columns: repeat(2, 1fr); }
-    .grid-3 { grid-template-columns: repeat(3, 1fr); }
 
     .field label {
       display: block;
@@ -181,11 +241,18 @@
 
     .prefix input { padding-left: 40px; }
 
-    .chips {
-      display: grid;
-      gap: 10px;
-      grid-template-columns: repeat(3, 1fr);
+    .quick-note {
       margin-top: 14px;
+      font-size: 0.8rem;
+      color: #678095;
+      background: #f5f9fc;
+      border-radius: 16px;
+      padding: 11px 12px;
+      line-height: 1.5;
+    }
+
+    .chips {
+      margin-top: 16px;
     }
 
     .chip {
@@ -211,13 +278,6 @@
       color: #15506f;
     }
 
-    .action-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
     .soft-btn,
     .primary-btn,
     .secondary-btn {
@@ -233,6 +293,7 @@
       color: #234860;
       padding: 12px 16px;
       font-weight: 700;
+      width: 100%;
     }
 
     .soft-btn:hover { background: #e2edf5; }
@@ -259,6 +320,19 @@
       box-shadow: 0 8px 20px rgba(31,109,143,0.10);
     }
 
+    .selected-box {
+      margin-top: 14px;
+      background: #f8fbfd;
+      border-left: 5px solid #ffb64d;
+      border-radius: 18px;
+      padding: 14px;
+      white-space: pre-wrap;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: #1c3c52;
+      min-height: 100px;
+    }
+
     .preview {
       background: #f8fbfd;
       border-left: 5px solid #ffb64d;
@@ -268,14 +342,7 @@
       font-size: 0.95rem;
       line-height: 1.6;
       color: #1c3c52;
-      min-height: 120px;
-    }
-
-    .btn-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 14px;
+      min-height: 150px;
     }
 
     .primary-btn {
@@ -284,6 +351,7 @@
       padding: 14px 16px;
       font-weight: 800;
       box-shadow: 0 8px 18px rgba(21,92,125,0.22);
+      width: 100%;
     }
 
     .secondary-btn {
@@ -291,14 +359,10 @@
       color: #234860;
       padding: 14px 16px;
       font-weight: 700;
+      width: 100%;
     }
 
-    .hint {
-      margin-top: 12px;
-      font-size: 0.8rem;
-      color: #6a8294;
-      line-height: 1.5;
-    }
+    .hidden { display: none !important; }
 
     .toast {
       position: fixed;
@@ -371,30 +435,15 @@
       line-height: 1.55;
     }
 
-    .modal-actions {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .hidden { display: none !important; }
-
     @media (max-width: 640px) {
-      .hero { padding: 22px 15px 68px; }
-      .hero h1 { font-size: 1.3rem; }
-      .wrap { padding: 0 12px; }
-      .card { padding: 16px; border-radius: 22px; }
+      .hero h1 { font-size: 1.25rem; }
       .mode-grid,
       .grid-2,
       .grid-3,
       .chips,
-      .btn-row,
-      .modal-actions {
-        grid-template-columns: 1fr;
-      }
-      .soft-btn,
-      .primary-btn,
-      .secondary-btn { width: 100%; }
+      .modal-actions,
+      .nav-row { grid-template-columns: 1fr; }
+      .step { min-height: auto; }
       .toast {
         width: calc(100% - 24px);
         text-align: center;
@@ -407,7 +456,7 @@
   <div class="hero">
     <div class="hero-inner">
       <h1><i class="fa-solid fa-star"></i> Grand Senheng Temerloh Review Helper</h1>
-      <p>Pilih komen terbaik, copy, then tampal ke Google Review.</p>
+      <p>Isi satu-satu, tekan next, pilih komen, dan terus copy.</p>
       <div class="hero-note">
         Komentar yang paling impactful berpeluang menang <strong>RM1,000 cash from Senheng</strong>. <strong>T&amp;C apply</strong>. Pemenang bulanan akan dipilih di peringkat <strong>nationwide</strong>.
       </div>
@@ -415,123 +464,151 @@
   </div>
 
   <div class="wrap">
-    <div class="card">
-      <div class="title"><i class="fa-solid fa-layer-group"></i> Jenis transaksi</div>
-      <div class="mode-grid">
-        <button class="mode-btn active" id="earnModeBtn" type="button">
-          <strong>💰 Beli & dapat S-Coin</strong>
-          <span>Beli barang dan terima S-Coin cashback</span>
-        </button>
-        <button class="mode-btn" id="redeemModeBtn" type="button">
-          <strong>🎁 Redeem guna S-Coin</strong>
-          <span>Guna S-Coin sedia ada untuk tebus barang</span>
-        </button>
+    <div class="wizard-card">
+      <div class="progress-wrap">
+        <div class="progress-top">
+          <div class="progress-label">Langkah demi langkah</div>
+          <div class="progress-step-text" id="progressText">Step 1 of 5</div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
       </div>
-    </div>
 
-    <div class="card">
-      <div class="title"><i class="fa-solid fa-user"></i> Pilih staf yang serve</div>
-      <div class="grid-2">
+      <section class="step active" data-step="1">
+        <div class="step-badge"><i class="fa-solid fa-layer-group"></i> Step 1</div>
+        <div class="step-title">Pilih jenis transaksi</div>
+        <div class="step-subtitle">Pilih yang paling sesuai dulu. Lepas tu tekan next.</div>
+
+        <div class="mode-grid">
+          <button class="mode-btn active" id="earnModeBtn" type="button">
+            <strong>💰 Beli & dapat S-Coin</strong>
+            <span>Customer beli barang dan dapat S-Coin cashback</span>
+          </button>
+          <button class="mode-btn" id="redeemModeBtn" type="button">
+            <strong>🎁 Redeem guna S-Coin</strong>
+            <span>Customer guna S-Coin yang sedia ada</span>
+          </button>
+        </div>
+
+        <div class="nav-row" style="margin-top:18px;">
+          <button class="secondary-btn" type="button" disabled>Back</button>
+          <button class="primary-btn next-btn" type="button">Next</button>
+        </div>
+      </section>
+
+      <section class="step" data-step="2">
+        <div class="step-badge"><i class="fa-solid fa-user"></i> Step 2</div>
+        <div class="step-title">Pilih staf yang serve</div>
+        <div class="step-subtitle">Pilih nama staf dulu supaya hashtag staff masuk automatik.</div>
+
         <div class="field">
           <label for="staffSelect">Nama staf</label>
           <select id="staffSelect">
             <option value="">Sila pilih staf</option>
           </select>
         </div>
-        <div class="field">
-          <label for="staffCodePreview">Hashtag staf</label>
-          <input id="staffCodePreview" type="text" value="#StaffCode" readonly />
-        </div>
-      </div>
-    </div>
 
-    <div class="card" id="earnPanel">
-      <div class="title"><i class="fa-solid fa-cart-shopping"></i> Maklumat pembelian</div>
-      <div class="grid-3">
-        <div class="field">
-          <label for="earnItem">Barang dibeli</label>
-          <input id="earnItem" type="text" placeholder="Contoh: TV, air fryer, washing machine" />
+        <div class="quick-note">Hashtag staf akan dimasukkan automatik dalam komen akhir.</div>
+
+        <div class="nav-row" style="margin-top:18px;">
+          <button class="secondary-btn back-btn" type="button">Back</button>
+          <button class="primary-btn next-btn" type="button">Next</button>
         </div>
-        <div class="field">
-          <label for="earnPrice">Harga barang</label>
-          <div class="prefix">
-            <span>RM</span>
-            <input id="earnPrice" type="number" min="0" step="0.01" placeholder="0.00" />
+      </section>
+
+      <section class="step" data-step="3">
+        <div class="step-badge"><i class="fa-solid fa-pen"></i> Step 3</div>
+        <div class="step-title">Isi maklumat ringkas</div>
+        <div class="step-subtitle">Isi yang penting saja. Nilai S-Coin tak perlu tengok dulu.</div>
+
+        <div id="earnPanel">
+          <div class="grid-3">
+            <div class="field">
+              <label for="earnItem">Barang dibeli</label>
+              <input id="earnItem" type="text" placeholder="Contoh: TV, air fryer, washing machine" />
+            </div>
+            <div class="field">
+              <label for="earnPrice">Harga barang</label>
+              <div class="prefix">
+                <span>RM</span>
+                <input id="earnPrice" type="number" min="0" step="0.01" placeholder="0.00" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="earnPercent">S-Coin cashback %</label>
+              <input id="earnPercent" type="number" min="0" step="0.1" placeholder="Contoh: 50" />
+            </div>
           </div>
         </div>
-        <div class="field">
-          <label for="earnPercent">S-Coin cashback %</label>
-          <input id="earnPercent" type="number" min="0" step="0.1" placeholder="Contoh: 50" />
-        </div>
-      </div>
-      <div class="chips">
-        <div class="chip">
-          <small>Cashback kasar</small>
-          <strong id="grossCashback">RM0.00</strong>
-        </div>
-        <div class="chip">
-          <small>Nilai S-Coin</small>
-          <strong id="netCashback">RM0.00</strong>
-        </div>
-        <div class="chip">
-          <small>S-Coin points</small>
-          <strong id="netPoints">0</strong>
-        </div>
-      </div>
-    </div>
 
-    <div class="card hidden" id="redeemPanel">
-      <div class="title"><i class="fa-solid fa-gift"></i> Maklumat redeem</div>
-      <div class="grid-2">
-        <div class="field">
-          <label for="redeemItem">Barang ditebus</label>
-          <input id="redeemItem" type="text" placeholder="Contoh: Kettle, blender, iron" />
+        <div id="redeemPanel" class="hidden">
+          <div class="grid-2">
+            <div class="field">
+              <label for="redeemItem">Barang ditebus</label>
+              <input id="redeemItem" type="text" placeholder="Contoh: Kettle, blender, iron" />
+            </div>
+            <div class="field">
+              <label for="redeemPoints">S-Coin digunakan</label>
+              <input id="redeemPoints" type="number" min="0" step="1" placeholder="Contoh: 10000" />
+            </div>
+          </div>
         </div>
-        <div class="field">
-          <label for="redeemPoints">S-Coin digunakan</label>
-          <input id="redeemPoints" type="number" min="0" step="1" placeholder="Contoh: 10000" />
-        </div>
-      </div>
-      <div class="chips">
-        <div class="chip">
-          <small>S-Coin spent</small>
-          <strong id="redeemPointsOut">0</strong>
-        </div>
-        <div class="chip">
-          <small>Nilai redeem</small>
-          <strong id="redeemValueOut">RM0.00</strong>
-        </div>
-        <div class="chip">
-          <small>Item</small>
-          <strong id="redeemItemOut">-</strong>
-        </div>
-      </div>
-    </div>
 
-    <div class="card">
-      <div class="title"><i class="fa-regular fa-message"></i> Pilih komen</div>
-      <div class="subtitle">Tap mana-mana komen yang nampak paling natural dan paling kuat.</div>
-      <div class="action-row">
-        <button class="soft-btn" id="refreshCommentsBtn" type="button"><i class="fa-solid fa-shuffle"></i> Tukar 5 komen baru</button>
-        <button class="soft-btn" id="randomCommentBtn" type="button"><i class="fa-solid fa-dice"></i> Pilih 1 random</button>
-      </div>
-      <div class="comments-grid" id="choiceList"></div>
-      <div class="field" style="margin-top:14px;">
-        <label for="customComment">Atau tulis komen sendiri</label>
-        <textarea id="customComment" placeholder="Kalau nak ubah ayat sendiri, tulis dekat sini..."></textarea>
-      </div>
-    </div>
+        <div class="nav-row" style="margin-top:18px;">
+          <button class="secondary-btn back-btn" type="button">Back</button>
+          <button class="primary-btn next-btn" type="button">Next</button>
+        </div>
+      </section>
 
-    <div class="card">
-      <div class="title"><i class="fa-regular fa-eye"></i> Preview akhir</div>
-      <div class="preview" id="previewText">Sila isi maklumat dan pilih komen.</div>
-      <div class="btn-row">
-        <button class="primary-btn" id="copyBtn" type="button"><i class="fa-regular fa-copy"></i> Copy komen</button>
-        <button class="secondary-btn" id="clearCustomBtn" type="button"><i class="fa-solid fa-eraser"></i> Clear custom</button>
-      </div>
-      <div class="hint">
-        Hashtag tetap: #SCoinRedemption #SCoin #SCoinCashback #Cashback + hashtag staff.
-      </div>
+      <section class="step" data-step="4">
+        <div class="step-badge"><i class="fa-regular fa-message"></i> Step 4</div>
+        <div class="step-title">Pilih komen terbaik</div>
+        <div class="step-subtitle">Tap satu komen yang nampak natural dan paling kuat.</div>
+
+        <div class="nav-row" style="margin-bottom:12px;">
+          <button class="soft-btn" id="refreshCommentsBtn" type="button"><i class="fa-solid fa-shuffle"></i> Tukar 5 komen baru</button>
+          <button class="soft-btn" id="randomCommentBtn" type="button"><i class="fa-solid fa-dice"></i> Pilih 1 random</button>
+        </div>
+
+        <div class="comments-grid" id="choiceList"></div>
+
+        <div class="field" style="margin-top:14px;">
+          <label for="customComment">Atau tulis komen sendiri</label>
+          <textarea id="customComment" placeholder="Kalau nak ubah ayat sendiri, tulis dekat sini..."></textarea>
+        </div>
+
+        <div class="selected-box" id="selectedCommentBox">Belum pilih komen.</div>
+
+        <div class="nav-row" style="margin-top:18px;">
+          <button class="secondary-btn back-btn" type="button">Back</button>
+          <button class="primary-btn next-btn" type="button">Next</button>
+        </div>
+      </section>
+
+      <section class="step" data-step="5">
+        <div class="step-badge"><i class="fa-regular fa-eye"></i> Step 5</div>
+        <div class="step-title">Siap untuk copy</div>
+        <div class="step-subtitle">Semak kejap, lepas tu copy dan tampal ke Google Review.</div>
+
+        <div class="preview" id="previewText">Sila isi maklumat dan pilih komen.</div>
+
+        <div class="chips hidden" id="summaryChips">
+          <div class="chip">
+            <small>Hashtag staf</small>
+            <strong id="staffCodePreview">#StaffCode</strong>
+          </div>
+          <div class="chip" id="scoinSummaryChip">
+            <small>Anggaran nilai S-Coin</small>
+            <strong id="summaryValue">RM0.00</strong>
+          </div>
+        </div>
+
+        <div class="nav-row" style="margin-top:18px;">
+          <button class="secondary-btn back-btn" type="button">Back</button>
+          <button class="primary-btn" id="copyBtn" type="button">Copy komen</button>
+        </div>
+      </section>
     </div>
   </div>
 
@@ -562,12 +639,17 @@
     ];
 
     const MAP_URL = 'https://maps.app.goo.gl/9WqzfnDskqHWywkC8';
+    const TOTAL_STEPS = 5;
 
     let currentMode = 'earn';
     let selectedComment = '';
     let commentLibrary = { earn: [], redeem: [] };
+    let currentStep = 1;
 
     const el = {
+      steps: [...document.querySelectorAll('.step')],
+      progressFill: document.getElementById('progressFill'),
+      progressText: document.getElementById('progressText'),
       earnModeBtn: document.getElementById('earnModeBtn'),
       redeemModeBtn: document.getElementById('redeemModeBtn'),
       earnPanel: document.getElementById('earnPanel'),
@@ -577,25 +659,23 @@
       earnItem: document.getElementById('earnItem'),
       earnPrice: document.getElementById('earnPrice'),
       earnPercent: document.getElementById('earnPercent'),
-      grossCashback: document.getElementById('grossCashback'),
-      netCashback: document.getElementById('netCashback'),
-      netPoints: document.getElementById('netPoints'),
       redeemItem: document.getElementById('redeemItem'),
       redeemPoints: document.getElementById('redeemPoints'),
-      redeemPointsOut: document.getElementById('redeemPointsOut'),
-      redeemValueOut: document.getElementById('redeemValueOut'),
-      redeemItemOut: document.getElementById('redeemItemOut'),
       refreshCommentsBtn: document.getElementById('refreshCommentsBtn'),
       randomCommentBtn: document.getElementById('randomCommentBtn'),
       choiceList: document.getElementById('choiceList'),
       customComment: document.getElementById('customComment'),
+      selectedCommentBox: document.getElementById('selectedCommentBox'),
       previewText: document.getElementById('previewText'),
+      summaryChips: document.getElementById('summaryChips'),
+      summaryValue: document.getElementById('summaryValue'),
       copyBtn: document.getElementById('copyBtn'),
-      clearCustomBtn: document.getElementById('clearCustomBtn'),
       copyModal: document.getElementById('copyModal'),
       proceedBtn: document.getElementById('proceedBtn'),
       closeModalBtn: document.getElementById('closeModalBtn'),
-      toast: document.getElementById('toast')
+      toast: document.getElementById('toast'),
+      nextBtns: [...document.querySelectorAll('.next-btn')],
+      backBtns: [...document.querySelectorAll('.back-btn')]
     };
 
     function safeNum(value, fallback = 0) {
@@ -642,7 +722,7 @@
 
     function updateStaffPreview() {
       const staff = getStaff();
-      el.staffCodePreview.value = staff ? `#${staff.code}` : '#StaffCode';
+      el.staffCodePreview.textContent = staff ? `#${staff.code}` : '#StaffCode';
     }
 
     function getEarnData() {
@@ -660,18 +740,6 @@
       const points = safeNum(el.redeemPoints.value);
       const value = points / 100;
       return { item, points, value };
-    }
-
-    function updateCalculation() {
-      const earn = getEarnData();
-      el.grossCashback.textContent = formatRM(earn.gross);
-      el.netCashback.textContent = formatRM(earn.net);
-      el.netPoints.textContent = formatPoints(earn.points);
-
-      const redeem = getRedeemData();
-      el.redeemPointsOut.textContent = formatPoints(redeem.points);
-      el.redeemValueOut.textContent = formatRM(redeem.value);
-      el.redeemItemOut.textContent = redeem.item;
     }
 
     function applyTemplate(template) {
@@ -722,6 +790,14 @@
           updatePreview();
         });
       });
+
+      updateSelectedCommentBox();
+    }
+
+    function updateSelectedCommentBox() {
+      const custom = cleanText(el.customComment.value);
+      const text = custom || selectedComment;
+      el.selectedCommentBox.textContent = text || 'Belum pilih komen.';
     }
 
     function randomOne() {
@@ -742,6 +818,7 @@
       el.earnPanel.classList.toggle('hidden', !earnActive);
       el.redeemPanel.classList.toggle('hidden', earnActive);
 
+      updateSummary();
       renderComments();
       updatePreview();
     }
@@ -757,9 +834,18 @@
       return `${main}\n\n#SCoinRedemption #SCoin #SCoinCashback #Cashback #${staff.code}`;
     }
 
-    function updatePreview() {
+    function updateSummary() {
       updateStaffPreview();
-      updateCalculation();
+      if (currentMode === 'earn') {
+        el.summaryValue.textContent = formatRM(getEarnData().net);
+      } else {
+        el.summaryValue.textContent = formatRM(getRedeemData().value);
+      }
+    }
+
+    function updatePreview() {
+      updateSummary();
+      updateSelectedCommentBox();
       el.previewText.textContent = finalCommentText();
     }
 
@@ -772,18 +858,64 @@
       }, 2200);
     }
 
+    function goToStep(step) {
+      currentStep = Math.max(1, Math.min(TOTAL_STEPS, step));
+      el.steps.forEach((section, index) => {
+        section.classList.toggle('active', index + 1 === currentStep);
+      });
+      el.progressText.textContent = `Step ${currentStep} of ${TOTAL_STEPS}`;
+      el.progressFill.style.width = `${(currentStep / TOTAL_STEPS) * 100}%`;
+      el.summaryChips.classList.toggle('hidden', currentStep !== 5);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      updatePreview();
+    }
+
+    function validateStep(step) {
+      if (step === 2) {
+        if (!getStaff()) {
+          alert('Sila pilih staf terlebih dahulu.');
+          el.staffSelect.focus();
+          return false;
+        }
+      }
+
+      if (step === 3) {
+        if (currentMode === 'earn') {
+          if (!cleanText(el.earnItem.value) || safeNum(el.earnPrice.value) <= 0 || safeNum(el.earnPercent.value) <= 0) {
+            alert('Sila lengkapkan barang, harga dan cashback % dahulu.');
+            return false;
+          }
+        } else {
+          if (!cleanText(el.redeemItem.value) || safeNum(el.redeemPoints.value) <= 0) {
+            alert('Sila lengkapkan barang dan jumlah S-Coin dahulu.');
+            return false;
+          }
+        }
+      }
+
+      if (step === 4) {
+        if (!cleanText(el.customComment.value) && !selectedComment) {
+          alert('Sila pilih komen dulu atau tulis komen sendiri.');
+          return false;
+        }
+      }
+
+      return true;
+    }
+
     async function copyComment() {
       const staff = getStaff();
       const text = finalCommentText();
 
       if (!staff) {
         alert('Sila pilih staf terlebih dahulu.');
-        el.staffSelect.focus();
+        goToStep(2);
         return;
       }
 
       if (!cleanText(el.customComment.value) && !selectedComment) {
         alert('Sila pilih komen dulu atau tulis komen sendiri.');
+        goToStep(4);
         return;
       }
 
@@ -834,10 +966,6 @@
     el.refreshCommentsBtn.addEventListener('click', renderComments);
     el.randomCommentBtn.addEventListener('click', randomOne);
     el.copyBtn.addEventListener('click', copyComment);
-    el.clearCustomBtn.addEventListener('click', () => {
-      el.customComment.value = '';
-      updatePreview();
-    });
     el.proceedBtn.addEventListener('click', () => {
       closeModal();
       window.open(MAP_URL, '_blank');
@@ -847,9 +975,22 @@
       if (event.target === el.copyModal) closeModal();
     });
 
+    el.nextBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        if (!validateStep(currentStep)) return;
+        goToStep(currentStep + 1);
+      });
+    });
+
+    el.backBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        goToStep(currentStep - 1);
+      });
+    });
+
     populateStaff();
     setMode('earn');
-    updatePreview();
+    goToStep(1);
 
     loadComments().catch(() => {
       el.choiceList.innerHTML = '<div class="comment-card">Tak dapat load komen. Pastikan fail <strong>scoin_comments.json</strong> berada dalam folder yang sama dengan fail HTML ini.</div>';
