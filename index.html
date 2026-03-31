@@ -17,15 +17,14 @@
       --red-tint:     #fde8e6;
       --red-border:   #f5c6c2;
       --red-mid:      #f1a9a3;
+      --green:        #15803d;
+      --green-faint:  #dcfce7;
       --white:        #ffffff;
       --off-white:    #fafafa;
       --text:         #1a0a08;
       --text-mid:     #5c2318;
       --text-soft:    #8c3a2c;
       --text-muted:   #a05040;
-      --chip-bg:      #fff7f6;
-      --chip-border:  #f5c6c2;
-      --chip-label:   #922b21;
     }
 
     /* ── Reset & Base ───────────────────────────────── */
@@ -50,1277 +49,609 @@
       position: relative;
       overflow: hidden;
     }
-
-    /* subtle diagonal texture */
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        -45deg,
-        transparent,
-        transparent 18px,
-        rgba(255,255,255,0.03) 18px,
-        rgba(255,255,255,0.03) 19px
-      );
-      pointer-events: none;
-    }
-
     .hero-inner { max-width: 700px; margin: 0 auto; position: relative; }
-
     .hero h1 {
-      margin: 0 0 8px;
-      font-size: 1.38rem;
-      font-weight: 800;
-      line-height: 1.2;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      margin: 0 0 8px; font-size: 1.38rem; font-weight: 800; line-height: 1.2;
+      display: flex; align-items: center; gap: 10px;
     }
-
     .hero h1 .icon-wrap {
-      width: 36px;
-      height: 36px;
-      background: rgba(255,255,255,0.18);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 1rem;
+      width: 36px; height: 36px; background: rgba(255,255,255,0.18);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 1rem;
     }
-
     .hero p { margin: 0; font-size: 0.9rem; opacity: 0.92; }
-
-    .hero-note {
-      margin-top: 13px;
-      background: rgba(255,255,255,0.13);
-      border: 1px solid rgba(255,255,255,0.20);
-      border-radius: 16px;
-      padding: 11px 14px;
-      font-size: 0.8rem;
-      line-height: 1.55;
-    }
 
     /* ── Wrap ───────────────────────────────────────── */
     .wrap {
-      max-width: 700px;
-      margin: -38px auto 0;
-      padding: 0 12px;
+      max-width: 700px; margin: -38px auto 0; padding: 0 12px;
     }
 
     /* ── Wizard Card ────────────────────────────────── */
     .wizard-card {
-      background: var(--white);
-      border-radius: 24px;
-      box-shadow: 0 14px 32px rgba(150, 30, 20, 0.10);
-      overflow: hidden;
+      background: var(--white); border-radius: 24px;
+      box-shadow: 0 14px 32px rgba(150, 30, 20, 0.10); overflow: hidden;
     }
 
     /* ── Progress ───────────────────────────────────── */
     .progress-wrap { padding: 18px 16px 0; }
-
     .progress-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 10px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; margin-bottom: 10px;
     }
-
     .progress-label   { font-size: 0.82rem; font-weight: 800; color: var(--red); }
     .progress-step-text { font-size: 0.78rem; color: var(--text-muted); font-weight: 700; }
-
     .progress-bar {
-      height: 8px;
-      background: var(--red-tint);
-      border-radius: 999px;
-      overflow: hidden;
+      height: 8px; background: var(--red-tint); border-radius: 999px; overflow: hidden;
     }
-
     .progress-fill {
-      height: 100%;
-      width: 20%;
-      background: linear-gradient(90deg, var(--red-dark), var(--red-light));
-      border-radius: 999px;
-      transition: width .28s cubic-bezier(.4,0,.2,1);
+      height: 100%; width: 20%; background: linear-gradient(90deg, var(--red-dark), var(--red-light));
+      border-radius: 999px; transition: width .3s ease;
     }
 
     /* ── Steps ──────────────────────────────────────── */
     .step {
-      display: none;
-      padding: 18px 16px 18px;
-      animation: fadeSlide .22s ease;
+      display: none; padding: 18px 16px 18px; animation: fadeSlide .25s ease;
     }
-
     .step.active { display: block; }
-
     @keyframes fadeSlide {
       from { opacity: 0; transform: translateY(6px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-
     .step-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 7px 12px;
-      background: var(--red-faint);
-      color: var(--red);
-      border-radius: 999px;
-      font-size: 0.78rem;
-      font-weight: 800;
-      margin-bottom: 14px;
-      border: 1px solid var(--red-border);
+      display: inline-flex; align-items: center; gap: 7px; padding: 7px 12px;
+      background: var(--red-faint); color: var(--red); border-radius: 999px;
+      font-size: 0.78rem; font-weight: 800; margin-bottom: 14px; border: 1px solid var(--red-border);
     }
-
     .step-title   { font-size: 1.15rem; font-weight: 800; color: var(--text); margin-bottom: 6px; }
     .step-subtitle { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 18px; line-height: 1.55; }
 
-    /* ── Grid helpers ───────────────────────────────── */
+    /* ── Grid & Layouts ─────────────────────────────── */
     .mode-grid     { display: grid; gap: 12px; grid-template-columns: repeat(2, 1fr); }
-    .comments-grid { display: grid; gap: 10px; }
     .grid-2        { display: grid; gap: 12px; grid-template-columns: repeat(2, 1fr); }
     .grid-3        { display: grid; gap: 12px; grid-template-columns: repeat(3, 1fr); }
-    .chips         { display: grid; gap: 12px; grid-template-columns: repeat(2, 1fr); margin-top: 16px; }
-    .modal-actions { display: grid; gap: 10px; grid-template-columns: 1fr 1fr; }
-    .nav-row       { display: grid; gap: 10px; grid-template-columns: 1fr 1fr; }
+    .nav-row       { display: grid; gap: 10px; grid-template-columns: 1fr 1fr; margin-top: 18px; }
 
-    /* ── Mode buttons ───────────────────────────────── */
+    /* ── Buttons ────────────────────────────────────── */
     .mode-btn {
-      border: 2px solid var(--red-border);
-      background: var(--white);
-      border-radius: 20px;
-      padding: 16px;
-      text-align: left;
-      cursor: pointer;
-      transition: border-color .16s, background .16s, box-shadow .16s;
+      border: 2px solid var(--red-border); background: var(--white);
+      border-radius: 20px; padding: 16px; text-align: left; cursor: pointer;
+      transition: all .2s ease;
     }
-
     .mode-btn.active {
-      border-color: var(--red);
-      background: var(--red-faint);
+      border-color: var(--red); background: var(--red-faint);
       box-shadow: 0 6px 18px rgba(192, 57, 43, 0.14);
     }
-
     .mode-btn strong { display: block; font-size: 0.97rem; margin-bottom: 5px; color: var(--text); font-weight: 700; }
     .mode-btn span   { display: block; font-size: 0.81rem; color: var(--text-muted); }
 
+    button { font-family: inherit; }
+    .primary-btn, .secondary-btn, .soft-btn {
+      border: none; border-radius: 999px; font-weight: 700; cursor: pointer;
+      transition: all .2s ease; width: 100%; padding: 14px 16px; font-size: 0.95rem;
+    }
+    .primary-btn {
+      background: var(--red); color: var(--white); box-shadow: 0 6px 18px rgba(192, 57, 43, 0.30);
+    }
+    .primary-btn:hover { background: var(--red-dark); }
+    .primary-btn:active { transform: scale(0.98); }
+    
+    .secondary-btn {
+      background: var(--red-faint); color: var(--red-dark); border: 1px solid var(--red-border);
+    }
+    .secondary-btn:hover { background: var(--red-tint); }
+
+    .soft-btn {
+      background: var(--off-white); color: var(--text-muted); border: 1px solid #e5e5e5;
+      padding: 10px 14px; font-size: 0.85rem;
+    }
+
     /* ── Fields ─────────────────────────────────────── */
     .field { margin-bottom: 0; }
-
     .field label {
-      display: block;
-      font-size: 0.83rem;
-      font-weight: 700;
-      margin-bottom: 7px;
-      color: var(--text-mid);
+      display: block; font-size: 0.83rem; font-weight: 700; margin-bottom: 7px; color: var(--text-mid);
     }
-
-    .field input,
-    .field select,
-    .field textarea {
-      width: 100%;
-      border: 2px solid var(--red-border);
-      border-radius: 16px;
-      padding: 13px 14px;
-      font: inherit;
-      background: var(--white);
-      color: var(--text);
-      transition: border-color .15s, box-shadow .15s;
-      -webkit-appearance: none;
+    .field input, .field select, .field textarea {
+      width: 100%; border: 2px solid var(--red-border); border-radius: 16px;
+      padding: 13px 14px; font: inherit; background: var(--white); color: var(--text);
+      transition: all .2s;
     }
-
-    .field textarea { min-height: 108px; resize: vertical; }
-
-    .field input:focus,
-    .field select:focus,
-    .field textarea:focus {
-      outline: none;
-      border-color: var(--red);
-      box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.12);
+    .field input:focus, .field select:focus, .field textarea:focus {
+      outline: none; border-color: var(--red); box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.12);
     }
-
-    /* Error state */
-    .field input.error,
-    .field select.error { border-color: #c0392b; box-shadow: 0 0 0 3px rgba(192,57,43,0.12); }
-
-    .field-error {
-      display: none;
-      margin-top: 6px;
-      padding: 7px 12px;
-      background: var(--red-faint);
-      border-radius: 10px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--red-dark);
-    }
-    .field-error.visible { display: block; }
-
-    .step-error {
-      display: none;
-      margin-bottom: 12px;
-      padding: 10px 14px;
-      background: var(--red-faint);
-      border-radius: 14px;
-      font-size: 0.84rem;
-      font-weight: 600;
-      color: var(--red-dark);
-      border: 1px solid var(--red-border);
-    }
-    .step-error.visible { display: block; }
-
-    /* ── Prefix input ───────────────────────────────── */
     .prefix { position: relative; }
     .prefix span {
-      position: absolute;
-      left: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--text-muted);
-      pointer-events: none;
+      position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+      font-size: 0.9rem; font-weight: 700; color: var(--text-muted); pointer-events: none;
     }
-    .prefix input { padding-left: 38px; }
+    .prefix input { padding-left: 42px; }
 
-    /* ── Quick note ─────────────────────────────────── */
-    .quick-note {
-      margin-top: 12px;
-      font-size: 0.79rem;
-      color: var(--text-muted);
-      background: var(--red-faint);
-      border-radius: 14px;
-      padding: 10px 12px;
-      line-height: 1.5;
+    /* ── Wow Factor & UI Alerts ─────────────────────── */
+    .wow-factor {
+      display: none; margin-top: 14px; padding: 12px 14px;
+      background: var(--green-faint); border-radius: 14px;
+      border: 1px solid #bbf7d0; color: var(--green);
+      font-size: 0.9rem; font-weight: 600; text-align: center;
+      animation: popIn .3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .wow-factor.visible { display: block; }
+    
+    .error-msg {
+      display: none; margin-top: 6px; font-size: 0.8rem; color: var(--red); font-weight: 600;
     }
 
-    /* ── Summary chips ──────────────────────────────── */
-    .chip {
-      background: var(--chip-bg);
-      border: 1px solid var(--chip-border);
-      border-radius: 16px;
-      padding: 12px 14px;
-    }
-
-    .chip small {
-      display: block;
-      font-size: 0.69rem;
-      text-transform: uppercase;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      color: var(--chip-label);
-      margin-bottom: 5px;
-    }
-
-    .chip strong { display: block; font-size: 1rem; color: var(--red-dark); font-weight: 800; }
-
-    /* ── Buttons ────────────────────────────────────── */
-    .soft-btn,
-    .primary-btn,
-    .secondary-btn {
-      border: none;
-      border-radius: 999px;
-      font: inherit;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background .16s, box-shadow .16s, transform .1s;
-      width: 100%;
-      padding: 12px 16px;
-    }
-
-    .soft-btn { background: var(--red-faint); color: var(--red-dark); border: 1px solid var(--red-border); }
-    .soft-btn:hover  { background: var(--red-tint); }
-    .soft-btn:active { transform: scale(0.98); }
-
-    .primary-btn {
-      background: var(--red);
-      color: var(--white);
-      font-weight: 800;
-      padding: 14px 16px;
-      box-shadow: 0 6px 18px rgba(192, 57, 43, 0.30);
-    }
-    .primary-btn:hover  { background: var(--red-dark); box-shadow: 0 8px 22px rgba(150, 40, 27, 0.36); }
-    .primary-btn:active { transform: scale(0.98); }
-    .primary-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-
-    .secondary-btn { background: var(--red-faint); color: var(--red-dark); padding: 14px 16px; border: 1px solid var(--red-border); }
-    .secondary-btn:hover  { background: var(--red-tint); }
-    .secondary-btn:active { transform: scale(0.98); }
-    .secondary-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
-
-    /* ── Comment cards ──────────────────────────────── */
+    /* ── Comments Selection ─────────────────────────── */
+    .comments-grid { display: grid; gap: 10px; }
     .comment-card {
-      border: 1.5px solid var(--red-border);
-      background: var(--white);
-      border-radius: 18px;
-      padding: 13px 15px;
-      font-size: 0.91rem;
-      line-height: 1.55;
-      cursor: pointer;
-      transition: border-color .16s, background .16s, box-shadow .16s;
-      user-select: none;
+      border: 1.5px solid var(--red-border); background: var(--white);
+      border-radius: 16px; padding: 13px 15px; font-size: 0.91rem;
+      cursor: pointer; transition: all .2s ease;
     }
-
-    .comment-card:hover {
-      border-color: var(--red-mid);
-      background: var(--red-faint);
-    }
-
     .comment-card.selected {
-      border-color: var(--red);
-      background: var(--red-faint);
-      box-shadow: 0 6px 18px rgba(192, 57, 43, 0.12);
+      border-color: var(--red); background: var(--red-faint);
     }
 
-    /* ── Selected comment box ───────────────────────── */
-    .selected-box {
-      margin-top: 12px;
-      background: var(--off-white);
-      border-left: 4px solid var(--red);
-      border-radius: 16px;
-      padding: 13px 14px;
-      white-space: pre-wrap;
-      font-size: 0.91rem;
-      line-height: 1.6;
-      color: var(--text);
-      min-height: 72px;
+    .edit-comment-area {
+      width: 100%; min-height: 100px; margin-top: 15px;
+      border: 2px dashed var(--red-mid); background: var(--white);
+      border-radius: 16px; padding: 14px; font-size: 0.95rem; line-height: 1.5;
+      resize: vertical; font-family: inherit;
+    }
+    .edit-comment-area:focus {
+      border-style: solid; border-color: var(--red); outline: none;
     }
 
-    /* ── Preview ────────────────────────────────────── */
-    .preview {
-      background: var(--off-white);
-      border-left: 4px solid var(--red);
-      border-radius: 16px;
-      padding: 15px;
-      white-space: pre-wrap;
-      font-size: 0.94rem;
-      line-height: 1.65;
-      color: var(--text);
-      min-height: 110px;
+    /* ── Step 5: Mock Google Review ─────────────────── */
+    .google-mock {
+      background: var(--white); border: 1px solid #e5e5e5; border-radius: 16px;
+      padding: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .google-mock-header {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 12px;
+    }
+    .google-mock-avatar {
+      width: 36px; height: 36px; background: #e8eaed; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; color: #5f6368;
+    }
+    .google-mock-stars { color: #fbbc04; font-size: 1.1rem; letter-spacing: 2px; }
+    .google-mock-body {
+      font-size: 0.95rem; color: #202124; line-height: 1.5; white-space: pre-wrap;
+    }
+    .google-mock-hashtags {
+      margin-top: 10px; font-size: 0.85rem; color: #1a73e8; font-weight: 500;
+    }
+    .photo-reminder {
+      margin-top: 14px; padding: 10px; background: #fff8e1; border-radius: 10px;
+      font-size: 0.85rem; color: #b45309; font-weight: 600; display: flex; align-items: center; gap: 8px;
     }
 
-    /* ── Toast ──────────────────────────────────────── */
-    .toast {
-      position: fixed;
-      left: 50%;
-      bottom: 20px;
-      transform: translateX(-50%) translateY(80px);
-      background: var(--red-dark);
-      color: var(--white);
-      border-radius: 999px;
-      padding: 12px 20px;
-      font-size: 0.86rem;
-      font-weight: 600;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .22s ease, transform .22s cubic-bezier(.4,0,.2,1);
-      z-index: 9999;
-      white-space: nowrap;
-      box-shadow: 0 8px 20px rgba(150, 30, 20, 0.30);
-    }
-
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    /* ── Modals ─────────────────────────────────────── */
+    /* ── Modal ──────────────────────────────────────── */
     .modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(40, 5, 2, 0.52);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-      z-index: 9998;
+      position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+      display: none; align-items: center; justify-content: center; padding: 20px; z-index: 999;
     }
-
     .modal.show { display: flex; }
-
-    .modal-box {
-      width: 100%;
-      max-width: 380px;
-      background: var(--white);
-      border-radius: 26px;
-      padding: 26px 20px 22px;
-      text-align: center;
-      box-shadow: 0 24px 48px rgba(40, 5, 2, 0.22);
-      animation: popIn .22s cubic-bezier(.34,1.56,.64,1);
+    .modal-content {
+      background: white; width: 100%; max-width: 360px; padding: 24px;
+      border-radius: 24px; text-align: center; animation: popIn .3s ease;
     }
-
+    .modal-icon {
+      width: 60px; height: 60px; background: var(--green-faint); color: var(--green);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem; margin: 0 auto 16px;
+    }
     @keyframes popIn {
-      from { opacity: 0; transform: scale(0.92) translateY(10px); }
-      to   { opacity: 1; transform: scale(1) translateY(0); }
+      from { opacity: 0; transform: scale(0.9); }
+      to   { opacity: 1; transform: scale(1); }
     }
 
-    .modal-box .icon {
-      width: 60px;
-      height: 60px;
-      margin: 0 auto 14px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--red-faint);
-      color: var(--red);
-      font-size: 1.55rem;
-      border: 2px solid var(--red-border);
-    }
-
-    .modal-box h3 { margin: 0 0 8px; font-size: 1.2rem; color: var(--text); font-weight: 800; }
-    .modal-box p  { margin: 0 0 18px; color: var(--text-muted); font-size: 0.9rem; line-height: 1.55; }
-
-    /* ── Utility ────────────────────────────────────── */
-    .hidden { display: none !important; }
-
-    /* ── Responsive ─────────────────────────────────── */
     @media (max-width: 640px) {
-      .hero h1 { font-size: 1.22rem; }
-
-      .mode-grid,
-      .grid-2,
-      .grid-3,
-      .chips,
-      .modal-actions,
-      .nav-row { grid-template-columns: 1fr; }
-
-      .toast {
-        width: calc(100% - 28px);
-        text-align: center;
-        white-space: normal;
-      }
+      .mode-grid, .grid-2, .grid-3 { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ── Hero ──────────────────────────────────────── -->
   <div class="hero">
     <div class="hero-inner">
-      <h1>
-        <span class="icon-wrap"><i class="fa-solid fa-star"></i></span>
-        Grand Senheng Temerloh Review Helper
-      </h1>
-      <p>Isi satu-satu, tekan next, pilih komen, dan terus copy.</p>
-      <div class="hero-note">
-        Komentar yang paling impactful berpeluang menang <strong>RM1,000 cash dari Senheng</strong>. <strong>T&amp;C apply.</strong> Pemenang bulanan dipilih peringkat <strong>nationwide</strong>.
-      </div>
+      <h1><span class="icon-wrap"><i class="fa-solid fa-star"></i></span> Review Helper</h1>
+      <p>Bantu pelanggan tulis review mantap untuk KPI S-Coin anda.</p>
     </div>
   </div>
 
-  <!-- ── Wizard ─────────────────────────────────────── -->
   <div class="wrap">
     <div class="wizard-card">
-
       <div class="progress-wrap">
         <div class="progress-top">
           <div class="progress-label">Langkah demi langkah</div>
           <div class="progress-step-text" id="progressText">Step 1 of 5</div>
         </div>
-        <div class="progress-bar">
-          <div class="progress-fill" id="progressFill"></div>
-        </div>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
       </div>
 
-      <!-- Step 1 -->
-      <section class="step active" data-step="1">
+      <section class="step active" id="step1">
         <div class="step-badge"><i class="fa-solid fa-layer-group"></i> Step 1</div>
         <div class="step-title">Pilih jenis transaksi</div>
-        <div class="step-subtitle">Pilih yang paling sesuai, lepas tu tekan Next.</div>
-
+        <div class="step-subtitle">Tekan salah satu, sistem akan terus ke langkah seterusnya.</div>
         <div class="mode-grid">
-          <button class="mode-btn active" id="earnModeBtn" type="button">
-            <strong>💰 Beli &amp; dapat S-Coin</strong>
-            <span>Customer beli barang dan dapat S-Coin cashback</span>
+          <button class="mode-btn active" id="btnModeEarn" type="button">
+            <strong>💰 Beli &amp; Dapat S-Coin</strong>
+            <span>Pelanggan beli barang dan dapat cashback</span>
           </button>
-          <button class="mode-btn" id="redeemModeBtn" type="button">
-            <strong>🎁 Redeem guna S-Coin</strong>
-            <span>Customer guna S-Coin yang sedia ada</span>
+          <button class="mode-btn" id="btnModeRedeem" type="button">
+            <strong>🎁 Redeem S-Coin</strong>
+            <span>Pelanggan tebus S-Coin sedia ada</span>
           </button>
-        </div>
-
-        <div class="nav-row" style="margin-top:18px;">
-          <button class="secondary-btn" type="button" disabled>Back</button>
-          <button class="primary-btn next-btn" type="button">Next →</button>
         </div>
       </section>
 
-      <!-- Step 2 -->
-      <section class="step" data-step="2">
+      <section class="step" id="step2">
         <div class="step-badge"><i class="fa-solid fa-user"></i> Step 2</div>
-        <div class="step-title">Pilih staf yang serve</div>
-        <div class="step-subtitle">Pilih nama staf — hashtag akan masuk automatik dalam komen akhir.</div>
-
+        <div class="step-title">Siapa yang serve?</div>
+        <div class="step-subtitle">Pilih nama staf. Hashtag nama akan diletak automatik.</div>
         <div class="field">
-          <label for="staffSelect">Nama staf</label>
           <select id="staffSelect">
-            <option value="">Sila pilih staf</option>
+            <option value="">-- Sila pilih nama staf --</option>
+            <option value="SH9861">Mus</option>
+            <option value="SH19800">Faris</option>
+            <option value="SH18556">Omar</option>
+            <option value="SH20201">Wan</option>
+            <option value="SH20420">Kim</option>
+            <option value="SH20581">Anisa</option>
+            <option value="SH20580">Eesya</option>
+            <option value="SH16611">Maisarah</option>
           </select>
-          <div class="field-error" id="staffError">Sila pilih nama staf sebelum teruskan.</div>
+          <div class="error-msg" id="errStaff">Sila pilih nama staf.</div>
         </div>
-
-        <div class="quick-note"><i class="fa-solid fa-circle-info" style="margin-right:5px;"></i>Hashtag staf akan dimasukkan automatik di bawah komen akhir.</div>
-
-        <div class="nav-row" style="margin-top:18px;">
-          <button class="secondary-btn back-btn" type="button">← Back</button>
-          <button class="primary-btn next-btn" type="button">Next →</button>
+        <div class="nav-row">
+          <button class="secondary-btn" onclick="goStep(1)">← Back</button>
+          <button class="primary-btn" onclick="checkStep2()">Next →</button>
         </div>
       </section>
 
-      <!-- Step 3 -->
-      <section class="step" data-step="3">
+      <section class="step" id="step3">
         <div class="step-badge"><i class="fa-solid fa-pen"></i> Step 3</div>
-        <div class="step-title">Isi maklumat ringkas</div>
-        <div class="step-subtitle">Isi yang penting sahaja — template akan guna maklumat ni.</div>
-
-        <div class="step-error" id="step3Error"></div>
-
-        <div id="earnPanel">
+        <div class="step-title">Isi maklumat belian</div>
+        <div class="step-subtitle">Maklumat ini akan diserap ke dalam ayat review.</div>
+        
+        <div id="earnFields">
           <div class="grid-3">
             <div class="field">
-              <label for="earnItem">Barang dibeli</label>
-              <input id="earnItem" type="text" placeholder="cth: TV, air fryer" />
-              <div class="field-error" id="earnItemError">Sila isi nama barang.</div>
+              <label>Barang Dibeli</label>
+              <input type="text" id="earnItem" placeholder="Cth: TV, Peti Ais" oninput="calcWow()">
             </div>
             <div class="field">
-              <label for="earnPrice">Harga barang</label>
+              <label>Harga Barang</label>
               <div class="prefix">
                 <span>RM</span>
-                <input id="earnPrice" type="number" min="0" step="0.01" placeholder="0.00" />
+                <input type="text" inputmode="decimal" id="earnPrice" placeholder="0.00">
               </div>
-              <div class="field-error" id="earnPriceError">Sila isi harga melebihi RM0.</div>
             </div>
             <div class="field">
-              <label for="earnPercent">S-Coin cashback %</label>
-              <input id="earnPercent" type="number" min="0" step="0.1" placeholder="cth: 50" />
-              <div class="field-error" id="earnPercentError">Sila isi peratusan cashback.</div>
+              <label>S-Coin Cashback (%)</label>
+              <input type="number" id="earnPercent" placeholder="Cth: 50" oninput="calcWow()">
             </div>
           </div>
         </div>
 
-        <div id="redeemPanel" class="hidden">
+        <div id="redeemFields" style="display: none;">
           <div class="grid-2">
             <div class="field">
-              <label for="redeemItem">Barang ditebus</label>
-              <input id="redeemItem" type="text" placeholder="cth: Kettle, blender" />
-              <div class="field-error" id="redeemItemError">Sila isi nama barang.</div>
+              <label>Barang Ditebus</label>
+              <input type="text" id="redeemItem" placeholder="Cth: Blender" oninput="calcWow()">
             </div>
             <div class="field">
-              <label for="redeemPoints">S-Coin digunakan</label>
-              <input id="redeemPoints" type="number" min="0" step="1" placeholder="cth: 10000" />
-              <div class="field-error" id="redeemPointsError">Sila isi jumlah S-Coin melebihi 0.</div>
+              <label>Jumlah S-Coin Ditebus</label>
+              <input type="number" id="redeemPoints" placeholder="Cth: 5000" oninput="calcWow()">
             </div>
           </div>
         </div>
 
-        <div class="nav-row" style="margin-top:18px;">
-          <button class="secondary-btn back-btn" type="button">← Back</button>
-          <button class="primary-btn next-btn" type="button">Next →</button>
+        <div class="wow-factor" id="wowFactor"></div>
+        <div class="error-msg" id="errStep3">Sila isi semua ruangan dengan betul.</div>
+
+        <div class="nav-row">
+          <button class="secondary-btn" onclick="goStep(2)">← Back</button>
+          <button class="primary-btn" onclick="checkStep3()">Next →</button>
         </div>
       </section>
 
-      <!-- Step 4 -->
-      <section class="step" data-step="4">
+      <section class="step" id="step4">
         <div class="step-badge"><i class="fa-regular fa-message"></i> Step 4</div>
-        <div class="step-title">Pilih komen terbaik</div>
-        <div class="step-subtitle">Tap satu komen yang paling natural. Atau tulis sendiri di bawah.</div>
-
-        <div class="step-error" id="step4Error"></div>
-
-        <div class="nav-row" style="margin-bottom:10px;">
-          <button class="soft-btn" id="refreshCommentsBtn" type="button">
-            <i class="fa-solid fa-shuffle"></i> 5 komen baru
-          </button>
-          <button class="soft-btn" id="randomCommentBtn" type="button">
-            <i class="fa-solid fa-dice"></i> Pilih random
-          </button>
+        <div class="step-title">Pilih & Edit Komen</div>
+        <div class="step-subtitle">Pilih template di bawah. Pelanggan boleh edit terus di dalam kotak jika mahu.</div>
+        
+        <div style="display: flex; gap:10px; margin-bottom: 12px;">
+          <button class="soft-btn" onclick="loadTemplates()"><i class="fa-solid fa-shuffle"></i> Tukar Pilihan</button>
         </div>
+        
+        <div class="comments-grid" id="commentList"></div>
 
-        <div class="comments-grid" id="choiceList"></div>
+        <textarea id="finalCommentText" class="edit-comment-area" placeholder="Ayat review akan muncul di sini. Boleh edit kalau nak tambah apa-apa..."></textarea>
+        <div class="error-msg" id="errStep4">Sila pilih komen atau taip sesuatu.</div>
 
-        <div class="field" style="margin-top:12px;">
-          <label for="customComment">Atau tulis komen sendiri</label>
-          <textarea id="customComment" placeholder="Kalau nak ubah ayat sendiri, tulis dekat sini..."></textarea>
-        </div>
-
-        <div class="selected-box" id="selectedCommentBox">Belum pilih komen.</div>
-
-        <div class="nav-row" style="margin-top:16px;">
-          <button class="secondary-btn back-btn" type="button">← Back</button>
-          <button class="primary-btn next-btn" type="button">Next →</button>
+        <div class="nav-row">
+          <button class="secondary-btn" onclick="goStep(3)">← Back</button>
+          <button class="primary-btn" onclick="checkStep4()">Next →</button>
         </div>
       </section>
 
-      <!-- Step 5 -->
-      <section class="step" data-step="5">
+      <section class="step" id="step5">
         <div class="step-badge"><i class="fa-regular fa-eye"></i> Step 5</div>
-        <div class="step-title">Siap untuk copy</div>
-        <div class="step-subtitle">Semak sekejap, lepas tu tekan Copy — terus tampal ke Google Review.</div>
-
-        <div class="preview" id="previewText">Sila isi maklumat dan pilih komen.</div>
-
-        <div class="chips hidden" id="summaryChips">
-          <div class="chip">
-            <small>Hashtag staf</small>
-            <strong id="staffCodePreview">#StaffCode</strong>
+        <div class="step-title">Siap untuk di-copy!</div>
+        <div class="step-subtitle">Semak review akhir. 5 hashtag wajib dikunci selamat di bawah komen.</div>
+        
+        <div class="google-mock">
+          <div class="google-mock-header">
+            <div class="google-mock-avatar"><i class="fa-solid fa-user"></i></div>
+            <div>
+              <div style="font-size: 0.85rem; font-weight: 700;">Pelanggan Anda</div>
+              <div class="google-mock-stars">★★★★★</div>
+            </div>
           </div>
-          <div class="chip">
-            <small>Anggaran nilai S-Coin</small>
-            <strong id="summaryValue">RM0.00</strong>
+          <div class="google-mock-body" id="mockReviewText"></div>
+          <div class="google-mock-hashtags" id="mockHashtags"></div>
+          
+          <div class="photo-reminder">
+            <i class="fa-solid fa-camera-retro"></i> Minta pelanggan upload gambar barang sekali!
           </div>
         </div>
 
-        <div class="nav-row" style="margin-top:18px;">
-          <button class="secondary-btn back-btn" type="button">← Back</button>
-          <button class="primary-btn" id="copyBtn" type="button">
-            <i class="fa-regular fa-copy"></i> Copy komen
-          </button>
+        <div class="nav-row">
+          <button class="secondary-btn" onclick="goStep(4)">← Back</button>
+          <button class="primary-btn" onclick="copyAndProceed()"><i class="fa-regular fa-copy"></i> Copy & Buka Google</button>
         </div>
       </section>
 
     </div>
   </div>
 
-  <!-- ── Modal: copied ─────────────────────────────── -->
-  <div class="modal" id="copyModal">
-    <div class="modal-box">
-      <div class="icon"><i class="fa-solid fa-check"></i></div>
-      <h3>Komen dah di-copy! ✓</h3>
-      <p>Tampal ke Google Review, lepas tu tekan <strong>Proceed</strong> untuk buka lokasi Grand Senheng Temerloh.</p>
-      <div class="modal-actions">
-        <button class="primary-btn" id="proceedBtn" type="button">Proceed ke Maps</button>
-        <button class="secondary-btn" id="closeModalBtn" type="button">Tutup</button>
-      </div>
+  <div class="modal" id="successModal">
+    <div class="modal-content">
+      <div class="modal-icon"><i class="fa-solid fa-check"></i></div>
+      <h3 style="margin:0 0 10px; font-weight: 800;">Komen Di-copy!</h3>
+      <p style="font-size: 0.9rem; color: #555; margin-bottom: 20px;">
+        Ayat berserta hashtag wajib telah di-copy. Anda akan dibawa terus ke Google Maps. Pastikan pelanggan bagi 5 Bintang!
+      </p>
+      <button class="primary-btn" onclick="openGoogleMaps()">Buka Google Maps Sekarang</button>
+      <button class="soft-btn" style="margin-top: 10px;" onclick="closeModal()">Tutup</button>
     </div>
   </div>
 
-  <!-- ── Modal: manual copy fallback ──────────────── -->
-  <div class="modal" id="manualCopyModal">
-    <div class="modal-box">
-      <div class="icon"><i class="fa-solid fa-hand-pointer"></i></div>
-      <h3>Salin secara manual</h3>
-      <p>Tekan <strong>Pilih Semua</strong> kemudian salin teks di bawah (Ctrl+C / ⌘+C).</p>
-      <textarea
-        id="manualCopyArea"
-        readonly
-        style="
-          width:100%; border:2px solid var(--red-border); border-radius:14px;
-          padding:11px 12px; font:inherit; font-size:0.84rem; min-height:110px;
-          resize:none; color:var(--text); margin-bottom:12px; line-height:1.5;
-          background:var(--off-white);
-        "
-      ></textarea>
-      <div class="modal-actions">
-        <button class="primary-btn" id="manualProceedBtn" type="button">Proceed ke Maps</button>
-        <button class="secondary-btn" id="closeManualModalBtn" type="button">Tutup</button>
-      </div>
-    </div>
-  </div>
+<script>
+  /* =========================================
+     KONFIGURASI PENTING
+     ========================================= */
+  const PLACE_ID = "ChIJhUovtuy4zjERZlW96Pgwgec";
+  const GOOGLE_MAPS_URL = `https://search.google.com/local/writereview?placeid=${PLACE_ID}`;
+  
+  // Hashtag Wajib KPI S-Coin
+  const MANDATORY_HASHTAGS = "#GrandSenhengTemerloh #SCoin #SenhengApp #SenhengRewards #Pahang";
 
-  <!-- ── Toast ─────────────────────────────────────── -->
-  <div class="toast" id="toast"></div>
+  let currentStep = 1;
+  let mode = 'earn'; 
+  let rawPrice = 0;
+  let allComments = { earn: [], redeem: [] };
 
-  <script>
-    /* ═══════════════════════════════════════════════
-       CONFIGURATION
-    ═══════════════════════════════════════════════ */
+  // DOM Elements
+  const steps = document.querySelectorAll('.step');
+  const fill = document.getElementById('progressFill');
+  const text = document.getElementById('progressText');
+  const earnPriceInput = document.getElementById('earnPrice');
 
-    const STAFF_LIST = [
-      { nickname: 'Mus',      code: 'SH9861'  },
-      { nickname: 'Faris',    code: 'SH19800' },
-      { nickname: 'Omar',     code: 'SH18556' },
-      { nickname: 'Wan',      code: 'SH20201' },
-      { nickname: 'Kim',      code: 'SH20420' },
-      { nickname: 'Anisa',    code: 'SH20581' },
-      { nickname: 'Eesya',    code: 'SH20580' },
-      { nickname: 'Maisarah', code: 'SH16611' }
-    ];
+  /* =========================================
+     LOGIK AUTO-ADVANCE & NAVIGATION
+     ========================================= */
+  function goStep(n) {
+    steps.forEach(s => s.classList.remove('active'));
+    document.getElementById(`step${n}`).classList.add('active');
+    currentStep = n;
+    fill.style.width = (n * 20) + '%';
+    text.innerText = `Step ${n} of 5`;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    if (n === 5) prepareFinalReview();
+  }
 
-    const MAP_URL     = 'https://maps.app.goo.gl/9WqzfnDskqHWywkC8';
-    const TOTAL_STEPS = 5;
+  // Auto-advance Step 1
+  document.getElementById('btnModeEarn').onclick = function() {
+    mode = 'earn';
+    this.classList.add('active');
+    document.getElementById('btnModeRedeem').classList.remove('active');
+    document.getElementById('earnFields').style.display = 'block';
+    document.getElementById('redeemFields').style.display = 'none';
+    setTimeout(() => goStep(2), 250);
+  };
 
-    /*
-     * S-Coin value calculation:
-     *   gross  = price × (percent / 100)
-     *   net    = gross × (1 − SCOIN_FEE_RATE)   → 5% processing fee deducted
-     *   points = net   × SCOIN_POINTS_PER_RM     → 100 S-Coin = RM1.00
-     */
-    const SCOIN_FEE_RATE      = 0.05;
-    const SCOIN_POINTS_PER_RM = 100;
+  document.getElementById('btnModeRedeem').onclick = function() {
+    mode = 'redeem';
+    this.classList.add('active');
+    document.getElementById('btnModeEarn').classList.remove('active');
+    document.getElementById('earnFields').style.display = 'none';
+    document.getElementById('redeemFields').style.display = 'block';
+    setTimeout(() => goStep(2), 250);
+  };
 
-    /* ═══════════════════════════════════════════════
-       INLINE FALLBACK COMMENTS
-       (used only when scoin_comments.json cannot be
-       fetched, e.g. opened as a file:// URL)
-    ═══════════════════════════════════════════════ */
+  // Auto-advance Step 2
+  document.getElementById('staffSelect').addEventListener('change', function() {
+    document.getElementById('errStaff').style.display = 'none';
+    if(this.value !== "") setTimeout(() => goStep(3), 250);
+  });
+  function checkStep2() {
+    if(document.getElementById('staffSelect').value === "") {
+      document.getElementById('errStaff').style.display = 'block';
+    } else { goStep(3); }
+  }
 
-    const FALLBACK_COMMENTS = {
-      earn: [
-        'Baru grab {item} tadi, harga {price}. Tak expect pun ada S-Coin cashback {percent} — dapat balik {netValue}. Memang tak rugi singgah.',
-        'Tak plan pun nak beli {item} tapi tengok harga {price} terus ambil. Dapat lagi S-Coin cashback {percent} worth {netValue}. Solid deal.',
-        'Finally dapat beli {item} yang dah lama dalam wishlist. Harga {price}, cashback S-Coin {percent}, nilai {netValue}. Lega.',
-        'Just grabbed {item} at {price}. Didn\'t expect to also get {percent} S-Coin cashback worth {netValue}. Nice bonus honestly.',
-        '{item} check. Harga {price} check. S-Coin cashback {percent} worth {netValue} check. Satisfied.',
-        'Singgah sekejap je tapi balik dengan {item}. Harga {price}, cashback {percent} S-Coin, nilai {netValue}. Syok.',
-        'Rasa macam untung dua kali — beli {item} harga {price} dan dapat cashback S-Coin {percent} ({netValue}).',
-        'Honestly best deal. {item} at {price} plus {percent} S-Coin cashback worth {netValue}. Will come back.',
-        'Saya jarang tulis review tapi memang best — {item} harga {price}, cashback S-Coin {percent}, nilai {netValue}.',
-        'Alhamdulillah dapat beli {item} harga {price}. S-Coin cashback {percent} masuk sekali, nilai {netValue}. Syukur.'
-      ],
-      redeem: [
-        'Harini tebus {item} guna {points} S-Coin — bersamaan {value}. Rasa macam dapat free. Best program ni.',
-        'Coin yang dah lama simpan akhirnya guna untuk {item}. {points} S-Coin = {value}. Worth kumpul.',
-        'Just redeemed {item} using {points} S-Coin worth {value}. Proses mudah je, tak ambil masa langsung.',
-        'Seronok bila S-Coin yang kumpul sikit-sikit akhirnya boleh jadi {item}. {points} S-Coin, nilai {value}.',
-        'Dah lama nak guna S-Coin, harini baru sempat. Dapat {item} guna {points} S-Coin worth {value}. Puas.',
-        'Honestly surprised how easy it was. Redeemed {item} with {points} S-Coin worth {value}. No hassle at all.',
-        'Sikit-sikit lama-lama jadi {item}. Redeem pakai {points} S-Coin, value {value}. Happy sangat.',
-        'Guna {points} S-Coin untuk tebus {item} — bersamaan {value}. Staff pun tolong proses dengan cepat.',
-        '{item} ni memang dalam wishlist lama dah. Hari ni dapat tebus guna {points} S-Coin worth {value}.',
-        'Alhamdulillah dapat manfaatkan S-Coin. Tebus {item} guna {points} points, nilai {value}. Sangat puas.'
-      ]
-    };
+  /* =========================================
+     FORMAT HARGA PINTAR (STEP 3)
+     ========================================= */
+  earnPriceInput.addEventListener('focus', function() {
+    if(rawPrice > 0) this.value = rawPrice;
+  });
 
-    /* ═══════════════════════════════════════════════
-       STATE
-    ═══════════════════════════════════════════════ */
+  earnPriceInput.addEventListener('input', function(e) {
+    let val = e.target.value.replace(/[^0-9.]/g, '');
+    rawPrice = parseFloat(val) || 0;
+    calcWow();
+  });
 
-    let currentMode     = 'earn';
-    let selectedComment = '';
-    let currentStep     = 1;
-    let toastTimer      = null;
-
-    const commentLibrary = { earn: [], redeem: [] };
-
-    // Track shown template indices per mode to avoid repeating cards
-    const shownIndices = { earn: new Set(), redeem: new Set() };
-
-    /* ═══════════════════════════════════════════════
-       ELEMENT REFS
-    ═══════════════════════════════════════════════ */
-
-    const el = {
-      steps:               [...document.querySelectorAll('.step')],
-      progressFill:        document.getElementById('progressFill'),
-      progressText:        document.getElementById('progressText'),
-      earnModeBtn:         document.getElementById('earnModeBtn'),
-      redeemModeBtn:       document.getElementById('redeemModeBtn'),
-      earnPanel:           document.getElementById('earnPanel'),
-      redeemPanel:         document.getElementById('redeemPanel'),
-      staffSelect:         document.getElementById('staffSelect'),
-      staffError:          document.getElementById('staffError'),
-      staffCodePreview:    document.getElementById('staffCodePreview'),
-      earnItem:            document.getElementById('earnItem'),
-      earnItemError:       document.getElementById('earnItemError'),
-      earnPrice:           document.getElementById('earnPrice'),
-      earnPriceError:      document.getElementById('earnPriceError'),
-      earnPercent:         document.getElementById('earnPercent'),
-      earnPercentError:    document.getElementById('earnPercentError'),
-      redeemItem:          document.getElementById('redeemItem'),
-      redeemItemError:     document.getElementById('redeemItemError'),
-      redeemPoints:        document.getElementById('redeemPoints'),
-      redeemPointsError:   document.getElementById('redeemPointsError'),
-      step3Error:          document.getElementById('step3Error'),
-      step4Error:          document.getElementById('step4Error'),
-      refreshCommentsBtn:  document.getElementById('refreshCommentsBtn'),
-      randomCommentBtn:    document.getElementById('randomCommentBtn'),
-      choiceList:          document.getElementById('choiceList'),
-      customComment:       document.getElementById('customComment'),
-      selectedCommentBox:  document.getElementById('selectedCommentBox'),
-      previewText:         document.getElementById('previewText'),
-      summaryChips:        document.getElementById('summaryChips'),
-      summaryValue:        document.getElementById('summaryValue'),
-      copyBtn:             document.getElementById('copyBtn'),
-      copyModal:           document.getElementById('copyModal'),
-      proceedBtn:          document.getElementById('proceedBtn'),
-      closeModalBtn:       document.getElementById('closeModalBtn'),
-      manualCopyModal:     document.getElementById('manualCopyModal'),
-      manualCopyArea:      document.getElementById('manualCopyArea'),
-      manualProceedBtn:    document.getElementById('manualProceedBtn'),
-      closeManualModalBtn: document.getElementById('closeManualModalBtn'),
-      toast:               document.getElementById('toast'),
-      nextBtns:            [...document.querySelectorAll('.next-btn')],
-      backBtns:            [...document.querySelectorAll('.back-btn')]
-    };
-
-    /* ═══════════════════════════════════════════════
-       HELPERS
-    ═══════════════════════════════════════════════ */
-
-    function safeNum(value, fallback = 0) {
-      if (value === '' || value === null || value === undefined) return fallback;
-      const n = Number(value);
-      return Number.isFinite(n) ? n : fallback;
+  earnPriceInput.addEventListener('blur', function() {
+    if(rawPrice > 0) {
+      this.value = rawPrice.toLocaleString('en-MY', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    } else {
+      this.value = '';
     }
+  });
 
-    function cleanText(value, fallback = '') {
-      const t = typeof value === 'string' ? value.trim() : '';
-      return t || fallback;
-    }
-
-    function formatRM(value) {
-      return `RM${safeNum(value, 0).toFixed(2)}`;
-    }
-
-    function formatPoints(value) {
-      return Math.round(safeNum(value, 0)).toLocaleString('en-US');
-    }
-
-    // Used only for innerHTML insertion in comment cards
-    function escapeHtml(text) {
-      return String(text)
-        .replaceAll('&',  '&amp;')
-        .replaceAll('<',  '&lt;')
-        .replaceAll('>',  '&gt;')
-        .replaceAll('"',  '&quot;')
-        .replaceAll("'",  '&#039;');
-    }
-
-    /* ── Inline error helpers ───────────────────── */
-
-    function showFieldError(inputEl, errorEl) {
-      inputEl.classList.add('error');
-      errorEl.classList.add('visible');
-    }
-
-    function clearFieldError(inputEl, errorEl) {
-      inputEl.classList.remove('error');
-      errorEl.classList.remove('visible');
-    }
-
-    function showStepError(el, msg) {
-      el.textContent = msg;
-      el.classList.add('visible');
-    }
-
-    function clearStepError(el) {
-      el.textContent = '';
-      el.classList.remove('visible');
-    }
-
-    /* ═══════════════════════════════════════════════
-       STAFF
-    ═══════════════════════════════════════════════ */
-
-    function populateStaff() {
-      STAFF_LIST.forEach((s) => {
-        const opt = document.createElement('option');
-        opt.value = s.code;
-        opt.textContent = `${s.nickname} (${s.code})`;
-        el.staffSelect.appendChild(opt);
-      });
-    }
-
-    function getStaff() {
-      const code = cleanText(el.staffSelect.value);
-      return STAFF_LIST.find((s) => s.code === code) ?? null;
-    }
-
-    function updateStaffPreview() {
-      const s = getStaff();
-      el.staffCodePreview.textContent = s ? `#${s.code}` : '#StaffCode';
-    }
-
-    /* ═══════════════════════════════════════════════
-       DATA HELPERS
-    ═══════════════════════════════════════════════ */
-
-    function getEarnData() {
-      const item    = cleanText(el.earnItem.value, 'item ini');
-      const price   = safeNum(el.earnPrice.value);
-      const percent = safeNum(el.earnPercent.value);
-      const gross   = price * (percent / 100);
-      const net     = gross * (1 - SCOIN_FEE_RATE);
-      const points  = Math.round(net * SCOIN_POINTS_PER_RM);
-      return { item, price, percent, gross, net, points };
-    }
-
-    function getRedeemData() {
-      const item   = cleanText(el.redeemItem.value, 'item ini');
-      const points = safeNum(el.redeemPoints.value);
-      const value  = points / SCOIN_POINTS_PER_RM;
-      return { item, points, value };
-    }
-
-    /* ═══════════════════════════════════════════════
-       TEMPLATES
-    ═══════════════════════════════════════════════ */
-
-    function applyTemplate(template) {
-      if (currentMode === 'earn') {
-        const d = getEarnData();
-        return template
-          .replaceAll('{item}',     d.item)
-          .replaceAll('{price}',    formatRM(d.price))
-          .replaceAll('{percent}',  `${d.percent}%`)
-          .replaceAll('{netValue}', formatRM(d.net))
-          .replaceAll('{points}',   formatPoints(d.points));
+  /* =========================================
+     WOW FACTOR KIRAAN REAL-TIME
+     ========================================= */
+  function calcWow() {
+    const wowBox = document.getElementById('wowFactor');
+    
+    if (mode === 'earn') {
+      let pct = parseFloat(document.getElementById('earnPercent').value) || 0;
+      if (rawPrice > 0 && pct > 0) {
+        // Net Value calculation (after 5% deduction)
+        let netValue = (rawPrice * (pct / 100)) * 0.95;
+        wowBox.innerHTML = `🎉 Wow! S-Coin bernilai <strong>RM ${netValue.toLocaleString('en-MY', {minimumFractionDigits:2})}</strong> menanti pelanggan!`;
+        wowBox.classList.add('visible');
+      } else {
+        wowBox.classList.remove('visible');
       }
-      const d = getRedeemData();
+    } else {
+      let pts = parseInt(document.getElementById('redeemPoints').value) || 0;
+      if (pts > 0) {
+        // 100 points = RM1
+        let rmValue = pts / 100;
+        wowBox.innerHTML = `🎉 Wow! Pelanggan berjaya jimat <strong>RM ${rmValue.toLocaleString('en-MY', {minimumFractionDigits:2})}</strong>!`;
+        wowBox.classList.add('visible');
+      } else {
+        wowBox.classList.remove('visible');
+      }
+    }
+  }
+
+  function checkStep3() {
+    const err = document.getElementById('errStep3');
+    err.style.display = 'none';
+    
+    if (mode === 'earn') {
+      if(!document.getElementById('earnItem').value || rawPrice <= 0 || !document.getElementById('earnPercent').value) {
+        err.style.display = 'block'; return;
+      }
+    } else {
+      if(!document.getElementById('redeemItem').value || !document.getElementById('redeemPoints').value) {
+        err.style.display = 'block'; return;
+      }
+    }
+    loadTemplates();
+    goStep(4);
+  }
+
+  /* =========================================
+     TEMPLATES & FETCH JSON (STEP 4)
+     ========================================= */
+  fetch('scoin_comments.json')
+    .then(response => response.json())
+    .then(data => {
+      allComments.earn = data.earn || [];
+      allComments.redeem = data.redeem || [];
+    })
+    .catch(error => {
+      console.warn('Gagal load JSON. Guna fallback.');
+      allComments.earn = ["Baru beli {item} RM{price}. Tak sangka dapat cashback S-Coin {percent} worth {netValue}. Padu!"];
+      allComments.redeem = ["Tebus {item} guna {points} S-Coin. Jimat terus RM{value}. Memang berbaloi."];
+    });
+
+  function replacePlaceholders(template) {
+    if (mode === 'earn') {
+      let item = document.getElementById('earnItem').value;
+      let pct = parseFloat(document.getElementById('earnPercent').value) || 0;
+      let netValue = (rawPrice * (pct / 100)) * 0.95;
+      
       return template
-        .replaceAll('{item}',   d.item)
-        .replaceAll('{points}', formatPoints(d.points))
-        .replaceAll('{value}',  formatRM(d.value));
+        .replace(/{item}/g, item)
+        .replace(/{price}/g, 'RM' + rawPrice.toLocaleString('en-MY'))
+        .replace(/{percent}/g, pct + '%')
+        .replace(/{netValue}/g, 'RM' + netValue.toLocaleString('en-MY', {minimumFractionDigits:2, maximumFractionDigits:2}));
+    } else {
+      let item = document.getElementById('redeemItem').value;
+      let pts = parseInt(document.getElementById('redeemPoints').value) || 0;
+      let rmValue = pts / 100;
+
+      return template
+        .replace(/{item}/g, item)
+        .replace(/{points}/g, pts.toLocaleString('en-MY'))
+        .replace(/{value}/g, 'RM' + rmValue.toLocaleString('en-MY', {minimumFractionDigits:2, maximumFractionDigits:2}));
     }
+  }
 
-    function activeTemplates() {
-      return currentMode === 'earn' ? commentLibrary.earn : commentLibrary.redeem;
-    }
+  function loadTemplates() {
+    const list = document.getElementById('commentList');
+    list.innerHTML = '';
+    
+    let sourceArray = mode === 'earn' ? allComments.earn : allComments.redeem;
+    if(sourceArray.length === 0) return;
 
-    /* ═══════════════════════════════════════════════
-       COMMENT RENDERING  (deduplication per session)
-    ═══════════════════════════════════════════════ */
+    // Ambil 3 random komen
+    let shuffled = [...sourceArray].sort(() => 0.5 - Math.random());
+    let selected = shuffled.slice(0, 3);
 
-    function pickFreshIndices(count = 5) {
-      const pool = activeTemplates();
-      const seen = shownIndices[currentMode];
-
-      if (seen.size >= pool.length) seen.clear();
-
-      const available = pool.map((_, i) => i).filter((i) => !seen.has(i));
-      const picked    = [];
-
-      while (picked.length < count && available.length) {
-        const pos = Math.floor(Math.random() * available.length);
-        const idx = available.splice(pos, 1)[0];
-        picked.push(idx);
-        seen.add(idx);
-      }
-
-      return picked;
-    }
-
-    function renderComments() {
-      const pool = activeTemplates();
-
-      if (!pool.length) {
-        el.choiceList.innerHTML = '<div class="comment-card">Loading comments...</div>';
-        return;
-      }
-
-      const indices  = pickFreshIndices(5);
-      const comments = indices.map((i) => applyTemplate(pool[i]));
-
-      el.choiceList.innerHTML = comments.map((text, pos) =>
-        `<div class="comment-card${selectedComment === text ? ' selected' : ''}" data-pos="${pos}">${escapeHtml(text)}</div>`
-      ).join('');
-
-      el.choiceList.querySelectorAll('.comment-card').forEach((card) => {
-        card.addEventListener('click', () => {
-          const pos = Number(card.dataset.pos);
-          selectedComment = comments[pos];
-          el.choiceList.querySelectorAll('.comment-card').forEach((c, i) => {
-            c.classList.toggle('selected', i === pos);
-          });
-          updateSelectedCommentBox();
-          updatePreview();
-          clearStepError(el.step4Error);
-        });
-      });
-
-      updateSelectedCommentBox();
-    }
-
-    function updateSelectedCommentBox() {
-      const custom = cleanText(el.customComment.value);
-      // .textContent is safe — no XSS risk
-      el.selectedCommentBox.textContent = custom || selectedComment || 'Belum pilih komen.';
-    }
-
-    function randomOne() {
-      const pool = activeTemplates();
-      if (!pool.length) return;
-      const idx       = Math.floor(Math.random() * pool.length);
-      selectedComment = applyTemplate(pool[idx]);
-      shownIndices[currentMode].add(idx);
-      renderComments();
-      updatePreview();
-    }
-
-    /* ═══════════════════════════════════════════════
-       MODE SWITCH
-    ═══════════════════════════════════════════════ */
-
-    function setMode(mode) {
-      currentMode          = mode === 'redeem' ? 'redeem' : 'earn';
-      selectedComment      = '';
-      el.customComment.value = '';  // clear stale custom text on mode switch
-
-      const isEarn = currentMode === 'earn';
-      el.earnModeBtn.classList.toggle('active', isEarn);
-      el.redeemModeBtn.classList.toggle('active', !isEarn);
-      el.earnPanel.classList.toggle('hidden', !isEarn);
-      el.redeemPanel.classList.toggle('hidden', isEarn);
-
-      updateSummary();
-      renderComments();
-      updatePreview();
-    }
-
-    /* ═══════════════════════════════════════════════
-       FINAL COMMENT TEXT
-    ═══════════════════════════════════════════════ */
-
-    function finalCommentText() {
-      const custom = cleanText(el.customComment.value);
-      const main   = custom || selectedComment;
-      if (!main) return 'Sila pilih komen atau tulis komen sendiri.';
-
-      const staff = getStaff();
-      if (!staff) return 'Sila pilih staf terlebih dahulu.';
-
-      return `${main}\n\n#SCoinRedemption #SCoin #SCoinCashback #Cashback #${staff.code}`;
-    }
-
-    /* ═══════════════════════════════════════════════
-       SUMMARY & PREVIEW
-    ═══════════════════════════════════════════════ */
-
-    function updateSummary() {
-      updateStaffPreview();
-      el.summaryValue.textContent = currentMode === 'earn'
-        ? formatRM(getEarnData().net)
-        : formatRM(getRedeemData().value);
-    }
-
-    function updatePreview() {
-      updateSummary();
-      updateSelectedCommentBox();
-      el.previewText.textContent = finalCommentText();  // .textContent = safe
-    }
-
-    /* ═══════════════════════════════════════════════
-       TOAST
-    ═══════════════════════════════════════════════ */
-
-    function showToast(message) {
-      el.toast.textContent = message;
-      el.toast.classList.add('show');
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => el.toast.classList.remove('show'), 2500);
-    }
-
-    /* ═══════════════════════════════════════════════
-       NAVIGATION & VALIDATION
-    ═══════════════════════════════════════════════ */
-
-    function validateStep(step) {
-      if (step === 2) {
-        if (!getStaff()) {
-          showFieldError(el.staffSelect, el.staffError);
-          el.staffSelect.focus();
-          return false;
-        }
-        clearFieldError(el.staffSelect, el.staffError);
-      }
-
-      if (step === 3) {
-        let ok = true;
-        clearStepError(el.step3Error);
-
-        if (currentMode === 'earn') {
-          if (!cleanText(el.earnItem.value)) {
-            showFieldError(el.earnItem, el.earnItemError); ok = false;
-          } else { clearFieldError(el.earnItem, el.earnItemError); }
-
-          if (safeNum(el.earnPrice.value) <= 0) {
-            showFieldError(el.earnPrice, el.earnPriceError); ok = false;
-          } else { clearFieldError(el.earnPrice, el.earnPriceError); }
-
-          if (safeNum(el.earnPercent.value) <= 0) {
-            showFieldError(el.earnPercent, el.earnPercentError); ok = false;
-          } else { clearFieldError(el.earnPercent, el.earnPercentError); }
-        } else {
-          if (!cleanText(el.redeemItem.value)) {
-            showFieldError(el.redeemItem, el.redeemItemError); ok = false;
-          } else { clearFieldError(el.redeemItem, el.redeemItemError); }
-
-          if (safeNum(el.redeemPoints.value) <= 0) {
-            showFieldError(el.redeemPoints, el.redeemPointsError); ok = false;
-          } else { clearFieldError(el.redeemPoints, el.redeemPointsError); }
-        }
-
-        return ok;
-      }
-
-      if (step === 4) {
-        if (!cleanText(el.customComment.value) && !selectedComment) {
-          showStepError(el.step4Error, 'Sila pilih atau tulis komen sebelum teruskan.');
-          return false;
-        }
-        clearStepError(el.step4Error);
-      }
-
-      return true;
-    }
-
-    function goToStep(step) {
-      currentStep = Math.max(1, Math.min(TOTAL_STEPS, step));
-      el.steps.forEach((s, i) => s.classList.toggle('active', i + 1 === currentStep));
-      el.progressText.textContent = `Step ${currentStep} of ${TOTAL_STEPS}`;
-      el.progressFill.style.width = `${(currentStep / TOTAL_STEPS) * 100}%`;
-      el.summaryChips.classList.toggle('hidden', currentStep !== 5);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      updatePreview();
-    }
-
-    /* ═══════════════════════════════════════════════
-       COPY LOGIC
-       Primary:  navigator.clipboard (requires HTTPS / localhost)
-       Fallback: manual-copy modal (for file:// or non-secure contexts)
-
-       Flow:
-         1. User taps "Copy komen"
-         2a. If clipboard works → toast "Copied" + show success modal
-         2b. If clipboard fails → show manual modal with pre-selected textarea
-         3. User taps "Proceed" in either modal → opens Google Maps
-    ═══════════════════════════════════════════════ */
-
-    async function copyComment() {
-      const staff = getStaff();
-      if (!staff) {
-        showStepError(el.step4Error, 'Sila pilih staf terlebih dahulu.');
-        goToStep(2);
-        return;
-      }
-      if (!cleanText(el.customComment.value) && !selectedComment) {
-        showStepError(el.step4Error, 'Sila pilih atau tulis komen sebelum copy.');
-        goToStep(4);
-        return;
-      }
-
-      const text = finalCommentText();
-
-      // Try modern Clipboard API (works on HTTPS / localhost on mobile)
-      if (navigator.clipboard && window.isSecureContext) {
-        try {
-          await navigator.clipboard.writeText(text);
-          showToast('Komen berjaya di-copy ✓');
-          el.copyModal.classList.add('show');
-          return;
-        } catch {
-          // fall through to manual modal
-        }
-      }
-
-      // Fallback: manual copy modal
-      el.manualCopyArea.value = text;
-      el.manualCopyModal.classList.add('show');
-      requestAnimationFrame(() => {
-        el.manualCopyArea.focus();
-        el.manualCopyArea.select();
-      });
-    }
-
-    function closeModal(modalEl) { modalEl.classList.remove('show'); }
-    function openGoogleMaps()    { window.open(MAP_URL, '_blank'); }
-
-    /* ═══════════════════════════════════════════════
-       COMMENT LOADING
-       Tries scoin_comments.json first; falls back to
-       FALLBACK_COMMENTS silently if fetch fails.
-    ═══════════════════════════════════════════════ */
-
-    async function loadComments() {
-      try {
-        const res  = await fetch('./scoin_comments.json?v=' + Date.now(), { cache: 'no-store' });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
-        const data = await res.json();
-
-        if (!data || !Array.isArray(data.earn) || !Array.isArray(data.redeem)) {
-          throw new Error('Invalid JSON — missing earn/redeem arrays.');
-        }
-
-        const earn   = data.earn.map((s) => String(s).trim()).filter(Boolean);
-        const redeem = data.redeem.map((s) => String(s).trim()).filter(Boolean);
-
-        if (!earn.length || !redeem.length) {
-          throw new Error('JSON loaded but arrays are empty.');
-        }
-
-        commentLibrary.earn   = earn;
-        commentLibrary.redeem = redeem;
-      } catch (err) {
-        console.warn('[ReviewHelper] scoin_comments.json not loaded, using fallback.', err.message);
-        commentLibrary.earn   = [...FALLBACK_COMMENTS.earn];
-        commentLibrary.redeem = [...FALLBACK_COMMENTS.redeem];
-      }
-
-      renderComments();
-      updatePreview();
-    }
-
-    /* ═══════════════════════════════════════════════
-       CLEAR ERRORS ON INPUT
-    ═══════════════════════════════════════════════ */
-
-    el.staffSelect.addEventListener('change', () => {
-      clearFieldError(el.staffSelect, el.staffError);
-      updatePreview();
+    selected.forEach(tpl => {
+      let finalStr = replacePlaceholders(tpl);
+      let card = document.createElement('div');
+      card.className = 'comment-card';
+      card.innerText = finalStr;
+      
+      card.onclick = function() {
+        document.querySelectorAll('.comment-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        document.getElementById('finalCommentText').value = finalStr;
+        document.getElementById('errStep4').style.display = 'none';
+      };
+      list.appendChild(card);
     });
+  }
 
-    [[el.earnItem, el.earnItemError], [el.earnPrice, el.earnPriceError], [el.earnPercent, el.earnPercentError]].forEach(([inp, err]) => {
-      inp.addEventListener('input', () => {
-        clearFieldError(inp, err);
-        clearStepError(el.step3Error);
-        renderComments();
-        updatePreview();
-      });
+  function checkStep4() {
+    if(document.getElementById('finalCommentText').value.trim() === "") {
+      document.getElementById('errStep4').style.display = 'block';
+    } else { goStep(5); }
+  }
+
+  /* =========================================
+     STEP 5: PREVIEW & COPY
+     ========================================= */
+  function prepareFinalReview() {
+    const mainText = document.getElementById('finalCommentText').value;
+    const staffTag = "#" + document.getElementById('staffSelect').value;
+    
+    document.getElementById('mockReviewText').innerText = mainText;
+    document.getElementById('mockHashtags').innerText = MANDATORY_HASHTAGS + " " + staffTag;
+  }
+
+  function copyAndProceed() {
+    const mainText = document.getElementById('mockReviewText').innerText;
+    const tags = document.getElementById('mockHashtags').innerText;
+    const combinedReview = mainText + "\n\n" + tags;
+
+    navigator.clipboard.writeText(combinedReview).then(() => {
+      document.getElementById('successModal').classList.add('show');
+    }).catch(err => {
+      alert("Browser tak support auto-copy. Sila highlight dan copy teks di atas.");
     });
+  }
 
-    [[el.redeemItem, el.redeemItemError], [el.redeemPoints, el.redeemPointsError]].forEach(([inp, err]) => {
-      inp.addEventListener('input', () => {
-        clearFieldError(inp, err);
-        clearStepError(el.step3Error);
-        renderComments();
-        updatePreview();
-      });
-    });
+  function openGoogleMaps() {
+    window.open(GOOGLE_MAPS_URL, '_blank');
+    closeModal();
+  }
 
-    el.customComment.addEventListener('input', () => {
-      clearStepError(el.step4Error);
-      updatePreview();
-    });
+  function closeModal() {
+    document.getElementById('successModal').classList.remove('show');
+  }
 
-    /* ═══════════════════════════════════════════════
-       EVENT BINDINGS
-    ═══════════════════════════════════════════════ */
-
-    el.earnModeBtn.addEventListener('click',        () => setMode('earn'));
-    el.redeemModeBtn.addEventListener('click',      () => setMode('redeem'));
-    el.refreshCommentsBtn.addEventListener('click', renderComments);
-    el.randomCommentBtn.addEventListener('click',   randomOne);
-    el.copyBtn.addEventListener('click',            copyComment);
-
-    // Success modal
-    el.proceedBtn.addEventListener('click',    () => { closeModal(el.copyModal); openGoogleMaps(); });
-    el.closeModalBtn.addEventListener('click', () => closeModal(el.copyModal));
-    el.copyModal.addEventListener('click',     (e) => { if (e.target === el.copyModal) closeModal(el.copyModal); });
-
-    // Manual copy fallback modal
-    el.manualProceedBtn.addEventListener('click',    () => { closeModal(el.manualCopyModal); openGoogleMaps(); });
-    el.closeManualModalBtn.addEventListener('click', () => closeModal(el.manualCopyModal));
-    el.manualCopyModal.addEventListener('click',     (e) => { if (e.target === el.manualCopyModal) closeModal(el.manualCopyModal); });
-
-    // Navigation
-    el.nextBtns.forEach((btn) => btn.addEventListener('click', () => {
-      if (!validateStep(currentStep)) return;
-      goToStep(currentStep + 1);
-    }));
-
-    el.backBtns.forEach((btn) => btn.addEventListener('click', () => goToStep(currentStep - 1)));
-
-    /* ═══════════════════════════════════════════════
-       INIT
-    ═══════════════════════════════════════════════ */
-
-    populateStaff();
-    setMode('earn');
-    goToStep(1);
-    loadComments();
-  </script>
+</script>
 </body>
 </html>
