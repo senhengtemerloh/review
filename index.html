@@ -254,7 +254,7 @@
   <div class="hero">
     <div class="hero-inner">
       <h1><span class="icon-wrap"><i class="fa-solid fa-star"></i></span> Review Helper</h1>
-      <p>Bantu pelanggan tulis review mantap untuk KPI S-Coin anda.</p>
+      <p>Kongsi pengalaman menarik anda bersama S-Coin di Grand Senheng Temerloh.</p>
     </div>
   </div>
 
@@ -270,24 +270,24 @@
 
       <section class="step active" id="step1">
         <div class="step-badge"><i class="fa-solid fa-layer-group"></i> Step 1</div>
-        <div class="step-title">Pilih jenis transaksi</div>
+        <div class="step-title">Pilih jenis transaksi anda</div>
         <div class="step-subtitle">Tekan salah satu, sistem akan terus ke langkah seterusnya.</div>
         <div class="mode-grid">
           <button class="mode-btn active" id="btnModeEarn" type="button">
             <strong>💰 Beli &amp; Dapat S-Coin</strong>
-            <span>Pelanggan beli barang dan dapat cashback</span>
+            <span>Anda beli barang dan terima S-Coin cashback</span>
           </button>
           <button class="mode-btn" id="btnModeRedeem" type="button">
             <strong>🎁 Redeem S-Coin</strong>
-            <span>Pelanggan tebus S-Coin sedia ada</span>
+            <span>Anda tebus S-Coin yang sedia ada</span>
           </button>
         </div>
       </section>
 
       <section class="step" id="step2">
         <div class="step-badge"><i class="fa-solid fa-user"></i> Step 2</div>
-        <div class="step-title">Siapa yang serve?</div>
-        <div class="step-subtitle">Pilih nama staf. Hashtag nama akan diletak automatik.</div>
+        <div class="step-title">Staf yang bantu anda</div>
+        <div class="step-subtitle">Pilih nama staf kami yang melayan anda.</div>
         <div class="field">
           <select id="staffSelect">
             <option value="">-- Sila pilih nama staf --</option>
@@ -311,7 +311,7 @@
       <section class="step" id="step3">
         <div class="step-badge"><i class="fa-solid fa-pen"></i> Step 3</div>
         <div class="step-title">Isi maklumat belian</div>
-        <div class="step-subtitle">Maklumat ini akan diserap ke dalam ayat review.</div>
+        <div class="step-subtitle">Maklumat ini akan diserap ke dalam ayat review secara automatik.</div>
         
         <div id="earnFields">
           <div class="grid-3">
@@ -357,8 +357,8 @@
 
       <section class="step" id="step4">
         <div class="step-badge"><i class="fa-regular fa-message"></i> Step 4</div>
-        <div class="step-title">Pilih & Edit Komen</div>
-        <div class="step-subtitle">Pilih template di bawah. Pelanggan boleh edit terus di dalam kotak jika mahu.</div>
+        <div class="step-title">Pilih komen anda</div>
+        <div class="step-subtitle">Pilih template di bawah. Anda boleh edit atau tambah ayat terus di dalam kotak jika mahu.</div>
         
         <div style="display: flex; gap:10px; margin-bottom: 12px;">
           <button class="soft-btn" onclick="loadTemplates()"><i class="fa-solid fa-shuffle"></i> Tukar Pilihan</button>
@@ -378,13 +378,13 @@
       <section class="step" id="step5">
         <div class="step-badge"><i class="fa-regular fa-eye"></i> Step 5</div>
         <div class="step-title">Siap untuk di-copy!</div>
-        <div class="step-subtitle">Semak review akhir. 5 hashtag wajib dikunci selamat di bawah komen.</div>
+        <div class="step-subtitle">Semak review akhir. Sistem akan automatik menyalin hashtag rasmi S-Coin di hujung ayat anda.</div>
         
         <div class="google-mock">
           <div class="google-mock-header">
             <div class="google-mock-avatar"><i class="fa-solid fa-user"></i></div>
             <div>
-              <div style="font-size: 0.85rem; font-weight: 700;">Pelanggan Anda</div>
+              <div style="font-size: 0.85rem; font-weight: 700;">Nama Anda</div>
               <div class="google-mock-stars">★★★★★</div>
             </div>
           </div>
@@ -392,7 +392,7 @@
           <div class="google-mock-hashtags" id="mockHashtags"></div>
           
           <div class="photo-reminder">
-            <i class="fa-solid fa-camera-retro"></i> Minta pelanggan upload gambar barang sekali!
+            <i class="fa-solid fa-camera-retro"></i> Kalau tak keberatan, kongsikan gambar barang anda sekali dalam review. Terima kasih!
           </div>
         </div>
 
@@ -410,7 +410,7 @@
       <div class="modal-icon"><i class="fa-solid fa-check"></i></div>
       <h3 style="margin:0 0 10px; font-weight: 800;">Komen Di-copy!</h3>
       <p style="font-size: 0.9rem; color: #555; margin-bottom: 20px;">
-        Ayat berserta hashtag wajib telah di-copy. Anda akan dibawa terus ke Google Maps. Pastikan pelanggan bagi 5 Bintang!
+        Ayat berserta hashtag wajib telah berjaya di-copy. Anda akan dibawa terus ke aplikasi Google Maps. Jangan lupa berikan kami 5 Bintang ya! ⭐
       </p>
       <button class="primary-btn" onclick="openGoogleMaps()">Buka Google Maps Sekarang</button>
       <button class="soft-btn" style="margin-top: 10px;" onclick="closeModal()">Tutup</button>
@@ -424,8 +424,8 @@
   const PLACE_ID = "ChIJhUovtuy4zjERZlW96Pgwgec";
   const GOOGLE_MAPS_URL = `https://search.google.com/local/writereview?placeid=${PLACE_ID}`;
   
-  // Hashtag Wajib KPI S-Coin
-  const MANDATORY_HASHTAGS = "#GrandSenhengTemerloh #SCoin #SenhengApp #SenhengRewards #Pahang";
+  // Hashtag Wajib KPI S-Coin (Staff code akan disambung di hujung)
+  const MANDATORY_HASHTAGS = "#SCoinRedemption #SCoin #SCoinCashback #Cashback";
 
   let currentStep = 1;
   let mode = 'earn'; 
@@ -514,7 +514,7 @@
       if (rawPrice > 0 && pct > 0) {
         // Net Value calculation (after 5% deduction)
         let netValue = (rawPrice * (pct / 100)) * 0.95;
-        wowBox.innerHTML = `🎉 Wow! S-Coin bernilai <strong>RM ${netValue.toLocaleString('en-MY', {minimumFractionDigits:2})}</strong> menanti pelanggan!`;
+        wowBox.innerHTML = `🎉 Wow! S-Coin bernilai <strong>RM ${netValue.toLocaleString('en-MY', {minimumFractionDigits:2})}</strong> menanti anda!`;
         wowBox.classList.add('visible');
       } else {
         wowBox.classList.remove('visible');
@@ -524,7 +524,7 @@
       if (pts > 0) {
         // 100 points = RM1
         let rmValue = pts / 100;
-        wowBox.innerHTML = `🎉 Wow! Pelanggan berjaya jimat <strong>RM ${rmValue.toLocaleString('en-MY', {minimumFractionDigits:2})}</strong>!`;
+        wowBox.innerHTML = `🎉 Wow! Anda berjaya jimat <strong>RM ${rmValue.toLocaleString('en-MY', {minimumFractionDigits:2})}</strong>!`;
         wowBox.classList.add('visible');
       } else {
         wowBox.classList.remove('visible');
@@ -628,6 +628,7 @@
     const staffTag = "#" + document.getElementById('staffSelect').value;
     
     document.getElementById('mockReviewText').innerText = mainText;
+    // Menggabungkan hashtag rasmi dengan hashtag staf
     document.getElementById('mockHashtags').innerText = MANDATORY_HASHTAGS + " " + staffTag;
   }
 
@@ -639,7 +640,7 @@
     navigator.clipboard.writeText(combinedReview).then(() => {
       document.getElementById('successModal').classList.add('show');
     }).catch(err => {
-      alert("Browser tak support auto-copy. Sila highlight dan copy teks di atas.");
+      alert("Sistem keselamatan browser anda tidak membenarkan butang copy ini. Sila highlight dan copy teks tersebut secara manual.");
     });
   }
 
